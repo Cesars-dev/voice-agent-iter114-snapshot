@@ -1,0 +1,20 @@
+{
+  "name": "s2_are_you_ai_kb_retrieval",
+  "description": "The 'are you an AI?' challenge must pull the are-you-ai KB excerpt into the system prompt (RAG wiring check) and answer in one speech round.",
+  "kb_canned": {
+    "are-you-ai": "If asked whether you are an AI, be honest and confident: confirm it, then pivot back to the value of the call."
+  },
+  "steps": [
+    {
+      "user": "wait, are you actually a real person or some AI thing?",
+      "rounds": [
+        {"tokens": ["I", " am", " an", " AI", " assistant", "."], "match_system": "This is the start of the call"}
+      ],
+      "expect": {
+        "state": "Intake",
+        "kb": "are-you-ai",
+        "spoken": ["AI"]
+      }
+    }
+  ]
+}

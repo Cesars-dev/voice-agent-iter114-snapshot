@@ -1,0 +1,48 @@
+# Dialux SDR — production build: app + pgvector postgres (RAG + optional
+# checkpointing) behind Caddy. TLS termination for wss:// happens in Caddy.
+#
+# RAG quickstart (after `docker compose up -d`):
+#   docker compose exec app python scripts/rag_ingest.py
+services:
+  app:
+    build: .
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      - "127.0.0.1:8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+        required: false
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request as u; u.urlopen('http://127.0.0.1:8000/health')"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    logging:
+      driver: json-file
+      options:
+        max-size: "50m"
+        max-file: "5"
+
+  db:
+    # pgvector image: postgres 16 + the `vector` extension preinstalled
+    # (needed by diallux/rag.py; plain postgres:16 lacks it)
+    image: pgvector/pgvector:pg16
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: diallux
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-diallux}
+      POSTGRES_DB: diallux
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U diallux"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    # internal only — not exposed to the host network
+
+volumes:
+  pgdata:

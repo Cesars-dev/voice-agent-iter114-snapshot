@@ -1,0 +1,1542 @@
+{
+  "plan": "plan_v5_iter23_sales_kb_toe_to_toe.md",
+  "generated_utc": "2026-09-06T09:34:51Z",
+  "rule": "LAST 3 BATCHES per persona (v5, mtime 30-min-gap clusters, last passing run per batch) and per class (deployed, start_timestamp 30-min-gap clusters, all conversations kept)",
+  "method_upgrade_note": "Deployed payloads carry a public knowledge_base_retrieved_contents_url (CloudFront) with the ACTUAL per-turn retrieved KB chunks. The plan assumed deployed KB retrieval was invisible; it is directly observable. Direct KB-pull counts are used as primary evidence on BOTH sides; output-line fingerprints remain the secondary/behavioural evidence.",
+  "kb_source_note": "Fingerprints extracted from the v1.8-iter20 SNAPSHOT KBs (the corpus's actual brain), not the working folder: iter20's sanctioned '$697' third-ask release exists in the snapshot sales-language-kb.md line 53 but the reverted working tree lacks it (iter22 revert).",
+  "v5": {
+    "(BOOK) Danny \u2014 auto repair, no-volunteer": {
+      "class": "BOOK",
+      "selected": [
+        {
+          "mtime": 1788603584.5052714,
+          "file": "BOOKDanny_l2l-bookdanny-766adc7f.json",
+          "pass": true,
+          "call_id": "l2l-bookdanny-766adc7f",
+          "rag_turns": 46,
+          "turns": 21,
+          "booked": true,
+          "batch_size": 1
+        },
+        {
+          "mtime": 1788608773.3216174,
+          "file": "BOOKDanny_l2l-bookdanny-8e95f6a8.json",
+          "pass": true,
+          "call_id": "l2l-bookdanny-8e95f6a8",
+          "rag_turns": 157,
+          "turns": 24,
+          "booked": true,
+          "batch_size": 1
+        },
+        {
+          "mtime": 1788611236.6720002,
+          "file": "BOOKDanny_l2l-bookdanny-b06d9713.json",
+          "pass": true,
+          "call_id": "l2l-bookdanny-b06d9713",
+          "rag_turns": 70,
+          "turns": 25,
+          "booked": true,
+          "batch_size": 1
+        }
+      ]
+    },
+    "(BOOK) Marcus \u2014 law firm, no-volunteer": {
+      "class": "BOOK",
+      "selected": [
+        {
+          "mtime": 1788603643.2549646,
+          "file": "BOOKMarcus_l2l-bookmarcus-c893109f.json",
+          "pass": true,
+          "call_id": "l2l-bookmarcus-c893109f",
+          "rag_turns": 45,
+          "turns": 19,
+          "booked": true,
+          "batch_size": 1
+        },
+        {
+          "mtime": 1788608702.7809956,
+          "file": "BOOKMarcus_l2l-bookmarcus-8e6a9d08.json",
+          "pass": true,
+          "call_id": "l2l-bookmarcus-8e6a9d08",
+          "rag_turns": 66,
+          "turns": 19,
+          "booked": true,
+          "batch_size": 1
+        },
+        {
+          "mtime": 1788611296.8366685,
+          "file": "BOOKMarcus_l2l-bookmarcus-c4736794.json",
+          "pass": true,
+          "call_id": "l2l-bookmarcus-c4736794",
+          "rag_turns": 68,
+          "turns": 27,
+          "booked": true,
+          "batch_size": 1
+        }
+      ]
+    },
+    "(BOOK) Maria \u2014 dental office happy path": {
+      "class": "BOOK",
+      "selected": [
+        {
+          "mtime": 1788608607.2445118,
+          "file": "BOOKMaria_l2l-bookmaria-f806aa48.json",
+          "pass": true,
+          "call_id": "l2l-bookmaria-f806aa48",
+          "rag_turns": 67,
+          "turns": 15,
+          "booked": true,
+          "batch_size": 2
+        },
+        {
+          "mtime": 1788611178.1883237,
+          "file": "BOOKMaria_l2l-bookmaria-74551e01.json",
+          "pass": true,
+          "call_id": "l2l-bookmaria-74551e01",
+          "rag_turns": 54,
+          "turns": 17,
+          "booked": true,
+          "batch_size": 2
+        },
+        {
+          "mtime": 1788650784.0980644,
+          "file": "BOOKMaria_l2l-bookmaria-82cf12e3.json",
+          "pass": true,
+          "call_id": "l2l-bookmaria-82cf12e3",
+          "rag_turns": 37,
+          "turns": 14,
+          "booked": true,
+          "batch_size": 1
+        }
+      ]
+    },
+    "(BOOK) Sofia \u2014 problematic customer": {
+      "class": "BOOK",
+      "selected": [
+        {
+          "mtime": 1788603730.7035058,
+          "file": "BOOKSofia_l2l-booksofia-6dbb51f5.json",
+          "pass": true,
+          "call_id": "l2l-booksofia-6dbb51f5",
+          "rag_turns": 41,
+          "turns": 15,
+          "booked": true,
+          "batch_size": 1
+        },
+        {
+          "mtime": 1788608836.52528,
+          "file": "BOOKSofia_l2l-booksofia-aafba4da.json",
+          "pass": true,
+          "call_id": "l2l-booksofia-aafba4da",
+          "rag_turns": 95,
+          "turns": 22,
+          "booked": true,
+          "batch_size": 1
+        },
+        {
+          "mtime": 1788611370.905261,
+          "file": "BOOKSofia_l2l-booksofia-d21c4b63.json",
+          "pass": true,
+          "call_id": "l2l-booksofia-d21c4b63",
+          "rag_turns": 60,
+          "turns": 22,
+          "booked": true,
+          "batch_size": 1
+        }
+      ]
+    },
+    "(BOOK) Susan \u2014 home remodeling, no-volunteer": {
+      "class": "BOOK",
+      "selected": [
+        {
+          "mtime": 1788603611.026133,
+          "file": "BOOKSusan_l2l-booksusan-de7bb696.json",
+          "pass": true,
+          "call_id": "l2l-booksusan-de7bb696",
+          "rag_turns": 43,
+          "turns": 21,
+          "booked": true,
+          "batch_size": 1
+        },
+        {
+          "mtime": 1788608693.6410449,
+          "file": "BOOKSusan_l2l-booksusan-7402cc17.json",
+          "pass": true,
+          "call_id": "l2l-booksusan-7402cc17",
+          "rag_turns": 84,
+          "turns": 22,
+          "booked": true,
+          "batch_size": 1
+        },
+        {
+          "mtime": 1788611265.1058433,
+          "file": "BOOKSusan_l2l-booksusan-8b37bb8d.json",
+          "pass": true,
+          "call_id": "l2l-booksusan-8b37bb8d",
+          "rag_turns": 68,
+          "turns": 27,
+          "booked": true,
+          "batch_size": 1
+        }
+      ]
+    },
+    "(BRK) Alan \u2014 mid-call explosion": {
+      "class": "BRK",
+      "selected": [
+        {
+          "mtime": 1788604164.5694053,
+          "file": "BRKAlan_l2l-brkalan-5ffc2468.json",
+          "pass": true,
+          "call_id": "l2l-brkalan-5ffc2468",
+          "rag_turns": 11,
+          "turns": 9,
+          "booked": false,
+          "batch_size": 1
+        },
+        {
+          "mtime": 1788609177.0444837,
+          "file": "BRKAlan_l2l-brkalan-e852b415.json",
+          "pass": true,
+          "call_id": "l2l-brkalan-e852b415",
+          "rag_turns": 8,
+          "turns": 5,
+          "booked": false,
+          "batch_size": 1
+        },
+        {
+          "mtime": 1788611797.7149324,
+          "file": "BRKAlan_l2l-brkalan-e4104569.json",
+          "pass": true,
+          "call_id": "l2l-brkalan-e4104569",
+          "rag_turns": 30,
+          "turns": 16,
+          "booked": false,
+          "batch_size": 1
+        }
+      ]
+    },
+    "(BRK) Jamie \u2014 prompt-injection brat": {
+      "class": "BRK",
+      "selected": [
+        {
+          "mtime": 1788604076.8817925,
+          "file": "BRKJamie_l2l-brkjamie-7a2a9c6f.json",
+          "pass": true,
+          "call_id": "l2l-brkjamie-7a2a9c6f",
+          "rag_turns": 29,
+          "turns": 26,
+          "booked": false,
+          "batch_size": 1
+        },
+        {
+          "mtime": 1788609139.4026809,
+          "file": "BRKJamie_l2l-brkjamie-f6833fe9.json",
+          "pass": true,
+          "call_id": "l2l-brkjamie-f6833fe9",
+          "rag_turns": 33,
+          "turns": 23,
+          "booked": false,
+          "batch_size": 1
+        },
+        {
+          "mtime": 1788611678.2915814,
+          "file": "BRKJamie_l2l-brkjamie-05b6fe48.json",
+          "pass": true,
+          "call_id": "l2l-brkjamie-05b6fe48",
+          "rag_turns": 24,
+          "turns": 18,
+          "booked": false,
+          "batch_size": 1
+        }
+      ]
+    },
+    "(BRK) Nick \u2014 contradiction machine": {
+      "class": "BRK",
+      "selected": [
+        {
+          "mtime": 1788604194.096272,
+          "file": "BRKNick_l2l-brknick-46092c89.json",
+          "pass": true,
+          "call_id": "l2l-brknick-46092c89",
+          "rag_turns": 58,
+          "turns": 48,
+          "booked": false,
+          "batch_size": 1
+        },
+        {
+          "mtime": 1788609235.3781786,
+          "file": "BRKNick_l2l-brknick-a564bca3.json",
+          "pass": false,
+          "call_id": "l2l-brknick-a564bca3",
+          "rag_turns": 70,
+          "turns": 30,
+          "booked": true,
+          "batch_size": 1,
+          "note": "no passing run in batch; last run kept as evidence"
+        },
+        {
+          "mtime": 1788611839.789704,
+          "file": "BRKNick_l2l-brknick-41e42b53.json",
+          "pass": true,
+          "call_id": "l2l-brknick-41e42b53",
+          "rag_turns": 65,
+          "turns": 48,
+          "booked": false,
+          "batch_size": 1
+        }
+      ]
+    },
+    "(BRK) Rita \u2014 tangent rambler": {
+      "class": "BRK",
+      "selected": [
+        {
+          "mtime": 1788604121.6425965,
+          "file": "BRKRita_l2l-brkrita-ebca0ade.json",
+          "pass": true,
+          "call_id": "l2l-brkrita-ebca0ade",
+          "rag_turns": 37,
+          "turns": 31,
+          "booked": false,
+          "batch_size": 1
+        },
+        {
+          "mtime": 1788609109.1078398,
+          "file": "BRKRita_l2l-brkrita-06b325d2.json",
+          "pass": true,
+          "call_id": "l2l-brkrita-06b325d2",
+          "rag_turns": 20,
+          "turns": 13,
+          "booked": false,
+          "batch_size": 1
+        },
+        {
+          "mtime": 1788611709.7074106,
+          "file": "BRKRita_l2l-brkrita-115af879.json",
+          "pass": true,
+          "call_id": "l2l-brkrita-115af879",
+          "rag_turns": 29,
+          "turns": 22,
+          "booked": false,
+          "batch_size": 1
+        }
+      ]
+    },
+    "(BRK) Suzy \u2014 monosyllable wall": {
+      "class": "BRK",
+      "selected": [
+        {
+          "mtime": 1788604147.1404831,
+          "file": "BRKSuzy_l2l-brksuzy-6db7f94c.json",
+          "pass": true,
+          "call_id": "l2l-brksuzy-6db7f94c",
+          "rag_turns": 20,
+          "turns": 17,
+          "booked": false,
+          "batch_size": 1
+        },
+        {
+          "mtime": 1788609169.6945221,
+          "file": "BRKSuzy_l2l-brksuzy-0f1ec4d8.json",
+          "pass": true,
+          "call_id": "l2l-brksuzy-0f1ec4d8",
+          "rag_turns": 18,
+          "turns": 15,
+          "booked": false,
+          "batch_size": 1
+        },
+        {
+          "mtime": 1788611851.749639,
+          "file": "BRKSuzy_l2l-brksuzy-0b33f647.json",
+          "pass": true,
+          "call_id": "l2l-brksuzy-0b33f647",
+          "rag_turns": 60,
+          "turns": 48,
+          "booked": false,
+          "batch_size": 1
+        }
+      ]
+    },
+    "(BRK) Wendy \u2014 agreement waffler": {
+      "class": "BRK",
+      "selected": [
+        {
+          "mtime": 1788609343.8556125,
+          "file": "BRKWendy_l2l-brkwendy-1fcbe425.json",
+          "pass": true,
+          "call_id": "l2l-brkwendy-1fcbe425",
+          "rag_turns": 70,
+          "turns": 48,
+          "booked": false,
+          "batch_size": 1
+        },
+        {
+          "mtime": 1788611944.6981351,
+          "file": "BRKWendy_l2l-brkwendy-d21a8a34.json",
+          "pass": false,
+          "call_id": "l2l-brkwendy-d21a8a34",
+          "rag_turns": 82,
+          "turns": 48,
+          "booked": true,
+          "batch_size": 1,
+          "note": "no passing run in batch; last run kept as evidence"
+        },
+        {
+          "mtime": 1788651192.3561559,
+          "file": "BRKWendy_l2l-brkwendy-6e12c411.json",
+          "pass": true,
+          "call_id": "l2l-brkwendy-6e12c411",
+          "rag_turns": 56,
+          "turns": 48,
+          "booked": false,
+          "batch_size": 1
+        }
+      ]
+    },
+    "(CURVE) Brenda \u2014 objection gauntlet, Phoenix AZ": {
+      "class": "CURVE",
+      "selected": [
+        {
+          "mtime": 1788605066.4929945,
+          "file": "CURVEBrenda_l2l-curvebrenda-dc88796a.json",
+          "pass": true,
+          "call_id": "l2l-curvebrenda-dc88796a",
+          "rag_turns": 46,
+          "turns": 22,
+          "booked": true,
+          "batch_size": 5
+        },
+        {
+          "mtime": 1788608916.014858,
+          "file": "CURVEBrenda_l2l-curvebrenda-2e9dc2bb.json",
+          "pass": true,
+          "call_id": "l2l-curvebrenda-2e9dc2bb",
+          "rag_turns": 94,
+          "turns": 18,
+          "booked": true,
+          "batch_size": 1
+        },
+        {
+          "mtime": 1788611554.0262587,
+          "file": "CURVEBrenda_l2l-curvebrenda-a8a4ea3c.json",
+          "pass": true,
+          "call_id": "l2l-curvebrenda-a8a4ea3c",
+          "rag_turns": 93,
+          "turns": 37,
+          "booked": true,
+          "batch_size": 1
+        }
+      ]
+    },
+    "(CURVE) Frank \u2014 old-school hostile, liars & thieves": {
+      "class": "CURVE",
+      "selected": [
+        {
+          "mtime": 1788603829.517985,
+          "file": "CURVEFrank_l2l-curvefrank-5a18e57b.json",
+          "pass": true,
+          "call_id": "l2l-curvefrank-5a18e57b",
+          "rag_turns": 8,
+          "turns": 7,
+          "booked": false,
+          "batch_size": 1
+        },
+        {
+          "mtime": 1788608842.551248,
+          "file": "CURVEFrank_l2l-curvefrank-0e4b7cdd.json",
+          "pass": true,
+          "call_id": "l2l-curvefrank-0e4b7cdd",
+          "rag_turns": 5,
+          "turns": 5,
+          "booked": false,
+          "batch_size": 1
+        },
+        {
+          "mtime": 1788611441.5428736,
+          "file": "CURVEFrank_l2l-curvefrank-80325ec6.json",
+          "pass": true,
+          "call_id": "l2l-curvefrank-80325ec6",
+          "rag_turns": 20,
+          "turns": 7,
+          "booked": false,
+          "batch_size": 1
+        }
+      ]
+    },
+    "(CURVE) Gene \u2014 grumpy curmudgeon": {
+      "class": "CURVE",
+      "selected": [
+        {
+          "mtime": 1788603846.6578946,
+          "file": "CURVEGene_l2l-curvegene-b2a4860c.json",
+          "pass": true,
+          "call_id": "l2l-curvegene-b2a4860c",
+          "rag_turns": 40,
+          "turns": 18,
+          "booked": true,
+          "batch_size": 1
+        },
+        {
+          "mtime": 1788608968.53958,
+          "file": "CURVEGene_l2l-curvegene-5ce3693a.json",
+          "pass": false,
+          "call_id": "l2l-curvegene-5ce3693a",
+          "rag_turns": 94,
+          "turns": 48,
+          "booked": false,
+          "batch_size": 1,
+          "note": "no passing run in batch; last run kept as evidence"
+        },
+        {
+          "mtime": 1788611576.0841384,
+          "file": "CURVEGene_l2l-curvegene-3e44b6ed.json",
+          "pass": true,
+          "call_id": "l2l-curvegene-3e44b6ed",
+          "rag_turns": 115,
+          "turns": 26,
+          "booked": true,
+          "batch_size": 1
+        }
+      ]
+    },
+    "(CURVE) Ray \u2014 wants-a-human Luddite": {
+      "class": "CURVE",
+      "selected": [
+        {
+          "mtime": 1788603864.6177998,
+          "file": "CURVERay_l2l-curveray-654921a4.json",
+          "pass": true,
+          "call_id": "l2l-curveray-654921a4",
+          "rag_turns": 8,
+          "turns": 4,
+          "booked": false,
+          "batch_size": 1
+        },
+        {
+          "mtime": 1788608898.5419505,
+          "file": "CURVERay_l2l-curveray-d8ca83d5.json",
+          "pass": true,
+          "call_id": "l2l-curveray-d8ca83d5",
+          "rag_turns": 16,
+          "turns": 13,
+          "booked": false,
+          "batch_size": 1
+        },
+        {
+          "mtime": 1788611575.211143,
+          "file": "CURVERay_l2l-curveray-5d480d40.json",
+          "pass": true,
+          "call_id": "l2l-curveray-5d480d40",
+          "rag_turns": 60,
+          "turns": 30,
+          "booked": false,
+          "batch_size": 1
+        }
+      ]
+    },
+    "(GK) Bianca \u2014 burned-before": {
+      "class": "GK",
+      "selected": [
+        {
+          "mtime": 1788604034.4829752,
+          "file": "GKBianca_l2l-gkbianca-3cf51086.json",
+          "pass": true,
+          "call_id": "l2l-gkbianca-3cf51086",
+          "rag_turns": 42,
+          "turns": 18,
+          "booked": true,
+          "batch_size": 1
+        },
+        {
+          "mtime": 1788609072.125034,
+          "file": "GKBianca_l2l-gkbianca-da5a9e56.json",
+          "pass": true,
+          "call_id": "l2l-gkbianca-da5a9e56",
+          "rag_turns": 45,
+          "turns": 18,
+          "booked": true,
+          "batch_size": 1
+        },
+        {
+          "mtime": 1788611665.9106488,
+          "file": "GKBianca_l2l-gkbianca-1c772fee.json",
+          "pass": true,
+          "call_id": "l2l-gkbianca-1c772fee",
+          "rag_turns": 55,
+          "turns": 18,
+          "booked": true,
+          "batch_size": 1
+        }
+      ]
+    },
+    "(GK) Boris \u2014 perpetually busy": {
+      "class": "GK",
+      "selected": [
+        {
+          "mtime": 1788609385.5873952,
+          "file": "GKBoris_l2l-gkboris-f79579a6.json",
+          "pass": true,
+          "call_id": "l2l-gkboris-f79579a6",
+          "rag_turns": 236,
+          "turns": 48,
+          "booked": true,
+          "batch_size": 1
+        },
+        {
+          "mtime": 1788611668.2336361,
+          "file": "GKBoris_l2l-gkboris-c4633f59.json",
+          "pass": true,
+          "call_id": "l2l-gkboris-c4633f59",
+          "rag_turns": 74,
+          "turns": 21,
+          "booked": true,
+          "batch_size": 1
+        },
+        {
+          "mtime": 1788650857.2016063,
+          "file": "GKBoris_l2l-gkboris-4452d3d3.json",
+          "pass": true,
+          "call_id": "l2l-gkboris-4452d3d3",
+          "rag_turns": 36,
+          "turns": 14,
+          "booked": true,
+          "batch_size": 1
+        }
+      ]
+    },
+    "(GK) Dave \u2014 status-quo defender": {
+      "class": "GK",
+      "selected": [
+        {
+          "mtime": 1788604059.943866,
+          "file": "GKDave_l2l-gkdave-600ec4c1.json",
+          "pass": true,
+          "call_id": "l2l-gkdave-600ec4c1",
+          "rag_turns": 40,
+          "turns": 20,
+          "booked": true,
+          "batch_size": 1
+        },
+        {
+          "mtime": 1788609119.2187867,
+          "file": "GKDave_l2l-gkdave-f5520d46.json",
+          "pass": true,
+          "call_id": "l2l-gkdave-f5520d46",
+          "rag_turns": 64,
+          "turns": 17,
+          "booked": true,
+          "batch_size": 1
+        },
+        {
+          "mtime": 1788611761.868127,
+          "file": "GKDave_l2l-gkdave-f3ff2f6c.json",
+          "pass": true,
+          "call_id": "l2l-gkdave-f3ff2f6c",
+          "rag_turns": 91,
+          "turns": 32,
+          "booked": true,
+          "batch_size": 1
+        }
+      ]
+    },
+    "(GK) Priya \u2014 price-obsessed shopper": {
+      "class": "GK",
+      "selected": [
+        {
+          "mtime": 1788603971.766239,
+          "file": "GKPriya_l2l-gkpriya-bcd7c829.json",
+          "pass": true,
+          "call_id": "l2l-gkpriya-bcd7c829",
+          "rag_turns": 40,
+          "turns": 20,
+          "booked": true,
+          "batch_size": 1
+        },
+        {
+          "mtime": 1788609097.7268996,
+          "file": "GKPriya_l2l-gkpriya-265e348b.json",
+          "pass": true,
+          "call_id": "l2l-gkpriya-265e348b",
+          "rag_turns": 107,
+          "turns": 25,
+          "booked": true,
+          "batch_size": 1
+        },
+        {
+          "mtime": 1788611642.0567787,
+          "file": "GKPriya_l2l-gkpriya-489d4536.json",
+          "pass": true,
+          "call_id": "l2l-gkpriya-489d4536",
+          "rag_turns": 74,
+          "turns": 26,
+          "booked": true,
+          "batch_size": 1
+        }
+      ]
+    },
+    "(GK) Sam \u2014 scam-skeptic contractor": {
+      "class": "GK",
+      "selected": [
+        {
+          "mtime": 1788603960.3462927,
+          "file": "GKSam_l2l-gksam-04c924c9.json",
+          "pass": true,
+          "call_id": "l2l-gksam-04c924c9",
+          "rag_turns": 50,
+          "turns": 24,
+          "booked": true,
+          "batch_size": 1
+        },
+        {
+          "mtime": 1788609548.1885502,
+          "file": "GKSam_l2l-gksam-48aebbcb.json",
+          "pass": true,
+          "call_id": "l2l-gksam-48aebbcb",
+          "rag_turns": 365,
+          "turns": 48,
+          "booked": true,
+          "batch_size": 1
+        },
+        {
+          "mtime": 1788611547.9922917,
+          "file": "GKSam_l2l-gksam-9dede628.json",
+          "pass": true,
+          "call_id": "l2l-gksam-9dede628",
+          "rag_turns": 37,
+          "turns": 16,
+          "booked": true,
+          "batch_size": 1
+        }
+      ]
+    },
+    "(NO-BOOK) Carlos \u2014 mean customer": {
+      "class": "NO-BOOK",
+      "selected": [
+        {
+          "mtime": 1788608647.076296,
+          "file": "NOBOOKCarlos_l2l-nobookcarlos-93fe46e3.json",
+          "pass": true,
+          "call_id": "l2l-nobookcarlos-93fe46e3",
+          "rag_turns": 16,
+          "turns": 6,
+          "booked": false,
+          "batch_size": 1
+        },
+        {
+          "mtime": 1788611337.8534427,
+          "file": "NOBOOKCarlos_l2l-nobookcarlos-6c77c1c1.json",
+          "pass": true,
+          "call_id": "l2l-nobookcarlos-6c77c1c1",
+          "rag_turns": 75,
+          "turns": 30,
+          "booked": false,
+          "batch_size": 1
+        },
+        {
+          "mtime": 1788650960.6919527,
+          "file": "NOBOOKCarlos_l2l-nobookcarlos-a65b16fc.json",
+          "pass": true,
+          "call_id": "l2l-nobookcarlos-a65b16fc",
+          "rag_turns": 51,
+          "turns": 36,
+          "booked": false,
+          "batch_size": 1
+        }
+      ]
+    },
+    "(NO-BOOK) Daniel \u2014 are-you-a-robot": {
+      "class": "NO-BOOK",
+      "selected": [
+        {
+          "mtime": 1788603741.9244468,
+          "file": "NOBOOKDaniel_l2l-nobookdaniel-44c7661d.json",
+          "pass": true,
+          "call_id": "l2l-nobookdaniel-44c7661d",
+          "rag_turns": 9,
+          "turns": 7,
+          "booked": false,
+          "batch_size": 1
+        },
+        {
+          "mtime": 1788608759.73469,
+          "file": "NOBOOKDaniel_l2l-nobookdaniel-9c1e9297.json",
+          "pass": true,
+          "call_id": "l2l-nobookdaniel-9c1e9297",
+          "rag_turns": 9,
+          "turns": 7,
+          "booked": false,
+          "batch_size": 1
+        },
+        {
+          "mtime": 1788611396.4591208,
+          "file": "NOBOOKDaniel_l2l-nobookdaniel-2101fbf3.json",
+          "pass": true,
+          "call_id": "l2l-nobookdaniel-2101fbf3",
+          "rag_turns": 46,
+          "turns": 15,
+          "booked": false,
+          "batch_size": 1
+        }
+      ]
+    },
+    "(NO-BOOK) Jorge \u2014 enquiry only": {
+      "class": "NO-BOOK",
+      "selected": [
+        {
+          "mtime": 1788603721.2365556,
+          "file": "NOBOOKJorge_l2l-nobookjorge-a614ac67.json",
+          "pass": true,
+          "call_id": "l2l-nobookjorge-a614ac67",
+          "rag_turns": 14,
+          "turns": 12,
+          "booked": false,
+          "batch_size": 1
+        },
+        {
+          "mtime": 1788608769.9586353,
+          "file": "NOBOOKJorge_l2l-nobookjorge-013bf05d.json",
+          "pass": true,
+          "call_id": "l2l-nobookjorge-013bf05d",
+          "rag_turns": 26,
+          "turns": 19,
+          "booked": false,
+          "batch_size": 1
+        },
+        {
+          "mtime": 1788611381.5112028,
+          "file": "NOBOOKJorge_l2l-nobookjorge-9e399156.json",
+          "pass": true,
+          "call_id": "l2l-nobookjorge-9e399156",
+          "rag_turns": 46,
+          "turns": 25,
+          "booked": false,
+          "batch_size": 1
+        }
+      ]
+    },
+    "(NO-BOOK) Pedro \u2014 dumb customer": {
+      "class": "NO-BOOK",
+      "selected": [
+        {
+          "mtime": 1788609311.0757833,
+          "file": "NOBOOKPedro_l2l-nobookpedro-348e379a.json",
+          "pass": false,
+          "call_id": "l2l-nobookpedro-348e379a",
+          "rag_turns": 366,
+          "turns": 48,
+          "booked": true,
+          "batch_size": 1,
+          "note": "no passing run in batch; last run kept as evidence"
+        },
+        {
+          "mtime": 1788611382.7811959,
+          "file": "NOBOOKPedro_l2l-nobookpedro-65efbe9d.json",
+          "pass": false,
+          "call_id": "l2l-nobookpedro-65efbe9d",
+          "rag_turns": 80,
+          "turns": 33,
+          "booked": true,
+          "batch_size": 1,
+          "note": "no passing run in batch; last run kept as evidence"
+        },
+        {
+          "mtime": 1788651066.9282768,
+          "file": "NOBOOKPedro_l2l-nobookpedro-4e809529.json",
+          "pass": false,
+          "call_id": "l2l-nobookpedro-4e809529",
+          "rag_turns": 53,
+          "turns": 29,
+          "booked": true,
+          "batch_size": 1,
+          "note": "no passing run in batch; last run kept as evidence"
+        }
+      ]
+    }
+  },
+  "deployed": {
+    "BOOK": [
+      {
+        "batch_n": 1,
+        "conversations": [
+          {
+            "start_ts": 1787813683605,
+            "file": "BOOK_chat_388890ab1d75c18d55b329bef7c.json",
+            "chat_id": "chat_388890ab1d75c18d55b329bef7c",
+            "agent_id": "agent_87e4d5f08475e5bc558b2f390f",
+            "chat_status": "ended",
+            "kb_contents_url": "https://dxc03zgurdly9.cloudfront.net/20671feeb6a786d88a4b0e9ca299d9dc5b0e547b7bd2aa6d945d2f78d444dc73/knowledge_base_retrieved_contents.json",
+            "date_utc": "2026-08-27T06:54:43Z",
+            "has_kb_contents": true
+          }
+        ]
+      },
+      {
+        "batch_n": 4,
+        "conversations": [
+          {
+            "start_ts": 1787819552694,
+            "file": "BOOK_chat_466f7245aa62a320a81e632bef2.json",
+            "chat_id": "chat_466f7245aa62a320a81e632bef2",
+            "agent_id": "agent_87e4d5f08475e5bc558b2f390f",
+            "chat_status": "ended",
+            "kb_contents_url": "https://dxc03zgurdly9.cloudfront.net/aaae77418db796c646c7ba94773a17308569c3e3715c50fbd565f5c15d4844a1/knowledge_base_retrieved_contents.json",
+            "date_utc": "2026-08-27T08:32:32Z",
+            "has_kb_contents": true
+          },
+          {
+            "start_ts": 1787819552751,
+            "file": "BOOK_chat_48503a79b8f026b7e3b4c774580.json",
+            "chat_id": "chat_48503a79b8f026b7e3b4c774580",
+            "agent_id": "agent_87e4d5f08475e5bc558b2f390f",
+            "chat_status": "ended",
+            "kb_contents_url": "https://dxc03zgurdly9.cloudfront.net/86d8cf1d3b06efbe486a18885696fc7af60baccbec39c002509247b8a304b576/knowledge_base_retrieved_contents.json",
+            "date_utc": "2026-08-27T08:32:32Z",
+            "has_kb_contents": true
+          },
+          {
+            "start_ts": 1787819552766,
+            "file": "BOOK_chat_45e55426d61a82ac649d2e0be24.json",
+            "chat_id": "chat_45e55426d61a82ac649d2e0be24",
+            "agent_id": "agent_87e4d5f08475e5bc558b2f390f",
+            "chat_status": "ended",
+            "kb_contents_url": "https://dxc03zgurdly9.cloudfront.net/e693bcb7dcb267c1ae3af9ed459da847f6f305734d3ef537942813e096a24ac0/knowledge_base_retrieved_contents.json",
+            "date_utc": "2026-08-27T08:32:32Z",
+            "has_kb_contents": true
+          },
+          {
+            "start_ts": 1787819552784,
+            "file": "BOOK_chat_49bcd511506f88dc3206a663880.json",
+            "chat_id": "chat_49bcd511506f88dc3206a663880",
+            "agent_id": "agent_87e4d5f08475e5bc558b2f390f",
+            "chat_status": "ended",
+            "kb_contents_url": "https://dxc03zgurdly9.cloudfront.net/729dcee9f7faf18c010f5645051a8fd066027f4c63b80dbe57fe2a5af9926493/knowledge_base_retrieved_contents.json",
+            "date_utc": "2026-08-27T08:32:32Z",
+            "has_kb_contents": true
+          }
+        ]
+      },
+      {
+        "batch_n": 8,
+        "conversations": [
+          {
+            "start_ts": 1788431520967,
+            "file": "BOOK_chat_e4ed9c57c99885cfe743028c390.json",
+            "chat_id": "chat_e4ed9c57c99885cfe743028c390",
+            "agent_id": "agent_e99648268be5045d8a49cc9e4e",
+            "chat_status": "ended",
+            "kb_contents_url": "https://dxc03zgurdly9.cloudfront.net/28b4b41ff72cd1c968bb546b3596ab9e4196723b140fc0ada7dadfe82b07d0d8/knowledge_base_retrieved_contents.json",
+            "date_utc": "2026-09-03T10:32:00Z",
+            "has_kb_contents": true
+          },
+          {
+            "start_ts": 1788432095653,
+            "file": "BOOK_chat_ea28c8b7ed5d7c1a6c11d855181.json",
+            "chat_id": "chat_ea28c8b7ed5d7c1a6c11d855181",
+            "agent_id": "agent_e99648268be5045d8a49cc9e4e",
+            "chat_status": "ended",
+            "kb_contents_url": "https://dxc03zgurdly9.cloudfront.net/f1d677c221d1eac27a14b841327c9c02b1d9a9dc4fd6440e63cf51b37986d304/knowledge_base_retrieved_contents.json",
+            "date_utc": "2026-09-03T10:41:35Z",
+            "has_kb_contents": true
+          },
+          {
+            "start_ts": 1788432911749,
+            "file": "BOOK_chat_5329e16ce50561f732cb754055c.json",
+            "chat_id": "chat_5329e16ce50561f732cb754055c",
+            "agent_id": "agent_e99648268be5045d8a49cc9e4e",
+            "chat_status": "ended",
+            "kb_contents_url": "https://dxc03zgurdly9.cloudfront.net/224ed4a5dd5a5275ca72c45ce834dd37fdbf8dccaf7a40daf92e3f811958ab47/knowledge_base_retrieved_contents.json",
+            "date_utc": "2026-09-03T10:55:11Z",
+            "has_kb_contents": true
+          },
+          {
+            "start_ts": 1788434421086,
+            "file": "BOOK_chat_8a5c5bf1b219eaa6cc076e69eeb.json",
+            "chat_id": "chat_8a5c5bf1b219eaa6cc076e69eeb",
+            "agent_id": "agent_da3959eac4b5f16ee40bbda233",
+            "chat_status": "ended",
+            "kb_contents_url": "https://dxc03zgurdly9.cloudfront.net/65e56b0c2b8144d07f7f8bfa49c25dd7f51ecfbdb9af034de9b4bc5990551989/knowledge_base_retrieved_contents.json",
+            "date_utc": "2026-09-03T11:20:21Z",
+            "has_kb_contents": true
+          },
+          {
+            "start_ts": 1788435568801,
+            "file": "BOOK_chat_ec706819f1e84a33fc077ad6094.json",
+            "chat_id": "chat_ec706819f1e84a33fc077ad6094",
+            "agent_id": "agent_da3959eac4b5f16ee40bbda233",
+            "chat_status": "ended",
+            "kb_contents_url": "https://dxc03zgurdly9.cloudfront.net/6544cec11dbf4abf1fc584b9e96b40603c3ddd5537e8e33481eacab37386e5b2/knowledge_base_retrieved_contents.json",
+            "date_utc": "2026-09-03T11:39:28Z",
+            "has_kb_contents": true
+          },
+          {
+            "start_ts": 1788435570260,
+            "file": "BOOK_chat_e42407279ae6f1a20ea381d556a.json",
+            "chat_id": "chat_e42407279ae6f1a20ea381d556a",
+            "agent_id": "agent_da3959eac4b5f16ee40bbda233",
+            "chat_status": "ended",
+            "kb_contents_url": "https://dxc03zgurdly9.cloudfront.net/9416e691ce6afa4b87eaecd71265ad1a0062c55379519366d0bce64be2da250d/knowledge_base_retrieved_contents.json",
+            "date_utc": "2026-09-03T11:39:30Z",
+            "has_kb_contents": true
+          },
+          {
+            "start_ts": 1788435571870,
+            "file": "BOOK_chat_f31ba11498d07e8a9a2d782097a.json",
+            "chat_id": "chat_f31ba11498d07e8a9a2d782097a",
+            "agent_id": "agent_da3959eac4b5f16ee40bbda233",
+            "chat_status": "ongoing",
+            "kb_contents_url": null,
+            "date_utc": "2026-09-03T11:39:31Z",
+            "has_kb_contents": false
+          },
+          {
+            "start_ts": 1788436684266,
+            "file": "BOOK_chat_8ea0c9715c194fd5d26c83b8a6c.json",
+            "chat_id": "chat_8ea0c9715c194fd5d26c83b8a6c",
+            "agent_id": "agent_da3959eac4b5f16ee40bbda233",
+            "chat_status": "ended",
+            "kb_contents_url": "https://dxc03zgurdly9.cloudfront.net/805953b42def1e578137f353ea5987557cc3c7f24eb00df3cbb736c0d72ff877/knowledge_base_retrieved_contents.json",
+            "date_utc": "2026-09-03T11:58:04Z",
+            "has_kb_contents": true
+          }
+        ]
+      }
+    ],
+    "BRK": [
+      {
+        "batch_n": 6,
+        "conversations": [
+          {
+            "start_ts": 1787707494814,
+            "file": "BRK_chat_7879fc968a1d015903ae58db773.json",
+            "chat_id": "chat_7879fc968a1d015903ae58db773",
+            "agent_id": "agent_edf1437704e976c53539c7effe",
+            "chat_status": "ongoing",
+            "kb_contents_url": null,
+            "date_utc": "2026-08-26T01:24:54Z",
+            "has_kb_contents": false
+          },
+          {
+            "start_ts": 1787707494816,
+            "file": "BRK_chat_e984d2111da15d397c317dfa5b3.json",
+            "chat_id": "chat_e984d2111da15d397c317dfa5b3",
+            "agent_id": "agent_edf1437704e976c53539c7effe",
+            "chat_status": "ended",
+            "kb_contents_url": "https://dxc03zgurdly9.cloudfront.net/8c5642779f8c1ffd53685d4c8b3aad97f191b4426c4a4b9a9a320ca8a981703b/knowledge_base_retrieved_contents.json",
+            "date_utc": "2026-08-26T01:24:54Z",
+            "has_kb_contents": true
+          },
+          {
+            "start_ts": 1787707494820,
+            "file": "BRK_chat_a183904c093b0367011a0a9c8d8.json",
+            "chat_id": "chat_a183904c093b0367011a0a9c8d8",
+            "agent_id": "agent_edf1437704e976c53539c7effe",
+            "chat_status": "ongoing",
+            "kb_contents_url": null,
+            "date_utc": "2026-08-26T01:24:54Z",
+            "has_kb_contents": false
+          },
+          {
+            "start_ts": 1787707494822,
+            "file": "BRK_chat_7e6f22b1ff036d16e5ea669d492.json",
+            "chat_id": "chat_7e6f22b1ff036d16e5ea669d492",
+            "agent_id": "agent_edf1437704e976c53539c7effe",
+            "chat_status": "ongoing",
+            "kb_contents_url": null,
+            "date_utc": "2026-08-26T01:24:54Z",
+            "has_kb_contents": false
+          },
+          {
+            "start_ts": 1787707494834,
+            "file": "BRK_chat_cbf1131797ebc3bc700097f0074.json",
+            "chat_id": "chat_cbf1131797ebc3bc700097f0074",
+            "agent_id": "agent_edf1437704e976c53539c7effe",
+            "chat_status": "ongoing",
+            "kb_contents_url": null,
+            "date_utc": "2026-08-26T01:24:54Z",
+            "has_kb_contents": false
+          },
+          {
+            "start_ts": 1787707494860,
+            "file": "BRK_chat_9b7fa201e2339a48204c9b63e28.json",
+            "chat_id": "chat_9b7fa201e2339a48204c9b63e28",
+            "agent_id": "agent_edf1437704e976c53539c7effe",
+            "chat_status": "ongoing",
+            "kb_contents_url": null,
+            "date_utc": "2026-08-26T01:24:54Z",
+            "has_kb_contents": false
+          }
+        ]
+      },
+      {
+        "batch_n": 6,
+        "conversations": [
+          {
+            "start_ts": 1787806387851,
+            "file": "BRK_chat_961f87064a02af29a317a28ec94.json",
+            "chat_id": "chat_961f87064a02af29a317a28ec94",
+            "agent_id": "agent_87e4d5f08475e5bc558b2f390f",
+            "chat_status": "ongoing",
+            "kb_contents_url": null,
+            "date_utc": "2026-08-27T04:53:07Z",
+            "has_kb_contents": false
+          },
+          {
+            "start_ts": 1787806387853,
+            "file": "BRK_chat_bc8301869e4796f555bd42517b7.json",
+            "chat_id": "chat_bc8301869e4796f555bd42517b7",
+            "agent_id": "agent_87e4d5f08475e5bc558b2f390f",
+            "chat_status": "ended",
+            "kb_contents_url": "https://dxc03zgurdly9.cloudfront.net/ba346f4eeb2909e732930a71abeb787c0f0ec42041b3ce9972bf6c093f542ea5/knowledge_base_retrieved_contents.json",
+            "date_utc": "2026-08-27T04:53:07Z",
+            "has_kb_contents": true
+          },
+          {
+            "start_ts": 1787806387899,
+            "file": "BRK_chat_e12e9a4da73c2914d3999225fe9.json",
+            "chat_id": "chat_e12e9a4da73c2914d3999225fe9",
+            "agent_id": "agent_87e4d5f08475e5bc558b2f390f",
+            "chat_status": "ended",
+            "kb_contents_url": "https://dxc03zgurdly9.cloudfront.net/65032f8715ad65894b02b8441a7f91fedf55e20780d8db07d485c12a5a5a31ed/knowledge_base_retrieved_contents.json",
+            "date_utc": "2026-08-27T04:53:07Z",
+            "has_kb_contents": true
+          },
+          {
+            "start_ts": 1787806387901,
+            "file": "BRK_chat_1e5572d39a1f73e5789e27479c1.json",
+            "chat_id": "chat_1e5572d39a1f73e5789e27479c1",
+            "agent_id": "agent_87e4d5f08475e5bc558b2f390f",
+            "chat_status": "ongoing",
+            "kb_contents_url": null,
+            "date_utc": "2026-08-27T04:53:07Z",
+            "has_kb_contents": false
+          },
+          {
+            "start_ts": 1787806387904,
+            "file": "BRK_chat_5d9700c7968e58396fdaa7d5a13.json",
+            "chat_id": "chat_5d9700c7968e58396fdaa7d5a13",
+            "agent_id": "agent_87e4d5f08475e5bc558b2f390f",
+            "chat_status": "ongoing",
+            "kb_contents_url": null,
+            "date_utc": "2026-08-27T04:53:07Z",
+            "has_kb_contents": false
+          },
+          {
+            "start_ts": 1787806387908,
+            "file": "BRK_chat_437428c43121c749156fd7217d3.json",
+            "chat_id": "chat_437428c43121c749156fd7217d3",
+            "agent_id": "agent_87e4d5f08475e5bc558b2f390f",
+            "chat_status": "ended",
+            "kb_contents_url": "https://dxc03zgurdly9.cloudfront.net/80a60b0e80226e6ae79bf192791582354c9eb61474e587a401f54f57b4dd872b/knowledge_base_retrieved_contents.json",
+            "date_utc": "2026-08-27T04:53:07Z",
+            "has_kb_contents": true
+          }
+        ]
+      },
+      {
+        "batch_n": 6,
+        "conversations": [
+          {
+            "start_ts": 1787829265264,
+            "file": "BRK_chat_25e49af5670316a1588c5316d13.json",
+            "chat_id": "chat_25e49af5670316a1588c5316d13",
+            "agent_id": "agent_87e4d5f08475e5bc558b2f390f",
+            "chat_status": "ongoing",
+            "kb_contents_url": null,
+            "date_utc": "2026-08-27T11:14:25Z",
+            "has_kb_contents": false
+          },
+          {
+            "start_ts": 1787829265293,
+            "file": "BRK_chat_f8d81d69e86a8323e337764d3d9.json",
+            "chat_id": "chat_f8d81d69e86a8323e337764d3d9",
+            "agent_id": "agent_87e4d5f08475e5bc558b2f390f",
+            "chat_status": "ongoing",
+            "kb_contents_url": null,
+            "date_utc": "2026-08-27T11:14:25Z",
+            "has_kb_contents": false
+          },
+          {
+            "start_ts": 1787829265311,
+            "file": "BRK_chat_f4de8744839ce5bd8e1c0f7135f.json",
+            "chat_id": "chat_f4de8744839ce5bd8e1c0f7135f",
+            "agent_id": "agent_87e4d5f08475e5bc558b2f390f",
+            "chat_status": "ended",
+            "kb_contents_url": "https://dxc03zgurdly9.cloudfront.net/b971198bfd4dab2af89440e38133dfb2bf8161ed95b828188528396374dc46f0/knowledge_base_retrieved_contents.json",
+            "date_utc": "2026-08-27T11:14:25Z",
+            "has_kb_contents": true
+          },
+          {
+            "start_ts": 1787829265316,
+            "file": "BRK_chat_a248e9c20fe0b7998f657920b01.json",
+            "chat_id": "chat_a248e9c20fe0b7998f657920b01",
+            "agent_id": "agent_87e4d5f08475e5bc558b2f390f",
+            "chat_status": "ongoing",
+            "kb_contents_url": null,
+            "date_utc": "2026-08-27T11:14:25Z",
+            "has_kb_contents": false
+          },
+          {
+            "start_ts": 1787829265318,
+            "file": "BRK_chat_01db47aa43ae6db18ad9495e5ac.json",
+            "chat_id": "chat_01db47aa43ae6db18ad9495e5ac",
+            "agent_id": "agent_87e4d5f08475e5bc558b2f390f",
+            "chat_status": "ongoing",
+            "kb_contents_url": null,
+            "date_utc": "2026-08-27T11:14:25Z",
+            "has_kb_contents": false
+          },
+          {
+            "start_ts": 1787829265320,
+            "file": "BRK_chat_914e98a51fde0855fbc3aa4a745.json",
+            "chat_id": "chat_914e98a51fde0855fbc3aa4a745",
+            "agent_id": "agent_87e4d5f08475e5bc558b2f390f",
+            "chat_status": "ended",
+            "kb_contents_url": "https://dxc03zgurdly9.cloudfront.net/85c6108d42d8a7dec3f91b5bafe419fe43c33348d2cdd54c2af697420f376934/knowledge_base_retrieved_contents.json",
+            "date_utc": "2026-08-27T11:14:25Z",
+            "has_kb_contents": true
+          }
+        ]
+      }
+    ],
+    "CURVE": [
+      {
+        "batch_n": 3,
+        "conversations": [
+          {
+            "start_ts": 1787706105440,
+            "file": "CURVE_chat_1748a6efc99aa0cec7992bb2e49.json",
+            "chat_id": "chat_1748a6efc99aa0cec7992bb2e49",
+            "agent_id": "agent_edf1437704e976c53539c7effe",
+            "chat_status": "ended",
+            "kb_contents_url": "https://dxc03zgurdly9.cloudfront.net/1a9274449f2d5340263eeaf514e7c53588be46a02eb0d4e022b4eb922d03849d/knowledge_base_retrieved_contents.json",
+            "date_utc": "2026-08-26T01:01:45Z",
+            "has_kb_contents": true
+          },
+          {
+            "start_ts": 1787706105445,
+            "file": "CURVE_chat_c7cd09eb087124e8958bef3e721.json",
+            "chat_id": "chat_c7cd09eb087124e8958bef3e721",
+            "agent_id": "agent_edf1437704e976c53539c7effe",
+            "chat_status": "ended",
+            "kb_contents_url": "https://dxc03zgurdly9.cloudfront.net/96132c2262b6b0fc82d9c6c0ab172c45360bea9bb836e7bd38c6a38dbf1b9ad0/knowledge_base_retrieved_contents.json",
+            "date_utc": "2026-08-26T01:01:45Z",
+            "has_kb_contents": true
+          },
+          {
+            "start_ts": 1787706105471,
+            "file": "CURVE_chat_b191ffc8742e94b9c82b3c47d68.json",
+            "chat_id": "chat_b191ffc8742e94b9c82b3c47d68",
+            "agent_id": "agent_edf1437704e976c53539c7effe",
+            "chat_status": "ended",
+            "kb_contents_url": "https://dxc03zgurdly9.cloudfront.net/a49360ff30b924868345cae9cedbda918cc155884d1ca4fa9d1aac9a7ace275d/knowledge_base_retrieved_contents.json",
+            "date_utc": "2026-08-26T01:01:45Z",
+            "has_kb_contents": true
+          }
+        ]
+      },
+      {
+        "batch_n": 3,
+        "conversations": [
+          {
+            "start_ts": 1787806101593,
+            "file": "CURVE_chat_6b1f8ed62946afd5cba6ca0a47f.json",
+            "chat_id": "chat_6b1f8ed62946afd5cba6ca0a47f",
+            "agent_id": "agent_87e4d5f08475e5bc558b2f390f",
+            "chat_status": "ended",
+            "kb_contents_url": "https://dxc03zgurdly9.cloudfront.net/beb185ea3f1fa6602a4210eba9a7cc29796e933d43bc9beb688bf6365c6065ea/knowledge_base_retrieved_contents.json",
+            "date_utc": "2026-08-27T04:48:21Z",
+            "has_kb_contents": true
+          },
+          {
+            "start_ts": 1787806101600,
+            "file": "CURVE_chat_16cbcc379af75cc5369e202db17.json",
+            "chat_id": "chat_16cbcc379af75cc5369e202db17",
+            "agent_id": "agent_87e4d5f08475e5bc558b2f390f",
+            "chat_status": "ended",
+            "kb_contents_url": "https://dxc03zgurdly9.cloudfront.net/38841156f9c4f165064f2ae911f9be91e8feaec1f18b53dcf924f20cf2314d52/knowledge_base_retrieved_contents.json",
+            "date_utc": "2026-08-27T04:48:21Z",
+            "has_kb_contents": true
+          },
+          {
+            "start_ts": 1787806101609,
+            "file": "CURVE_chat_d0fd037b3000ce378b6e39a1df5.json",
+            "chat_id": "chat_d0fd037b3000ce378b6e39a1df5",
+            "agent_id": "agent_87e4d5f08475e5bc558b2f390f",
+            "chat_status": "ended",
+            "kb_contents_url": "https://dxc03zgurdly9.cloudfront.net/1a99ef985265ba438f29eabb95a12035964169a7f0c6597cf94c399c7eabc5f4/knowledge_base_retrieved_contents.json",
+            "date_utc": "2026-08-27T04:48:21Z",
+            "has_kb_contents": true
+          }
+        ]
+      },
+      {
+        "batch_n": 3,
+        "conversations": [
+          {
+            "start_ts": 1787819552749,
+            "file": "CURVE_chat_2bf94744e9de6fed248e4463a07.json",
+            "chat_id": "chat_2bf94744e9de6fed248e4463a07",
+            "agent_id": "agent_87e4d5f08475e5bc558b2f390f",
+            "chat_status": "ended",
+            "kb_contents_url": "https://dxc03zgurdly9.cloudfront.net/7e35c18fa5e7377a7ad2b248c7d380e0249eeff786d90e6e17af4a3f3fd38b58/knowledge_base_retrieved_contents.json",
+            "date_utc": "2026-08-27T08:32:32Z",
+            "has_kb_contents": true
+          },
+          {
+            "start_ts": 1787819552760,
+            "file": "CURVE_chat_ce07fd0a159dd14865d796d9447.json",
+            "chat_id": "chat_ce07fd0a159dd14865d796d9447",
+            "agent_id": "agent_87e4d5f08475e5bc558b2f390f",
+            "chat_status": "ended",
+            "kb_contents_url": "https://dxc03zgurdly9.cloudfront.net/6f0dcec87505ea952e33c6fd19831c335e8710d50b79ce24120592d0c4ea86f1/knowledge_base_retrieved_contents.json",
+            "date_utc": "2026-08-27T08:32:32Z",
+            "has_kb_contents": true
+          },
+          {
+            "start_ts": 1787819552802,
+            "file": "CURVE_chat_6a777e5c983516d9884a38aef6b.json",
+            "chat_id": "chat_6a777e5c983516d9884a38aef6b",
+            "agent_id": "agent_87e4d5f08475e5bc558b2f390f",
+            "chat_status": "ended",
+            "kb_contents_url": "https://dxc03zgurdly9.cloudfront.net/d62df369e2413c9fe04f17e5e92a3fa6caa264c2835ab7f8f705227f685b5825/knowledge_base_retrieved_contents.json",
+            "date_utc": "2026-08-27T08:32:32Z",
+            "has_kb_contents": true
+          }
+        ]
+      }
+    ],
+    "GK": [
+      {
+        "batch_n": 1,
+        "conversations": [
+          {
+            "start_ts": 1787746369948,
+            "file": "GK_chat_2a3cf62cb68506df121484958da.json",
+            "chat_id": "chat_2a3cf62cb68506df121484958da",
+            "agent_id": "agent_bc0665fd64d4f94573d0520cf7",
+            "chat_status": "ended",
+            "kb_contents_url": "https://dxc03zgurdly9.cloudfront.net/131bc93a0f2457c5322f987fc422fcfb076dfe8db3c97bcdfeb93c54741f8f81/knowledge_base_retrieved_contents.json",
+            "date_utc": "2026-08-26T12:12:49Z",
+            "has_kb_contents": true
+          }
+        ]
+      },
+      {
+        "batch_n": 5,
+        "conversations": [
+          {
+            "start_ts": 1787806387854,
+            "file": "GK_chat_432e7d5271e7de46b73a108f65b.json",
+            "chat_id": "chat_432e7d5271e7de46b73a108f65b",
+            "agent_id": "agent_87e4d5f08475e5bc558b2f390f",
+            "chat_status": "ended",
+            "kb_contents_url": "https://dxc03zgurdly9.cloudfront.net/1865170d180627b7a98ed221e4eca8f534e65e67ee594a0a48a5d5801b05acb5/knowledge_base_retrieved_contents.json",
+            "date_utc": "2026-08-27T04:53:07Z",
+            "has_kb_contents": true
+          },
+          {
+            "start_ts": 1787806387859,
+            "file": "GK_chat_a6d19e4ac42ce3a6e9861b33d49.json",
+            "chat_id": "chat_a6d19e4ac42ce3a6e9861b33d49",
+            "agent_id": "agent_87e4d5f08475e5bc558b2f390f",
+            "chat_status": "ended",
+            "kb_contents_url": "https://dxc03zgurdly9.cloudfront.net/34bc1aad348c1bf773f68aae7265b744566c99cf6ace66af8df62b493f658927/knowledge_base_retrieved_contents.json",
+            "date_utc": "2026-08-27T04:53:07Z",
+            "has_kb_contents": true
+          },
+          {
+            "start_ts": 1787806387860,
+            "file": "GK_chat_70a79728a01e52ad271593c0e61.json",
+            "chat_id": "chat_70a79728a01e52ad271593c0e61",
+            "agent_id": "agent_87e4d5f08475e5bc558b2f390f",
+            "chat_status": "ended",
+            "kb_contents_url": "https://dxc03zgurdly9.cloudfront.net/15ec0c2246a461870d8126b01f632a98cf6717ded45f1ccd1cd9e2e98d6eb7a1/knowledge_base_retrieved_contents.json",
+            "date_utc": "2026-08-27T04:53:07Z",
+            "has_kb_contents": true
+          },
+          {
+            "start_ts": 1787806387896,
+            "file": "GK_chat_17b167a95405a8f707d9ce8031e.json",
+            "chat_id": "chat_17b167a95405a8f707d9ce8031e",
+            "agent_id": "agent_87e4d5f08475e5bc558b2f390f",
+            "chat_status": "ended",
+            "kb_contents_url": "https://dxc03zgurdly9.cloudfront.net/909d80afb9f2ada894f32e86d7c6276f6bf2e819636d9eaa68069eda9b31408a/knowledge_base_retrieved_contents.json",
+            "date_utc": "2026-08-27T04:53:07Z",
+            "has_kb_contents": true
+          },
+          {
+            "start_ts": 1787806387903,
+            "file": "GK_chat_8c498192054900669a442b96eab.json",
+            "chat_id": "chat_8c498192054900669a442b96eab",
+            "agent_id": "agent_87e4d5f08475e5bc558b2f390f",
+            "chat_status": "ended",
+            "kb_contents_url": "https://dxc03zgurdly9.cloudfront.net/fe94d6345085f7b31b686c73734c00994a8e32c4dd70cbc68cbdddd7462c0839/knowledge_base_retrieved_contents.json",
+            "date_utc": "2026-08-27T04:53:07Z",
+            "has_kb_contents": true
+          }
+        ]
+      },
+      {
+        "batch_n": 5,
+        "conversations": [
+          {
+            "start_ts": 1787829265256,
+            "file": "GK_chat_38402785f18f2e58864e9549cc9.json",
+            "chat_id": "chat_38402785f18f2e58864e9549cc9",
+            "agent_id": "agent_87e4d5f08475e5bc558b2f390f",
+            "chat_status": "ended",
+            "kb_contents_url": "https://dxc03zgurdly9.cloudfront.net/94c672216cffc152e36f5427fbc725650b1f258e956fe07f25ce3f44162f23ab/knowledge_base_retrieved_contents.json",
+            "date_utc": "2026-08-27T11:14:25Z",
+            "has_kb_contents": true
+          },
+          {
+            "start_ts": 1787829265256,
+            "file": "GK_chat_cdbd9255ea5dd26f17062e4f959.json",
+            "chat_id": "chat_cdbd9255ea5dd26f17062e4f959",
+            "agent_id": "agent_87e4d5f08475e5bc558b2f390f",
+            "chat_status": "ended",
+            "kb_contents_url": "https://dxc03zgurdly9.cloudfront.net/3c7533caa31bd315fd77d8c5804ca5e223d81c9f7171d5f138678a7f7a9928d6/knowledge_base_retrieved_contents.json",
+            "date_utc": "2026-08-27T11:14:25Z",
+            "has_kb_contents": true
+          },
+          {
+            "start_ts": 1787829265277,
+            "file": "GK_chat_f5ba0e053c74b5c0fc5d2b4951d.json",
+            "chat_id": "chat_f5ba0e053c74b5c0fc5d2b4951d",
+            "agent_id": "agent_87e4d5f08475e5bc558b2f390f",
+            "chat_status": "ended",
+            "kb_contents_url": "https://dxc03zgurdly9.cloudfront.net/e736833a5adb804aa127f3aad05c7601423bed40667126663e8617c4443c74ec/knowledge_base_retrieved_contents.json",
+            "date_utc": "2026-08-27T11:14:25Z",
+            "has_kb_contents": true
+          },
+          {
+            "start_ts": 1787829265287,
+            "file": "GK_chat_a2fa840a0938a4701174ca0b865.json",
+            "chat_id": "chat_a2fa840a0938a4701174ca0b865",
+            "agent_id": "agent_87e4d5f08475e5bc558b2f390f",
+            "chat_status": "ongoing",
+            "kb_contents_url": null,
+            "date_utc": "2026-08-27T11:14:25Z",
+            "has_kb_contents": false
+          },
+          {
+            "start_ts": 1787829265290,
+            "file": "GK_chat_f84fe14919fa01edab80c68534e.json",
+            "chat_id": "chat_f84fe14919fa01edab80c68534e",
+            "agent_id": "agent_87e4d5f08475e5bc558b2f390f",
+            "chat_status": "ended",
+            "kb_contents_url": "https://dxc03zgurdly9.cloudfront.net/dcc26b2c2e04a381da72fee3c184839338db4ebe0c15ac586243ffd6898ddf84/knowledge_base_retrieved_contents.json",
+            "date_utc": "2026-08-27T11:14:25Z",
+            "has_kb_contents": true
+          }
+        ]
+      }
+    ],
+    "NO-BOOK": [
+      {
+        "batch_n": 4,
+        "conversations": [
+          {
+            "start_ts": 1787806101602,
+            "file": "NO-BOOK_chat_15c27160fc2859588b33ee325bd.json",
+            "chat_id": "chat_15c27160fc2859588b33ee325bd",
+            "agent_id": "agent_87e4d5f08475e5bc558b2f390f",
+            "chat_status": "ended",
+            "kb_contents_url": "https://dxc03zgurdly9.cloudfront.net/d61301469b1dfdcd2fbcca521779f1c9c511cb7065c023442c743f3da85792ab/knowledge_base_retrieved_contents.json",
+            "date_utc": "2026-08-27T04:48:21Z",
+            "has_kb_contents": true
+          },
+          {
+            "start_ts": 1787806101611,
+            "file": "NO-BOOK_chat_aef6c5d3607a868b480e78447c4.json",
+            "chat_id": "chat_aef6c5d3607a868b480e78447c4",
+            "agent_id": "agent_87e4d5f08475e5bc558b2f390f",
+            "chat_status": "ended",
+            "kb_contents_url": "https://dxc03zgurdly9.cloudfront.net/5737fdca687136e2dbf003f3b1cb767b4d3828f7a5d5c6bba3c706adfc6ac107/knowledge_base_retrieved_contents.json",
+            "date_utc": "2026-08-27T04:48:21Z",
+            "has_kb_contents": true
+          },
+          {
+            "start_ts": 1787806101640,
+            "file": "NO-BOOK_chat_8c823ffc26fa86086e857d38b43.json",
+            "chat_id": "chat_8c823ffc26fa86086e857d38b43",
+            "agent_id": "agent_87e4d5f08475e5bc558b2f390f",
+            "chat_status": "ongoing",
+            "kb_contents_url": null,
+            "date_utc": "2026-08-27T04:48:21Z",
+            "has_kb_contents": false
+          },
+          {
+            "start_ts": 1787806101642,
+            "file": "NO-BOOK_chat_c49cccf29675ccc3a18d5eff231.json",
+            "chat_id": "chat_c49cccf29675ccc3a18d5eff231",
+            "agent_id": "agent_87e4d5f08475e5bc558b2f390f",
+            "chat_status": "ended",
+            "kb_contents_url": "https://dxc03zgurdly9.cloudfront.net/61bcdb3766ce4be5f3923ee094502c234e72c91230bd12b227def641067c0f30/knowledge_base_retrieved_contents.json",
+            "date_utc": "2026-08-27T04:48:21Z",
+            "has_kb_contents": true
+          }
+        ]
+      },
+      {
+        "batch_n": 4,
+        "conversations": [
+          {
+            "start_ts": 1787819552704,
+            "file": "NO-BOOK_chat_5966d8bdfaede56e66aa8efc0df.json",
+            "chat_id": "chat_5966d8bdfaede56e66aa8efc0df",
+            "agent_id": "agent_87e4d5f08475e5bc558b2f390f",
+            "chat_status": "ended",
+            "kb_contents_url": "https://dxc03zgurdly9.cloudfront.net/8faf250a79ccf451276ef438e2de81bfdb98149b23c42fdeed164bb088b69409/knowledge_base_retrieved_contents.json",
+            "date_utc": "2026-08-27T08:32:32Z",
+            "has_kb_contents": true
+          },
+          {
+            "start_ts": 1787819552722,
+            "file": "NO-BOOK_chat_7f0bb74c88f02742b51608c33f2.json",
+            "chat_id": "chat_7f0bb74c88f02742b51608c33f2",
+            "agent_id": "agent_87e4d5f08475e5bc558b2f390f",
+            "chat_status": "ended",
+            "kb_contents_url": "https://dxc03zgurdly9.cloudfront.net/539118ca7f3e4304527d539e4d988be8b3bcc4b61c017d7822ac33303e1b9e24/knowledge_base_retrieved_contents.json",
+            "date_utc": "2026-08-27T08:32:32Z",
+            "has_kb_contents": true
+          },
+          {
+            "start_ts": 1787819552788,
+            "file": "NO-BOOK_chat_ef2cde766cc660d0b09590a3796.json",
+            "chat_id": "chat_ef2cde766cc660d0b09590a3796",
+            "agent_id": "agent_87e4d5f08475e5bc558b2f390f",
+            "chat_status": "ended",
+            "kb_contents_url": "https://dxc03zgurdly9.cloudfront.net/fd3a705021014bbbdd45d86d3b4b91ff05b5ee3f43da105fcbfb54715cd677cd/knowledge_base_retrieved_contents.json",
+            "date_utc": "2026-08-27T08:32:32Z",
+            "has_kb_contents": true
+          },
+          {
+            "start_ts": 1787819552870,
+            "file": "NO-BOOK_chat_5e25e4f0a247cb972be6d366ba8.json",
+            "chat_id": "chat_5e25e4f0a247cb972be6d366ba8",
+            "agent_id": "agent_87e4d5f08475e5bc558b2f390f",
+            "chat_status": "ongoing",
+            "kb_contents_url": null,
+            "date_utc": "2026-08-27T08:32:32Z",
+            "has_kb_contents": false
+          }
+        ]
+      },
+      {
+        "batch_n": 1,
+        "conversations": [
+          {
+            "start_ts": 1788435573134,
+            "file": "NO-BOOK_chat_0f5f1c08496e163200d21d561d9.json",
+            "chat_id": "chat_0f5f1c08496e163200d21d561d9",
+            "agent_id": "agent_da3959eac4b5f16ee40bbda233",
+            "chat_status": "ended",
+            "kb_contents_url": "https://dxc03zgurdly9.cloudfront.net/5baf8f5e68083f4ebfcaad8e8e071f072c41165637b52bbba89f9f74e0dabe8e/knowledge_base_retrieved_contents.json",
+            "date_utc": "2026-09-03T11:39:33Z",
+            "has_kb_contents": true
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+# systemd unit (alternative to docker-compose; both work)
+# sudo cp deploy/diallux.service /etc/systemd/system/
+# sudo systemctl daemon-reload && sudo systemctl enable --now diallux
+
+[Unit]
+Description=Dialux SDR - LangGraph voice agent (production build)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/diallux-production
+EnvironmentFile=/opt/diallux-production/.env
+ExecStart=/opt/diallux-production/.venv/bin/uvicorn diallux.app:app --host 127.0.0.1 --port 8000
+Restart=always
+RestartSec=3
+User=deploy
+
+[Install]
+WantedBy=multi-user.target

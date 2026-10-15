@@ -1,0 +1,1844 @@
+{
+  "kb_reference_files": [
+    "are-you-ai-kb.md",
+    "call-closing-kb.md",
+    "call-context-kb.md",
+    "discovery-bridge-kb.md",
+    "hipaa-kb.md",
+    "industry-kb.md",
+    "pain-points-kb.md",
+    "sales-language-kb.md",
+    "sales-psychology-kb.md",
+    "voice-ai-capabilities-kb.md"
+  ],
+  "sources": {
+    "V7.4_hard_gpt52": {
+      "kind": "deployed",
+      "source": "/home/julio/projects/Retell_AI_MCP_connection/Dialux_SDR/_archive/versions/V7.4_hard_gpt52/llm.json",
+      "state_count": 8,
+      "states": {
+        "Intake": {
+          "state": "Intake",
+          "word_count": 449,
+          "kb_name_mentions": {
+            "count": 1,
+            "lines": [
+              "They'll tell you why they're calling — a voicemail, an ad, a search, a job post. Mirror it. For channel-specific handling, refer to ##call-context-kb##."
+            ]
+          },
+          "dv_mentions": {
+            "count": 4,
+            "lines": [
+              "When they answer, they'll say what interested them — in their words. That's {{interest_topic}}. Store it verbatim and mirror it back naturally.",
+              "Once {{inbound_channel}}, {{interest_topic}} and {{pain_frame}} are all captured, call `extract_intake_details` once with everything.",
+              "- Immediate (`extract_intake_details`): {{inbound_channel}}, {{interest_topic}}, {{pain_frame}} — each one shapes your next question. If more than one topic surfaces, APPEND to {{interest_topic}} — never replace.",
+              "- Mirror their words — never paraphrase {{interest_topic}}; store it verbatim."
+            ]
+          },
+          "kb_dv_same_line_joins": {
+            "count": 0,
+            "lines": []
+          },
+          "refer_style_patterns": {
+            "count": 2,
+            "lines": [
+              "They'll tell you why they're calling — a voicemail, an ad, a search, a job post. Mirror it. For channel-specific handling, refer to ##call-context-kb##.",
+              "# Extraction reference"
+            ]
+          },
+          "kb_verbatim_overlap": {
+            "count": 0,
+            "lines": []
+          },
+          "price_lines": {
+            "count": 0,
+            "lines": []
+          }
+        },
+        "Discovery": {
+          "state": "Discovery",
+          "word_count": 590,
+          "kb_name_mentions": {
+            "count": 4,
+            "lines": [
+              "Refer to ##discovery-bridge-kb## and pick the angle that matches {{interest_topic}}. Generate your question from their words + the angle — never read a question verbatim.",
+              "If the Bridge KB doesn't give you a clear question, use ##sales-psychology-kb## pain-amplification techniques to formulate one.",
+              "CAPTURE NOW: every new problem they reveal — capture with `extract_discovery_details`, APPENDING to {{pain_points}}. The moment you hear their industry, capture {{industry}} — it selects your ##industry-kb## sections.",
+              "Set {{interest_signal}} = true with `extract_discovery_details`. Use ##voice-ai-capabilities-kb## to tie the solution to {{pain_points}} and {{industry}}. Then keep bridging until {{pattern_matched}} = true."
+            ]
+          },
+          "dv_mentions": {
+            "count": 12,
+            "lines": [
+              "{{inbound_channel}} · {{interest_topic}} (their words, verbatim) · {{pain_frame}} — plus whatever else has surfaced: {{first_name}}, {{industry}}, {{company_name}}, {{pain_points}}. {{callback_number}} holds the number they're calling from, if known.",
+              "Refer to ##discovery-bridge-kb## and pick the angle that matches {{interest_topic}}. Generate your question from their words + the angle — never read a question verbatim.",
+              "<So you mentioned {{interest_topic}}. When a call comes in and you're out on a job, who's picking it up?>",
+              "<So you mentioned {{interest_topic}}. How many would you say you miss a day?>",
+              "CAPTURE NOW: every new problem they reveal — capture with `extract_discovery_details`, APPENDING to {{pain_points}}. The moment you hear their industry, capture {{industry}} — it selects your ##industry-kb## sections.",
+              "Set {{interest_signal}} = true with `extract_discovery_details`. Use ##voice-ai-capabilities-kb## to tie the solution to {{pain_points}} and {{industry}}. Then keep bridging until {{pattern_matched}} = true."
+            ]
+          },
+          "kb_dv_same_line_joins": {
+            "count": 3,
+            "lines": [
+              "Refer to ##discovery-bridge-kb## and pick the angle that matches {{interest_topic}}. Generate your question from their words + the angle — never read a question verbatim.",
+              "CAPTURE NOW: every new problem they reveal — capture with `extract_discovery_details`, APPENDING to {{pain_points}}. The moment you hear their industry, capture {{industry}} — it selects your ##industry-kb## sections.",
+              "Set {{interest_signal}} = true with `extract_discovery_details`. Use ##voice-ai-capabilities-kb## to tie the solution to {{pain_points}} and {{industry}}. Then keep bridging until {{pattern_matched}} = true."
+            ]
+          },
+          "refer_style_patterns": {
+            "count": 2,
+            "lines": [
+              "Refer to ##discovery-bridge-kb## and pick the angle that matches {{interest_topic}}. Generate your question from their words + the angle — never read a question verbatim.",
+              "# Extraction reference"
+            ]
+          },
+          "kb_verbatim_overlap": {
+            "count": 1,
+            "lines": [
+              {
+                "prompt_line_no": 28,
+                "kb_file": "discovery-bridge-kb.md",
+                "line": "<Roughly how many calls a week hit voicemail?>"
+              }
+            ]
+          },
+          "price_lines": {
+            "count": 0,
+            "lines": []
+          }
+        },
+        "Closer": {
+          "state": "Closer",
+          "word_count": 816,
+          "kb_name_mentions": {
+            "count": 5,
+            "lines": [
+              "Refer to ##sales-psychology-kb## pain-amplification techniques. Formulate 1–3 questions anchored on {{pain_frame}} and {{interest_topic}} — generate them from their words + the technique.",
+              "When formulating the reveal or a reframe, pull phrasing from ##sales-language-kb##;",
+              "for the pain-amplification question and any commitment push, pull tactics from ##sales-psychology-kb##.",
+              "For any objection, refer to ##sales-language-kb## and use its lines. Industry-fit objections pair with the matching {{industry}} sections of ##industry-kb##. Capture {{objection_type}}.",
+              "- No pricing — refer to ##sales-language-kb## and defer it all to the live call."
+            ]
+          },
+          "dv_mentions": {
+            "count": 14,
+            "lines": [
+              "{{first_name}} · {{industry}} · {{call_volume}} · {{pain_points}} (everything found so far) · {{pain_frame}} · {{interest_topic}}",
+              "Refer to ##sales-psychology-kb## pain-amplification techniques. Formulate 1–3 questions anchored on {{pain_frame}} and {{interest_topic}} — generate them from their words + the technique.",
+              "<You mentioned {{interest_topic}}. What's the biggest impact that's having on your business?>",
+              "CAPTURE NOW: APPEND every new problem they reveal to {{pain_points}} with `extract_closer_details`.",
+              "then call `calculate_monthly_leak`.",
+              "Reveal WEEKLY FIRST — speak {{weekly_leak}} exactly as returned by the tool. Never recompute,"
+            ]
+          },
+          "kb_dv_same_line_joins": {
+            "count": 2,
+            "lines": [
+              "Refer to ##sales-psychology-kb## pain-amplification techniques. Formulate 1–3 questions anchored on {{pain_frame}} and {{interest_topic}} — generate them from their words + the technique.",
+              "For any objection, refer to ##sales-language-kb## and use its lines. Industry-fit objections pair with the matching {{industry}} sections of ##industry-kb##. Capture {{objection_type}}."
+            ]
+          },
+          "refer_style_patterns": {
+            "count": 4,
+            "lines": [
+              "Refer to ##sales-psychology-kb## pain-amplification techniques. Formulate 1–3 questions anchored on {{pain_frame}} and {{interest_topic}} — generate them from their words + the technique.",
+              "For any objection, refer to ##sales-language-kb## and use its lines. Industry-fit objections pair with the matching {{industry}} sections of ##industry-kb##. Capture {{objection_type}}.",
+              "# Extraction reference",
+              "- No pricing — refer to ##sales-language-kb## and defer it all to the live call."
+            ]
+          },
+          "kb_verbatim_overlap": {
+            "count": 0,
+            "lines": []
+          },
+          "price_lines": {
+            "count": 7,
+            "lines": [
+              "<So ballpark — how many calls a week hit voicemail? 10, 20, 30?>",
+              "<And what's your average ticket — are we talking $400, $650, $850?>",
+              "If they don't know an input, offer a typical range and let THEM pick the number. Never fabricate.",
+              "${{weekly_leak}} extra a week — does that sound about right?>",
+              "<...and that's just one week — about ${{monthly_leak}} over a month.> Then STOP and wait.",
+              "Then amplify the pain: <What would it mean for your business to see ${{weekly_leak}} back every week?>"
+            ]
+          }
+        },
+        "Offer": {
+          "state": "Offer",
+          "word_count": 501,
+          "kb_name_mentions": {
+            "count": 3,
+            "lines": [
+              "Refer to ##sales-language-kb## for objection lines. Then escalate, one rung per refusal:",
+              "If they ask price → refer to ##sales-language-kb## and defer all pricing to the live call. Never quote a number.",
+              "- No commitment and no booking: wrap up warmly via ##call-closing-kb## — no booking, no details collected."
+            ]
+          },
+          "dv_mentions": {
+            "count": 3,
+            "lines": [
+              "{{first_name}} · {{last_name}} · {{industry}} · {{pain_points}} · {{pain_frame}} · {{interest_level}} · {{monthly_leak}}",
+              "If yes → don't re-ask yet. Go back to {{pain_frame}} and {{monthly_leak}}, re-anchor the pain, then ask again.",
+              "- Re-anchor with {{pain_frame}} and {{monthly_leak}} when they hesitate."
+            ]
+          },
+          "kb_dv_same_line_joins": {
+            "count": 0,
+            "lines": []
+          },
+          "refer_style_patterns": {
+            "count": 3,
+            "lines": [
+              "Refer to ##sales-language-kb## for objection lines. Then escalate, one rung per refusal:",
+              "If they ask price → refer to ##sales-language-kb## and defer all pricing to the live call. Never quote a number.",
+              "# Extraction reference"
+            ]
+          },
+          "kb_verbatim_overlap": {
+            "count": 0,
+            "lines": []
+          },
+          "price_lines": {
+            "count": 4,
+            "lines": [
+              "Ask for the meeting: a live call this week. The value prop was already delivered — your job is the ask. Defer pricing. No dates or times here — those come later, once their details are in.",
+              "### Pricing",
+              "If they ask price → refer to ##sales-language-kb## and defer all pricing to the live call. Never quote a number.",
+              "- Defer all pricing to the live call — never quote a number."
+            ]
+          }
+        },
+        "contact_details": {
+          "state": "contact_details",
+          "word_count": 558,
+          "kb_name_mentions": {
+            "count": 0,
+            "lines": []
+          },
+          "dv_mentions": {
+            "count": 1,
+            "lines": [
+              "{{first_name}} · {{last_name}} · {{company_name}} · {{industry}} · {{pain_points}} · {{callback_number}}"
+            ]
+          },
+          "kb_dv_same_line_joins": {
+            "count": 0,
+            "lines": []
+          },
+          "refer_style_patterns": {
+            "count": 1,
+            "lines": [
+              "# Extraction reference"
+            ]
+          },
+          "kb_verbatim_overlap": {
+            "count": 0,
+            "lines": []
+          },
+          "price_lines": {
+            "count": 0,
+            "lines": []
+          }
+        },
+        "ConfirmSlots": {
+          "state": "ConfirmSlots",
+          "word_count": 414,
+          "kb_name_mentions": {
+            "count": 1,
+            "lines": [
+              "- At most 10 verify passes. Still incomplete → <We're having temporary issues on our server — I'll register your appointment and we'll confirm shortly.> Take their number if needed, wrap up per ##call-closing-kb##, then use end_call. NEVER transition while {{slot_verified}} is not true."
+            ]
+          },
+          "dv_mentions": {
+            "count": 1,
+            "lines": [
+              "- {{weekly_leak}} / {{monthly_leak}} returned by `validate_lead` are final — speak them as-is, never recompute."
+            ]
+          },
+          "kb_dv_same_line_joins": {
+            "count": 0,
+            "lines": []
+          },
+          "refer_style_patterns": {
+            "count": 1,
+            "lines": [
+              "<Perfect. Would you prefer later today or tomorrow for the demo?> Day only — never day and times at once. Morning request → <Mornings are for implementation. Calls are in afternoons and evenings. Would any of those work?>"
+            ]
+          },
+          "kb_verbatim_overlap": {
+            "count": 0,
+            "lines": []
+          },
+          "price_lines": {
+            "count": 0,
+            "lines": []
+          }
+        },
+        "Booking": {
+          "state": "Booking",
+          "word_count": 268,
+          "kb_name_mentions": {
+            "count": 1,
+            "lines": [
+              "- `valid: false` → retry `create_livecall_booking` once, re-record, re-validate. Still failing → set {{booking_failed}} = true via `record_booking_outcome`, say <We're having trouble confirming the calendar — we'll reach you at your number within the hour to lock in [TIME].>, brief goodbye per ##call-closing-kb##, then use `end_call`. Do NOT transition or claim success."
+            ]
+          },
+          "dv_mentions": {
+            "count": 2,
+            "lines": [
+              "{{first_name}} {{last_name}} · {{company_name}} · {{industry}} · {{pain_points}} · {{prospect_timezone}} · {{callback_number}} · {{selected_time}} (verified)",
+              "- notes: \"Industry: {{industry}} | Pain points: {{pain_points}}\""
+            ]
+          },
+          "kb_dv_same_line_joins": {
+            "count": 0,
+            "lines": []
+          },
+          "refer_style_patterns": {
+            "count": 0,
+            "lines": []
+          },
+          "kb_verbatim_overlap": {
+            "count": 0,
+            "lines": []
+          },
+          "price_lines": {
+            "count": 0,
+            "lines": []
+          }
+        },
+        "Closing": {
+          "state": "Closing",
+          "word_count": 192,
+          "kb_name_mentions": {
+            "count": 2,
+            "lines": [
+              "Confirm the booking, tell them the SMS confirmation is coming, send them off warm, then end the call. Refer to ##call-closing-kb## for the exact goodbye.",
+              "**4. End:** Follow ##call-closing-kb## for the exact goodbye — it handles ending the call."
+            ]
+          },
+          "dv_mentions": {
+            "count": 0,
+            "lines": []
+          },
+          "kb_dv_same_line_joins": {
+            "count": 0,
+            "lines": []
+          },
+          "refer_style_patterns": {
+            "count": 1,
+            "lines": [
+              "Confirm the booking, tell them the SMS confirmation is coming, send them off warm, then end the call. Refer to ##call-closing-kb## for the exact goodbye."
+            ]
+          },
+          "kb_verbatim_overlap": {
+            "count": 1,
+            "lines": [
+              {
+                "prompt_line_no": 23,
+                "kb_file": "call-closing-kb.md",
+                "line": "- Only end when you're certain every question is answered."
+              }
+            ]
+          },
+          "price_lines": {
+            "count": 0,
+            "lines": []
+          }
+        }
+      }
+    },
+    "V7.5_lean": {
+      "kind": "deployed",
+      "source": "/home/julio/projects/Retell_AI_MCP_connection/Dialux_SDR/V7.5_lean/llm.json",
+      "state_count": 8,
+      "states": {
+        "Intake": {
+          "state": "Intake",
+          "word_count": 449,
+          "kb_name_mentions": {
+            "count": 1,
+            "lines": [
+              "They'll tell you why they're calling — a voicemail, an ad, a search, a job post. Mirror it. For channel-specific handling, refer to ##call-context-kb##."
+            ]
+          },
+          "dv_mentions": {
+            "count": 4,
+            "lines": [
+              "When they answer, they'll say what interested them — in their words. That's {{interest_topic}}. Store it verbatim and mirror it back naturally.",
+              "Once {{inbound_channel}}, {{interest_topic}} and {{pain_frame}} are all captured, call `extract_intake_details` once with everything.",
+              "- Immediate (`extract_intake_details`): {{inbound_channel}}, {{interest_topic}}, {{pain_frame}} — each one shapes your next question. If more than one topic surfaces, APPEND to {{interest_topic}} — never replace.",
+              "- Mirror their words — never paraphrase {{interest_topic}}; store it verbatim."
+            ]
+          },
+          "kb_dv_same_line_joins": {
+            "count": 0,
+            "lines": []
+          },
+          "refer_style_patterns": {
+            "count": 2,
+            "lines": [
+              "They'll tell you why they're calling — a voicemail, an ad, a search, a job post. Mirror it. For channel-specific handling, refer to ##call-context-kb##.",
+              "# Extraction reference"
+            ]
+          },
+          "kb_verbatim_overlap": {
+            "count": 0,
+            "lines": []
+          },
+          "price_lines": {
+            "count": 0,
+            "lines": []
+          }
+        },
+        "Discovery": {
+          "state": "Discovery",
+          "word_count": 590,
+          "kb_name_mentions": {
+            "count": 4,
+            "lines": [
+              "Refer to ##discovery-bridge-kb## and pick the angle that matches {{interest_topic}}. Generate your question from their words + the angle — never read a question verbatim.",
+              "If the Bridge KB doesn't give you a clear question, use ##sales-psychology-kb## pain-amplification techniques to formulate one.",
+              "CAPTURE NOW: every new problem they reveal — capture with `extract_discovery_details`, APPENDING to {{pain_points}}. The moment you hear their industry, capture {{industry}} — it selects your ##industry-kb## sections.",
+              "Set {{interest_signal}} = true with `extract_discovery_details`. Use ##voice-ai-capabilities-kb## to tie the solution to {{pain_points}} and {{industry}}. Then keep bridging until {{pattern_matched}} = true."
+            ]
+          },
+          "dv_mentions": {
+            "count": 12,
+            "lines": [
+              "{{inbound_channel}} · {{interest_topic}} (their words, verbatim) · {{pain_frame}} — plus whatever else has surfaced: {{first_name}}, {{industry}}, {{company_name}}, {{pain_points}}. {{callback_number}} holds the number they're calling from, if known.",
+              "Refer to ##discovery-bridge-kb## and pick the angle that matches {{interest_topic}}. Generate your question from their words + the angle — never read a question verbatim.",
+              "<So you mentioned {{interest_topic}}. When a call comes in and you're out on a job, who's picking it up?>",
+              "<So you mentioned {{interest_topic}}. How many would you say you miss a day?>",
+              "CAPTURE NOW: every new problem they reveal — capture with `extract_discovery_details`, APPENDING to {{pain_points}}. The moment you hear their industry, capture {{industry}} — it selects your ##industry-kb## sections.",
+              "Set {{interest_signal}} = true with `extract_discovery_details`. Use ##voice-ai-capabilities-kb## to tie the solution to {{pain_points}} and {{industry}}. Then keep bridging until {{pattern_matched}} = true."
+            ]
+          },
+          "kb_dv_same_line_joins": {
+            "count": 3,
+            "lines": [
+              "Refer to ##discovery-bridge-kb## and pick the angle that matches {{interest_topic}}. Generate your question from their words + the angle — never read a question verbatim.",
+              "CAPTURE NOW: every new problem they reveal — capture with `extract_discovery_details`, APPENDING to {{pain_points}}. The moment you hear their industry, capture {{industry}} — it selects your ##industry-kb## sections.",
+              "Set {{interest_signal}} = true with `extract_discovery_details`. Use ##voice-ai-capabilities-kb## to tie the solution to {{pain_points}} and {{industry}}. Then keep bridging until {{pattern_matched}} = true."
+            ]
+          },
+          "refer_style_patterns": {
+            "count": 2,
+            "lines": [
+              "Refer to ##discovery-bridge-kb## and pick the angle that matches {{interest_topic}}. Generate your question from their words + the angle — never read a question verbatim.",
+              "# Extraction reference"
+            ]
+          },
+          "kb_verbatim_overlap": {
+            "count": 1,
+            "lines": [
+              {
+                "prompt_line_no": 28,
+                "kb_file": "discovery-bridge-kb.md",
+                "line": "<Roughly how many calls a week hit voicemail?>"
+              }
+            ]
+          },
+          "price_lines": {
+            "count": 0,
+            "lines": []
+          }
+        },
+        "Closer": {
+          "state": "Closer",
+          "word_count": 816,
+          "kb_name_mentions": {
+            "count": 5,
+            "lines": [
+              "Refer to ##sales-psychology-kb## pain-amplification techniques. Formulate 1–3 questions anchored on {{pain_frame}} and {{interest_topic}} — generate them from their words + the technique.",
+              "When formulating the reveal or a reframe, pull phrasing from ##sales-language-kb##;",
+              "for the pain-amplification question and any commitment push, pull tactics from ##sales-psychology-kb##.",
+              "For any objection, refer to ##sales-language-kb## and use its lines. Industry-fit objections pair with the matching {{industry}} sections of ##industry-kb##. Capture {{objection_type}}.",
+              "- No pricing — refer to ##sales-language-kb## and defer it all to the live call."
+            ]
+          },
+          "dv_mentions": {
+            "count": 14,
+            "lines": [
+              "{{first_name}} · {{industry}} · {{call_volume}} · {{pain_points}} (everything found so far) · {{pain_frame}} · {{interest_topic}}",
+              "Refer to ##sales-psychology-kb## pain-amplification techniques. Formulate 1–3 questions anchored on {{pain_frame}} and {{interest_topic}} — generate them from their words + the technique.",
+              "<You mentioned {{interest_topic}}. What's the biggest impact that's having on your business?>",
+              "CAPTURE NOW: APPEND every new problem they reveal to {{pain_points}} with `extract_closer_details`.",
+              "then call `calculate_monthly_leak`.",
+              "Reveal WEEKLY FIRST — speak {{weekly_leak}} exactly as returned by the tool. Never recompute,"
+            ]
+          },
+          "kb_dv_same_line_joins": {
+            "count": 2,
+            "lines": [
+              "Refer to ##sales-psychology-kb## pain-amplification techniques. Formulate 1–3 questions anchored on {{pain_frame}} and {{interest_topic}} — generate them from their words + the technique.",
+              "For any objection, refer to ##sales-language-kb## and use its lines. Industry-fit objections pair with the matching {{industry}} sections of ##industry-kb##. Capture {{objection_type}}."
+            ]
+          },
+          "refer_style_patterns": {
+            "count": 4,
+            "lines": [
+              "Refer to ##sales-psychology-kb## pain-amplification techniques. Formulate 1–3 questions anchored on {{pain_frame}} and {{interest_topic}} — generate them from their words + the technique.",
+              "For any objection, refer to ##sales-language-kb## and use its lines. Industry-fit objections pair with the matching {{industry}} sections of ##industry-kb##. Capture {{objection_type}}.",
+              "# Extraction reference",
+              "- No pricing — refer to ##sales-language-kb## and defer it all to the live call."
+            ]
+          },
+          "kb_verbatim_overlap": {
+            "count": 0,
+            "lines": []
+          },
+          "price_lines": {
+            "count": 7,
+            "lines": [
+              "<So ballpark — how many calls a week hit voicemail? 10, 20, 30?>",
+              "<And what's your average ticket — are we talking $400, $650, $850?>",
+              "If they don't know an input, offer a typical range and let THEM pick the number. Never fabricate.",
+              "${{weekly_leak}} extra a week — does that sound about right?>",
+              "<...and that's just one week — about ${{monthly_leak}} over a month.> Then STOP and wait.",
+              "Then amplify the pain: <What would it mean for your business to see ${{weekly_leak}} back every week?>"
+            ]
+          }
+        },
+        "Offer": {
+          "state": "Offer",
+          "word_count": 501,
+          "kb_name_mentions": {
+            "count": 3,
+            "lines": [
+              "Refer to ##sales-language-kb## for objection lines. Then escalate, one rung per refusal:",
+              "If they ask price → refer to ##sales-language-kb## and defer all pricing to the live call. Never quote a number.",
+              "- No commitment and no booking: wrap up warmly via ##call-closing-kb## — no booking, no details collected."
+            ]
+          },
+          "dv_mentions": {
+            "count": 3,
+            "lines": [
+              "{{first_name}} · {{last_name}} · {{industry}} · {{pain_points}} · {{pain_frame}} · {{interest_level}} · {{monthly_leak}}",
+              "If yes → don't re-ask yet. Go back to {{pain_frame}} and {{monthly_leak}}, re-anchor the pain, then ask again.",
+              "- Re-anchor with {{pain_frame}} and {{monthly_leak}} when they hesitate."
+            ]
+          },
+          "kb_dv_same_line_joins": {
+            "count": 0,
+            "lines": []
+          },
+          "refer_style_patterns": {
+            "count": 3,
+            "lines": [
+              "Refer to ##sales-language-kb## for objection lines. Then escalate, one rung per refusal:",
+              "If they ask price → refer to ##sales-language-kb## and defer all pricing to the live call. Never quote a number.",
+              "# Extraction reference"
+            ]
+          },
+          "kb_verbatim_overlap": {
+            "count": 0,
+            "lines": []
+          },
+          "price_lines": {
+            "count": 4,
+            "lines": [
+              "Ask for the meeting: a live call this week. The value prop was already delivered — your job is the ask. Defer pricing. No dates or times here — those come later, once their details are in.",
+              "### Pricing",
+              "If they ask price → refer to ##sales-language-kb## and defer all pricing to the live call. Never quote a number.",
+              "- Defer all pricing to the live call — never quote a number."
+            ]
+          }
+        },
+        "contact_details": {
+          "state": "contact_details",
+          "word_count": 558,
+          "kb_name_mentions": {
+            "count": 0,
+            "lines": []
+          },
+          "dv_mentions": {
+            "count": 1,
+            "lines": [
+              "{{first_name}} · {{last_name}} · {{company_name}} · {{industry}} · {{pain_points}} · {{callback_number}}"
+            ]
+          },
+          "kb_dv_same_line_joins": {
+            "count": 0,
+            "lines": []
+          },
+          "refer_style_patterns": {
+            "count": 1,
+            "lines": [
+              "# Extraction reference"
+            ]
+          },
+          "kb_verbatim_overlap": {
+            "count": 0,
+            "lines": []
+          },
+          "price_lines": {
+            "count": 0,
+            "lines": []
+          }
+        },
+        "ConfirmSlots": {
+          "state": "ConfirmSlots",
+          "word_count": 414,
+          "kb_name_mentions": {
+            "count": 1,
+            "lines": [
+              "- At most 10 verify passes. Still incomplete → <We're having temporary issues on our server — I'll register your appointment and we'll confirm shortly.> Take their number if needed, wrap up per ##call-closing-kb##, then use end_call. NEVER transition while {{slot_verified}} is not true."
+            ]
+          },
+          "dv_mentions": {
+            "count": 1,
+            "lines": [
+              "- {{weekly_leak}} / {{monthly_leak}} returned by `validate_lead` are final — speak them as-is, never recompute."
+            ]
+          },
+          "kb_dv_same_line_joins": {
+            "count": 0,
+            "lines": []
+          },
+          "refer_style_patterns": {
+            "count": 1,
+            "lines": [
+              "<Perfect. Would you prefer later today or tomorrow for the demo?> Day only — never day and times at once. Morning request → <Mornings are for implementation. Calls are in afternoons and evenings. Would any of those work?>"
+            ]
+          },
+          "kb_verbatim_overlap": {
+            "count": 0,
+            "lines": []
+          },
+          "price_lines": {
+            "count": 0,
+            "lines": []
+          }
+        },
+        "Booking": {
+          "state": "Booking",
+          "word_count": 268,
+          "kb_name_mentions": {
+            "count": 1,
+            "lines": [
+              "- `valid: false` → retry `create_livecall_booking` once, re-record, re-validate. Still failing → set {{booking_failed}} = true via `record_booking_outcome`, say <We're having trouble confirming the calendar — we'll reach you at your number within the hour to lock in [TIME].>, brief goodbye per ##call-closing-kb##, then use `end_call`. Do NOT transition or claim success."
+            ]
+          },
+          "dv_mentions": {
+            "count": 2,
+            "lines": [
+              "{{first_name}} {{last_name}} · {{company_name}} · {{industry}} · {{pain_points}} · {{prospect_timezone}} · {{callback_number}} · {{selected_time}} (verified)",
+              "- notes: \"Industry: {{industry}} | Pain points: {{pain_points}}\""
+            ]
+          },
+          "kb_dv_same_line_joins": {
+            "count": 0,
+            "lines": []
+          },
+          "refer_style_patterns": {
+            "count": 0,
+            "lines": []
+          },
+          "kb_verbatim_overlap": {
+            "count": 0,
+            "lines": []
+          },
+          "price_lines": {
+            "count": 0,
+            "lines": []
+          }
+        },
+        "Closing": {
+          "state": "Closing",
+          "word_count": 192,
+          "kb_name_mentions": {
+            "count": 2,
+            "lines": [
+              "Confirm the booking, tell them the SMS confirmation is coming, send them off warm, then end the call. Refer to ##call-closing-kb## for the exact goodbye.",
+              "**4. End:** Follow ##call-closing-kb## for the exact goodbye — it handles ending the call."
+            ]
+          },
+          "dv_mentions": {
+            "count": 0,
+            "lines": []
+          },
+          "kb_dv_same_line_joins": {
+            "count": 0,
+            "lines": []
+          },
+          "refer_style_patterns": {
+            "count": 1,
+            "lines": [
+              "Confirm the booking, tell them the SMS confirmation is coming, send them off warm, then end the call. Refer to ##call-closing-kb## for the exact goodbye."
+            ]
+          },
+          "kb_verbatim_overlap": {
+            "count": 1,
+            "lines": [
+              {
+                "prompt_line_no": 23,
+                "kb_file": "call-closing-kb.md",
+                "line": "- Only end when you're certain every question is answered."
+              }
+            ]
+          },
+          "price_lines": {
+            "count": 0,
+            "lines": []
+          }
+        }
+      }
+    },
+    "V7.6_verify_state": {
+      "kind": "deployed",
+      "source": "/home/julio/projects/Retell_AI_MCP_connection/Dialux_SDR/V7.6_verify_state/llm.json",
+      "state_count": 9,
+      "states": {
+        "Intake": {
+          "state": "Intake",
+          "word_count": 449,
+          "kb_name_mentions": {
+            "count": 1,
+            "lines": [
+              "They'll tell you why they're calling — a voicemail, an ad, a search, a job post. Mirror it. For channel-specific handling, refer to ##call-context-kb##."
+            ]
+          },
+          "dv_mentions": {
+            "count": 4,
+            "lines": [
+              "When they answer, they'll say what interested them — in their words. That's {{interest_topic}}. Store it verbatim and mirror it back naturally.",
+              "Once {{inbound_channel}}, {{interest_topic}} and {{pain_frame}} are all captured, call `extract_intake_details` once with everything.",
+              "- Immediate (`extract_intake_details`): {{inbound_channel}}, {{interest_topic}}, {{pain_frame}} — each one shapes your next question. If more than one topic surfaces, APPEND to {{interest_topic}} — never replace.",
+              "- Mirror their words — never paraphrase {{interest_topic}}; store it verbatim."
+            ]
+          },
+          "kb_dv_same_line_joins": {
+            "count": 0,
+            "lines": []
+          },
+          "refer_style_patterns": {
+            "count": 2,
+            "lines": [
+              "They'll tell you why they're calling — a voicemail, an ad, a search, a job post. Mirror it. For channel-specific handling, refer to ##call-context-kb##.",
+              "# Extraction reference"
+            ]
+          },
+          "kb_verbatim_overlap": {
+            "count": 0,
+            "lines": []
+          },
+          "price_lines": {
+            "count": 0,
+            "lines": []
+          }
+        },
+        "Discovery": {
+          "state": "Discovery",
+          "word_count": 590,
+          "kb_name_mentions": {
+            "count": 4,
+            "lines": [
+              "Refer to ##discovery-bridge-kb## and pick the angle that matches {{interest_topic}}. Generate your question from their words + the angle — never read a question verbatim.",
+              "If the Bridge KB doesn't give you a clear question, use ##sales-psychology-kb## pain-amplification techniques to formulate one.",
+              "CAPTURE NOW: every new problem they reveal — capture with `extract_discovery_details`, APPENDING to {{pain_points}}. The moment you hear their industry, capture {{industry}} — it selects your ##industry-kb## sections.",
+              "Set {{interest_signal}} = true with `extract_discovery_details`. Use ##voice-ai-capabilities-kb## to tie the solution to {{pain_points}} and {{industry}}. Then keep bridging until {{pattern_matched}} = true."
+            ]
+          },
+          "dv_mentions": {
+            "count": 12,
+            "lines": [
+              "{{inbound_channel}} · {{interest_topic}} (their words, verbatim) · {{pain_frame}} — plus whatever else has surfaced: {{first_name}}, {{industry}}, {{company_name}}, {{pain_points}}. {{callback_number}} holds the number they're calling from, if known.",
+              "Refer to ##discovery-bridge-kb## and pick the angle that matches {{interest_topic}}. Generate your question from their words + the angle — never read a question verbatim.",
+              "<So you mentioned {{interest_topic}}. When a call comes in and you're out on a job, who's picking it up?>",
+              "<So you mentioned {{interest_topic}}. How many would you say you miss a day?>",
+              "CAPTURE NOW: every new problem they reveal — capture with `extract_discovery_details`, APPENDING to {{pain_points}}. The moment you hear their industry, capture {{industry}} — it selects your ##industry-kb## sections.",
+              "Set {{interest_signal}} = true with `extract_discovery_details`. Use ##voice-ai-capabilities-kb## to tie the solution to {{pain_points}} and {{industry}}. Then keep bridging until {{pattern_matched}} = true."
+            ]
+          },
+          "kb_dv_same_line_joins": {
+            "count": 3,
+            "lines": [
+              "Refer to ##discovery-bridge-kb## and pick the angle that matches {{interest_topic}}. Generate your question from their words + the angle — never read a question verbatim.",
+              "CAPTURE NOW: every new problem they reveal — capture with `extract_discovery_details`, APPENDING to {{pain_points}}. The moment you hear their industry, capture {{industry}} — it selects your ##industry-kb## sections.",
+              "Set {{interest_signal}} = true with `extract_discovery_details`. Use ##voice-ai-capabilities-kb## to tie the solution to {{pain_points}} and {{industry}}. Then keep bridging until {{pattern_matched}} = true."
+            ]
+          },
+          "refer_style_patterns": {
+            "count": 2,
+            "lines": [
+              "Refer to ##discovery-bridge-kb## and pick the angle that matches {{interest_topic}}. Generate your question from their words + the angle — never read a question verbatim.",
+              "# Extraction reference"
+            ]
+          },
+          "kb_verbatim_overlap": {
+            "count": 1,
+            "lines": [
+              {
+                "prompt_line_no": 28,
+                "kb_file": "discovery-bridge-kb.md",
+                "line": "<Roughly how many calls a week hit voicemail?>"
+              }
+            ]
+          },
+          "price_lines": {
+            "count": 0,
+            "lines": []
+          }
+        },
+        "Closer": {
+          "state": "Closer",
+          "word_count": 816,
+          "kb_name_mentions": {
+            "count": 5,
+            "lines": [
+              "Refer to ##sales-psychology-kb## pain-amplification techniques. Formulate 1–3 questions anchored on {{pain_frame}} and {{interest_topic}} — generate them from their words + the technique.",
+              "When formulating the reveal or a reframe, pull phrasing from ##sales-language-kb##;",
+              "for the pain-amplification question and any commitment push, pull tactics from ##sales-psychology-kb##.",
+              "For any objection, refer to ##sales-language-kb## and use its lines. Industry-fit objections pair with the matching {{industry}} sections of ##industry-kb##. Capture {{objection_type}}.",
+              "- No pricing — refer to ##sales-language-kb## and defer it all to the live call."
+            ]
+          },
+          "dv_mentions": {
+            "count": 14,
+            "lines": [
+              "{{first_name}} · {{industry}} · {{call_volume}} · {{pain_points}} (everything found so far) · {{pain_frame}} · {{interest_topic}}",
+              "Refer to ##sales-psychology-kb## pain-amplification techniques. Formulate 1–3 questions anchored on {{pain_frame}} and {{interest_topic}} — generate them from their words + the technique.",
+              "<You mentioned {{interest_topic}}. What's the biggest impact that's having on your business?>",
+              "CAPTURE NOW: APPEND every new problem they reveal to {{pain_points}} with `extract_closer_details`.",
+              "then call `calculate_monthly_leak`.",
+              "Reveal WEEKLY FIRST — speak {{weekly_leak}} exactly as returned by the tool. Never recompute,"
+            ]
+          },
+          "kb_dv_same_line_joins": {
+            "count": 2,
+            "lines": [
+              "Refer to ##sales-psychology-kb## pain-amplification techniques. Formulate 1–3 questions anchored on {{pain_frame}} and {{interest_topic}} — generate them from their words + the technique.",
+              "For any objection, refer to ##sales-language-kb## and use its lines. Industry-fit objections pair with the matching {{industry}} sections of ##industry-kb##. Capture {{objection_type}}."
+            ]
+          },
+          "refer_style_patterns": {
+            "count": 4,
+            "lines": [
+              "Refer to ##sales-psychology-kb## pain-amplification techniques. Formulate 1–3 questions anchored on {{pain_frame}} and {{interest_topic}} — generate them from their words + the technique.",
+              "For any objection, refer to ##sales-language-kb## and use its lines. Industry-fit objections pair with the matching {{industry}} sections of ##industry-kb##. Capture {{objection_type}}.",
+              "# Extraction reference",
+              "- No pricing — refer to ##sales-language-kb## and defer it all to the live call."
+            ]
+          },
+          "kb_verbatim_overlap": {
+            "count": 0,
+            "lines": []
+          },
+          "price_lines": {
+            "count": 7,
+            "lines": [
+              "<So ballpark — how many calls a week hit voicemail? 10, 20, 30?>",
+              "<And what's your average ticket — are we talking $400, $650, $850?>",
+              "If they don't know an input, offer a typical range and let THEM pick the number. Never fabricate.",
+              "${{weekly_leak}} extra a week — does that sound about right?>",
+              "<...and that's just one week — about ${{monthly_leak}} over a month.> Then STOP and wait.",
+              "Then amplify the pain: <What would it mean for your business to see ${{weekly_leak}} back every week?>"
+            ]
+          }
+        },
+        "Offer": {
+          "state": "Offer",
+          "word_count": 501,
+          "kb_name_mentions": {
+            "count": 3,
+            "lines": [
+              "Refer to ##sales-language-kb## for objection lines. Then escalate, one rung per refusal:",
+              "If they ask price → refer to ##sales-language-kb## and defer all pricing to the live call. Never quote a number.",
+              "- No commitment and no booking: wrap up warmly via ##call-closing-kb## — no booking, no details collected."
+            ]
+          },
+          "dv_mentions": {
+            "count": 3,
+            "lines": [
+              "{{first_name}} · {{last_name}} · {{industry}} · {{pain_points}} · {{pain_frame}} · {{interest_level}} · {{monthly_leak}}",
+              "If yes → don't re-ask yet. Go back to {{pain_frame}} and {{monthly_leak}}, re-anchor the pain, then ask again.",
+              "- Re-anchor with {{pain_frame}} and {{monthly_leak}} when they hesitate."
+            ]
+          },
+          "kb_dv_same_line_joins": {
+            "count": 0,
+            "lines": []
+          },
+          "refer_style_patterns": {
+            "count": 3,
+            "lines": [
+              "Refer to ##sales-language-kb## for objection lines. Then escalate, one rung per refusal:",
+              "If they ask price → refer to ##sales-language-kb## and defer all pricing to the live call. Never quote a number.",
+              "# Extraction reference"
+            ]
+          },
+          "kb_verbatim_overlap": {
+            "count": 0,
+            "lines": []
+          },
+          "price_lines": {
+            "count": 4,
+            "lines": [
+              "Ask for the meeting: a live call this week. The value prop was already delivered — your job is the ask. Defer pricing. No dates or times here — those come later, once their details are in.",
+              "### Pricing",
+              "If they ask price → refer to ##sales-language-kb## and defer all pricing to the live call. Never quote a number.",
+              "- Defer all pricing to the live call — never quote a number."
+            ]
+          }
+        },
+        "contact_details": {
+          "state": "contact_details",
+          "word_count": 558,
+          "kb_name_mentions": {
+            "count": 0,
+            "lines": []
+          },
+          "dv_mentions": {
+            "count": 1,
+            "lines": [
+              "{{first_name}} · {{last_name}} · {{company_name}} · {{industry}} · {{pain_points}} · {{callback_number}}"
+            ]
+          },
+          "kb_dv_same_line_joins": {
+            "count": 0,
+            "lines": []
+          },
+          "refer_style_patterns": {
+            "count": 1,
+            "lines": [
+              "# Extraction reference"
+            ]
+          },
+          "kb_verbatim_overlap": {
+            "count": 0,
+            "lines": []
+          },
+          "price_lines": {
+            "count": 0,
+            "lines": []
+          }
+        },
+        "ConfirmSlots": {
+          "state": "ConfirmSlots",
+          "word_count": 414,
+          "kb_name_mentions": {
+            "count": 1,
+            "lines": [
+              "- At most 10 verify passes. Still incomplete → <We're having temporary issues on our server — I'll register your appointment and we'll confirm shortly.> Take their number if needed, wrap up per ##call-closing-kb##, then use end_call. NEVER transition while {{slot_verified}} is not true."
+            ]
+          },
+          "dv_mentions": {
+            "count": 1,
+            "lines": [
+              "- {{weekly_leak}} / {{monthly_leak}} returned by `validate_lead` are final — speak them as-is, never recompute."
+            ]
+          },
+          "kb_dv_same_line_joins": {
+            "count": 0,
+            "lines": []
+          },
+          "refer_style_patterns": {
+            "count": 1,
+            "lines": [
+              "<Perfect. Would you prefer later today or tomorrow for the demo?> Day only — never day and times at once. Morning request → <Mornings are for implementation. Calls are in afternoons and evenings. Would any of those work?>"
+            ]
+          },
+          "kb_verbatim_overlap": {
+            "count": 0,
+            "lines": []
+          },
+          "price_lines": {
+            "count": 0,
+            "lines": []
+          }
+        },
+        "VerifyLead": {
+          "state": "VerifyLead",
+          "word_count": 293,
+          "kb_name_mentions": {
+            "count": 0,
+            "lines": []
+          },
+          "dv_mentions": {
+            "count": 0,
+            "lines": []
+          },
+          "kb_dv_same_line_joins": {
+            "count": 0,
+            "lines": []
+          },
+          "refer_style_patterns": {
+            "count": 0,
+            "lines": []
+          },
+          "kb_verbatim_overlap": {
+            "count": 0,
+            "lines": []
+          },
+          "price_lines": {
+            "count": 0,
+            "lines": []
+          }
+        },
+        "Booking": {
+          "state": "Booking",
+          "word_count": 280,
+          "kb_name_mentions": {
+            "count": 1,
+            "lines": [
+              "- If the recorder still refuses after three passes -> set {{booking_failed}} = true via `record_booking_outcome`, say <We're having trouble confirming the calendar — we'll reach you at your number within the hour to lock in [TIME].>, brief goodbye per ##call-closing-kb##, then use `end_call`. Do NOT transition or claim success."
+            ]
+          },
+          "dv_mentions": {
+            "count": 2,
+            "lines": [
+              "{{first_name}} {{last_name}} · {{company_name}} · {{industry}} · {{pain_points}} · {{prospect_timezone}} · {{callback_number}} · {{selected_time}} (verified)",
+              "- notes: \"Industry: {{industry}} | Pain points: {{pain_points}}\""
+            ]
+          },
+          "kb_dv_same_line_joins": {
+            "count": 0,
+            "lines": []
+          },
+          "refer_style_patterns": {
+            "count": 0,
+            "lines": []
+          },
+          "kb_verbatim_overlap": {
+            "count": 0,
+            "lines": []
+          },
+          "price_lines": {
+            "count": 0,
+            "lines": []
+          }
+        },
+        "Closing": {
+          "state": "Closing",
+          "word_count": 192,
+          "kb_name_mentions": {
+            "count": 2,
+            "lines": [
+              "Confirm the booking, tell them the SMS confirmation is coming, send them off warm, then end the call. Refer to ##call-closing-kb## for the exact goodbye.",
+              "**4. End:** Follow ##call-closing-kb## for the exact goodbye — it handles ending the call."
+            ]
+          },
+          "dv_mentions": {
+            "count": 0,
+            "lines": []
+          },
+          "kb_dv_same_line_joins": {
+            "count": 0,
+            "lines": []
+          },
+          "refer_style_patterns": {
+            "count": 1,
+            "lines": [
+              "Confirm the booking, tell them the SMS confirmation is coming, send them off warm, then end the call. Refer to ##call-closing-kb## for the exact goodbye."
+            ]
+          },
+          "kb_verbatim_overlap": {
+            "count": 1,
+            "lines": [
+              {
+                "prompt_line_no": 23,
+                "kb_file": "call-closing-kb.md",
+                "line": "- Only end when you're certain every question is answered."
+              }
+            ]
+          },
+          "price_lines": {
+            "count": 0,
+            "lines": []
+          }
+        }
+      }
+    },
+    "V7.7_set_callback_number": {
+      "kind": "deployed",
+      "source": "/home/julio/projects/Retell_AI_MCP_connection/Dialux_SDR/V7.7_set_callback_number/llm.json",
+      "state_count": 9,
+      "states": {
+        "Intake": {
+          "state": "Intake",
+          "word_count": 449,
+          "kb_name_mentions": {
+            "count": 1,
+            "lines": [
+              "They'll tell you why they're calling — a voicemail, an ad, a search, a job post. Mirror it. For channel-specific handling, refer to ##call-context-kb##."
+            ]
+          },
+          "dv_mentions": {
+            "count": 4,
+            "lines": [
+              "When they answer, they'll say what interested them — in their words. That's {{interest_topic}}. Store it verbatim and mirror it back naturally.",
+              "Once {{inbound_channel}}, {{interest_topic}} and {{pain_frame}} are all captured, call `extract_intake_details` once with everything.",
+              "- Immediate (`extract_intake_details`): {{inbound_channel}}, {{interest_topic}}, {{pain_frame}} — each one shapes your next question. If more than one topic surfaces, APPEND to {{interest_topic}} — never replace.",
+              "- Mirror their words — never paraphrase {{interest_topic}}; store it verbatim."
+            ]
+          },
+          "kb_dv_same_line_joins": {
+            "count": 0,
+            "lines": []
+          },
+          "refer_style_patterns": {
+            "count": 2,
+            "lines": [
+              "They'll tell you why they're calling — a voicemail, an ad, a search, a job post. Mirror it. For channel-specific handling, refer to ##call-context-kb##.",
+              "# Extraction reference"
+            ]
+          },
+          "kb_verbatim_overlap": {
+            "count": 0,
+            "lines": []
+          },
+          "price_lines": {
+            "count": 0,
+            "lines": []
+          }
+        },
+        "Discovery": {
+          "state": "Discovery",
+          "word_count": 590,
+          "kb_name_mentions": {
+            "count": 4,
+            "lines": [
+              "Refer to ##discovery-bridge-kb## and pick the angle that matches {{interest_topic}}. Generate your question from their words + the angle — never read a question verbatim.",
+              "If the Bridge KB doesn't give you a clear question, use ##sales-psychology-kb## pain-amplification techniques to formulate one.",
+              "CAPTURE NOW: every new problem they reveal — capture with `extract_discovery_details`, APPENDING to {{pain_points}}. The moment you hear their industry, capture {{industry}} — it selects your ##industry-kb## sections.",
+              "Set {{interest_signal}} = true with `extract_discovery_details`. Use ##voice-ai-capabilities-kb## to tie the solution to {{pain_points}} and {{industry}}. Then keep bridging until {{pattern_matched}} = true."
+            ]
+          },
+          "dv_mentions": {
+            "count": 12,
+            "lines": [
+              "{{inbound_channel}} · {{interest_topic}} (their words, verbatim) · {{pain_frame}} — plus whatever else has surfaced: {{first_name}}, {{industry}}, {{company_name}}, {{pain_points}}. {{callback_number}} holds the number they're calling from, if known.",
+              "Refer to ##discovery-bridge-kb## and pick the angle that matches {{interest_topic}}. Generate your question from their words + the angle — never read a question verbatim.",
+              "<So you mentioned {{interest_topic}}. When a call comes in and you're out on a job, who's picking it up?>",
+              "<So you mentioned {{interest_topic}}. How many would you say you miss a day?>",
+              "CAPTURE NOW: every new problem they reveal — capture with `extract_discovery_details`, APPENDING to {{pain_points}}. The moment you hear their industry, capture {{industry}} — it selects your ##industry-kb## sections.",
+              "Set {{interest_signal}} = true with `extract_discovery_details`. Use ##voice-ai-capabilities-kb## to tie the solution to {{pain_points}} and {{industry}}. Then keep bridging until {{pattern_matched}} = true."
+            ]
+          },
+          "kb_dv_same_line_joins": {
+            "count": 3,
+            "lines": [
+              "Refer to ##discovery-bridge-kb## and pick the angle that matches {{interest_topic}}. Generate your question from their words + the angle — never read a question verbatim.",
+              "CAPTURE NOW: every new problem they reveal — capture with `extract_discovery_details`, APPENDING to {{pain_points}}. The moment you hear their industry, capture {{industry}} — it selects your ##industry-kb## sections.",
+              "Set {{interest_signal}} = true with `extract_discovery_details`. Use ##voice-ai-capabilities-kb## to tie the solution to {{pain_points}} and {{industry}}. Then keep bridging until {{pattern_matched}} = true."
+            ]
+          },
+          "refer_style_patterns": {
+            "count": 2,
+            "lines": [
+              "Refer to ##discovery-bridge-kb## and pick the angle that matches {{interest_topic}}. Generate your question from their words + the angle — never read a question verbatim.",
+              "# Extraction reference"
+            ]
+          },
+          "kb_verbatim_overlap": {
+            "count": 1,
+            "lines": [
+              {
+                "prompt_line_no": 28,
+                "kb_file": "discovery-bridge-kb.md",
+                "line": "<Roughly how many calls a week hit voicemail?>"
+              }
+            ]
+          },
+          "price_lines": {
+            "count": 0,
+            "lines": []
+          }
+        },
+        "Closer": {
+          "state": "Closer",
+          "word_count": 816,
+          "kb_name_mentions": {
+            "count": 5,
+            "lines": [
+              "Refer to ##sales-psychology-kb## pain-amplification techniques. Formulate 1–3 questions anchored on {{pain_frame}} and {{interest_topic}} — generate them from their words + the technique.",
+              "When formulating the reveal or a reframe, pull phrasing from ##sales-language-kb##;",
+              "for the pain-amplification question and any commitment push, pull tactics from ##sales-psychology-kb##.",
+              "For any objection, refer to ##sales-language-kb## and use its lines. Industry-fit objections pair with the matching {{industry}} sections of ##industry-kb##. Capture {{objection_type}}.",
+              "- No pricing — refer to ##sales-language-kb## and defer it all to the live call."
+            ]
+          },
+          "dv_mentions": {
+            "count": 14,
+            "lines": [
+              "{{first_name}} · {{industry}} · {{call_volume}} · {{pain_points}} (everything found so far) · {{pain_frame}} · {{interest_topic}}",
+              "Refer to ##sales-psychology-kb## pain-amplification techniques. Formulate 1–3 questions anchored on {{pain_frame}} and {{interest_topic}} — generate them from their words + the technique.",
+              "<You mentioned {{interest_topic}}. What's the biggest impact that's having on your business?>",
+              "CAPTURE NOW: APPEND every new problem they reveal to {{pain_points}} with `extract_closer_details`.",
+              "then call `calculate_monthly_leak`.",
+              "Reveal WEEKLY FIRST — speak {{weekly_leak}} exactly as returned by the tool. Never recompute,"
+            ]
+          },
+          "kb_dv_same_line_joins": {
+            "count": 2,
+            "lines": [
+              "Refer to ##sales-psychology-kb## pain-amplification techniques. Formulate 1–3 questions anchored on {{pain_frame}} and {{interest_topic}} — generate them from their words + the technique.",
+              "For any objection, refer to ##sales-language-kb## and use its lines. Industry-fit objections pair with the matching {{industry}} sections of ##industry-kb##. Capture {{objection_type}}."
+            ]
+          },
+          "refer_style_patterns": {
+            "count": 4,
+            "lines": [
+              "Refer to ##sales-psychology-kb## pain-amplification techniques. Formulate 1–3 questions anchored on {{pain_frame}} and {{interest_topic}} — generate them from their words + the technique.",
+              "For any objection, refer to ##sales-language-kb## and use its lines. Industry-fit objections pair with the matching {{industry}} sections of ##industry-kb##. Capture {{objection_type}}.",
+              "# Extraction reference",
+              "- No pricing — refer to ##sales-language-kb## and defer it all to the live call."
+            ]
+          },
+          "kb_verbatim_overlap": {
+            "count": 0,
+            "lines": []
+          },
+          "price_lines": {
+            "count": 7,
+            "lines": [
+              "<So ballpark — how many calls a week hit voicemail? 10, 20, 30?>",
+              "<And what's your average ticket — are we talking $400, $650, $850?>",
+              "If they don't know an input, offer a typical range and let THEM pick the number. Never fabricate.",
+              "${{weekly_leak}} extra a week — does that sound about right?>",
+              "<...and that's just one week — about ${{monthly_leak}} over a month.> Then STOP and wait.",
+              "Then amplify the pain: <What would it mean for your business to see ${{weekly_leak}} back every week?>"
+            ]
+          }
+        },
+        "Offer": {
+          "state": "Offer",
+          "word_count": 501,
+          "kb_name_mentions": {
+            "count": 3,
+            "lines": [
+              "Refer to ##sales-language-kb## for objection lines. Then escalate, one rung per refusal:",
+              "If they ask price → refer to ##sales-language-kb## and defer all pricing to the live call. Never quote a number.",
+              "- No commitment and no booking: wrap up warmly via ##call-closing-kb## — no booking, no details collected."
+            ]
+          },
+          "dv_mentions": {
+            "count": 3,
+            "lines": [
+              "{{first_name}} · {{last_name}} · {{industry}} · {{pain_points}} · {{pain_frame}} · {{interest_level}} · {{monthly_leak}}",
+              "If yes → don't re-ask yet. Go back to {{pain_frame}} and {{monthly_leak}}, re-anchor the pain, then ask again.",
+              "- Re-anchor with {{pain_frame}} and {{monthly_leak}} when they hesitate."
+            ]
+          },
+          "kb_dv_same_line_joins": {
+            "count": 0,
+            "lines": []
+          },
+          "refer_style_patterns": {
+            "count": 3,
+            "lines": [
+              "Refer to ##sales-language-kb## for objection lines. Then escalate, one rung per refusal:",
+              "If they ask price → refer to ##sales-language-kb## and defer all pricing to the live call. Never quote a number.",
+              "# Extraction reference"
+            ]
+          },
+          "kb_verbatim_overlap": {
+            "count": 0,
+            "lines": []
+          },
+          "price_lines": {
+            "count": 4,
+            "lines": [
+              "Ask for the meeting: a live call this week. The value prop was already delivered — your job is the ask. Defer pricing. No dates or times here — those come later, once their details are in.",
+              "### Pricing",
+              "If they ask price → refer to ##sales-language-kb## and defer all pricing to the live call. Never quote a number.",
+              "- Defer all pricing to the live call — never quote a number."
+            ]
+          }
+        },
+        "contact_details": {
+          "state": "contact_details",
+          "word_count": 567,
+          "kb_name_mentions": {
+            "count": 0,
+            "lines": []
+          },
+          "dv_mentions": {
+            "count": 1,
+            "lines": [
+              "{{first_name}} · {{last_name}} · {{company_name}} · {{industry}} · {{pain_points}} · {{callback_number}}"
+            ]
+          },
+          "kb_dv_same_line_joins": {
+            "count": 0,
+            "lines": []
+          },
+          "refer_style_patterns": {
+            "count": 1,
+            "lines": [
+              "# Extraction reference"
+            ]
+          },
+          "kb_verbatim_overlap": {
+            "count": 0,
+            "lines": []
+          },
+          "price_lines": {
+            "count": 0,
+            "lines": []
+          }
+        },
+        "ConfirmSlots": {
+          "state": "ConfirmSlots",
+          "word_count": 466,
+          "kb_name_mentions": {
+            "count": 1,
+            "lines": [
+              "- At most 10 verify passes. Still incomplete → <We're having temporary issues on our server — I'll register your appointment and we'll confirm shortly.> Take their number if needed, wrap up per ##call-closing-kb##, then use end_call. NEVER transition while {{slot_verified}} is not true."
+            ]
+          },
+          "dv_mentions": {
+            "count": 1,
+            "lines": [
+              "- {{weekly_leak}} / {{monthly_leak}} returned by `validate_lead` are final — speak them as-is, never recompute."
+            ]
+          },
+          "kb_dv_same_line_joins": {
+            "count": 0,
+            "lines": []
+          },
+          "refer_style_patterns": {
+            "count": 1,
+            "lines": [
+              "<Perfect. Would you prefer later today or tomorrow for the demo?> Day only — never day and times at once. Morning request → <Mornings are for implementation. Calls are in afternoons and evenings. Would any of those work?>"
+            ]
+          },
+          "kb_verbatim_overlap": {
+            "count": 0,
+            "lines": []
+          },
+          "price_lines": {
+            "count": 0,
+            "lines": []
+          }
+        },
+        "VerifyLead": {
+          "state": "VerifyLead",
+          "word_count": 293,
+          "kb_name_mentions": {
+            "count": 0,
+            "lines": []
+          },
+          "dv_mentions": {
+            "count": 0,
+            "lines": []
+          },
+          "kb_dv_same_line_joins": {
+            "count": 0,
+            "lines": []
+          },
+          "refer_style_patterns": {
+            "count": 0,
+            "lines": []
+          },
+          "kb_verbatim_overlap": {
+            "count": 0,
+            "lines": []
+          },
+          "price_lines": {
+            "count": 0,
+            "lines": []
+          }
+        },
+        "Booking": {
+          "state": "Booking",
+          "word_count": 295,
+          "kb_name_mentions": {
+            "count": 1,
+            "lines": [
+              "- If the recorder still refuses after three passes -> set {{booking_failed}} = true via `record_booking_outcome`, say <We're having trouble confirming the calendar — we'll reach you at your number within the hour to lock in [TIME].>, brief goodbye per ##call-closing-kb##, then use `end_call`. Do NOT transition or claim success."
+            ]
+          },
+          "dv_mentions": {
+            "count": 2,
+            "lines": [
+              "{{first_name}} {{last_name}} · {{company_name}} · {{industry}} · {{pain_points}} · {{prospect_timezone}} · {{callback_number}} · {{selected_time}} (verified)",
+              "- notes: \"Industry: {{industry}} | Pain points: {{pain_points}}\""
+            ]
+          },
+          "kb_dv_same_line_joins": {
+            "count": 0,
+            "lines": []
+          },
+          "refer_style_patterns": {
+            "count": 0,
+            "lines": []
+          },
+          "kb_verbatim_overlap": {
+            "count": 0,
+            "lines": []
+          },
+          "price_lines": {
+            "count": 0,
+            "lines": []
+          }
+        },
+        "Closing": {
+          "state": "Closing",
+          "word_count": 203,
+          "kb_name_mentions": {
+            "count": 2,
+            "lines": [
+              "Confirm the booking, tell them the SMS confirmation is coming, send them off warm, then end the call. Refer to ##call-closing-kb## for the exact goodbye.",
+              "4. End: Follow ##call-closing-kb## for the exact goodbye — it handles ending the call."
+            ]
+          },
+          "dv_mentions": {
+            "count": 0,
+            "lines": []
+          },
+          "kb_dv_same_line_joins": {
+            "count": 0,
+            "lines": []
+          },
+          "refer_style_patterns": {
+            "count": 1,
+            "lines": [
+              "Confirm the booking, tell them the SMS confirmation is coming, send them off warm, then end the call. Refer to ##call-closing-kb## for the exact goodbye."
+            ]
+          },
+          "kb_verbatim_overlap": {
+            "count": 1,
+            "lines": [
+              {
+                "prompt_line_no": 23,
+                "kb_file": "call-closing-kb.md",
+                "line": "- Only end when you're certain every question is answered."
+              }
+            ]
+          },
+          "price_lines": {
+            "count": 0,
+            "lines": []
+          }
+        }
+      }
+    },
+    "prompts": {
+      "kind": "v5_prompts",
+      "source": "/home/julio/projects/Retell_AI_MCP_connection/Dialux_SDR/dialux-langgraph-production-v5/diallux/prompts",
+      "state_count": 10,
+      "states": {
+        "Booking": {
+          "state": "Booking",
+          "word_count": 439,
+          "kb_name_mentions": {
+            "count": 1,
+            "lines": [
+              "- If the recorder still refuses after three passes -> set {{booking_failed}} = true via `record_booking_outcome`, say <We're having trouble confirming the calendar — we'll reach you at your number within the hour to lock in [TIME].>, wrap up warmly per ##call-closing-kb##. The main prompt decides when the call ends — never call `end_call` from this state. Do NOT transition or claim success."
+            ]
+          },
+          "dv_mentions": {
+            "count": 2,
+            "lines": [
+              "{{first_name}} {{last_name}} · {{company_name}} · {{industry}} · {{pain_points}} · {{prospect_timezone}} · {{callback_number}} · {{selected_time}} (verified)",
+              "- notes: \"Industry: {{industry}} | Pain points: {{pain_points}}\""
+            ]
+          },
+          "kb_dv_same_line_joins": {
+            "count": 0,
+            "lines": []
+          },
+          "refer_style_patterns": {
+            "count": 2,
+            "lines": [
+              "- preferred_time: empty — only on a reschedule (see flow below)",
+              "If the caller, AFTER the time was confirmed, wants a different time or no longer wants the call: call `extract_booking_intent` first, then call `create_livecall_booking` and follow its response — 'reschedule_options' → offer exactly the two returned times (when they pick one, call again with time AND preferred_time set to the chosen option's time); 'released' → confirm politely, never book, never offer times; 'booked' → continue at step 2."
+            ]
+          },
+          "kb_verbatim_overlap": {
+            "count": 0,
+            "lines": []
+          },
+          "price_lines": {
+            "count": 0,
+            "lines": []
+          }
+        },
+        "Closer": {
+          "state": "Closer",
+          "word_count": 816,
+          "kb_name_mentions": {
+            "count": 5,
+            "lines": [
+              "Refer to ##sales-psychology-kb## pain-amplification techniques. Formulate 1–3 questions anchored on {{pain_frame}} and {{interest_topic}} — generate them from their words + the technique.",
+              "When formulating the reveal or a reframe, pull phrasing from ##sales-language-kb##;",
+              "for the pain-amplification question and any commitment push, pull tactics from ##sales-psychology-kb##.",
+              "For any objection, refer to ##sales-language-kb## and use its lines. Industry-fit objections pair with the matching {{industry}} sections of ##industry-kb##. Capture {{objection_type}}.",
+              "- No pricing — refer to ##sales-language-kb## and defer it all to the live call."
+            ]
+          },
+          "dv_mentions": {
+            "count": 14,
+            "lines": [
+              "{{first_name}} · {{industry}} · {{call_volume}} · {{pain_points}} (everything found so far) · {{pain_frame}} · {{interest_topic}}",
+              "Refer to ##sales-psychology-kb## pain-amplification techniques. Formulate 1–3 questions anchored on {{pain_frame}} and {{interest_topic}} — generate them from their words + the technique.",
+              "<You mentioned {{interest_topic}}. What's the biggest impact that's having on your business?>",
+              "CAPTURE NOW: APPEND every new problem they reveal to {{pain_points}} with `extract_closer_details`.",
+              "then call `calculate_monthly_leak`.",
+              "Reveal WEEKLY FIRST — speak {{weekly_leak}} exactly as returned by the tool. Never recompute,"
+            ]
+          },
+          "kb_dv_same_line_joins": {
+            "count": 2,
+            "lines": [
+              "Refer to ##sales-psychology-kb## pain-amplification techniques. Formulate 1–3 questions anchored on {{pain_frame}} and {{interest_topic}} — generate them from their words + the technique.",
+              "For any objection, refer to ##sales-language-kb## and use its lines. Industry-fit objections pair with the matching {{industry}} sections of ##industry-kb##. Capture {{objection_type}}."
+            ]
+          },
+          "refer_style_patterns": {
+            "count": 4,
+            "lines": [
+              "Refer to ##sales-psychology-kb## pain-amplification techniques. Formulate 1–3 questions anchored on {{pain_frame}} and {{interest_topic}} — generate them from their words + the technique.",
+              "For any objection, refer to ##sales-language-kb## and use its lines. Industry-fit objections pair with the matching {{industry}} sections of ##industry-kb##. Capture {{objection_type}}.",
+              "# Extraction reference",
+              "- No pricing — refer to ##sales-language-kb## and defer it all to the live call."
+            ]
+          },
+          "kb_verbatim_overlap": {
+            "count": 0,
+            "lines": []
+          },
+          "price_lines": {
+            "count": 7,
+            "lines": [
+              "<So ballpark — how many calls a week hit voicemail? 10, 20, 30?>",
+              "<And what's your average ticket — are we talking $400, $650, $850?>",
+              "If they don't know an input, offer a typical range and let THEM pick the number. Never fabricate.",
+              "${{weekly_leak}} extra a week — does that sound about right?>",
+              "<...and that's just one week — about ${{monthly_leak}} over a month.> Then STOP and wait.",
+              "Then amplify the pain: <What would it mean for your business to see ${{weekly_leak}} back every week?>"
+            ]
+          }
+        },
+        "Closing": {
+          "state": "Closing",
+          "word_count": 277,
+          "kb_name_mentions": {
+            "count": 2,
+            "lines": [
+              "Confirm the booking, tell them the SMS confirmation is coming, send them off warm, then end the call. Refer to ##call-closing-kb## for the exact goodbye.",
+              "- MANDATORY GOODBYE: you MUST speak the warm goodbye (per ##call-closing-kb##) in your FINAL turn — after \"anything else?\" is answered, ALWAYS deliver the goodbye sentence. NEVER call end_call on a silent turn, NEVER skip the goodbye even if the caller is leaving. This rule overrides everything else in this state."
+            ]
+          },
+          "dv_mentions": {
+            "count": 0,
+            "lines": []
+          },
+          "kb_dv_same_line_joins": {
+            "count": 0,
+            "lines": []
+          },
+          "refer_style_patterns": {
+            "count": 1,
+            "lines": [
+              "Confirm the booking, tell them the SMS confirmation is coming, send them off warm, then end the call. Refer to ##call-closing-kb## for the exact goodbye."
+            ]
+          },
+          "kb_verbatim_overlap": {
+            "count": 1,
+            "lines": [
+              {
+                "prompt_line_no": 24,
+                "kb_file": "call-closing-kb.md",
+                "line": "- Only end when you're certain every question is answered."
+              }
+            ]
+          },
+          "price_lines": {
+            "count": 0,
+            "lines": []
+          }
+        },
+        "ConfirmSlots": {
+          "state": "ConfirmSlots",
+          "word_count": 479,
+          "kb_name_mentions": {
+            "count": 1,
+            "lines": [
+              "- At most 10 verify passes. Still incomplete → <We're having temporary issues on our server — I'll register your appointment and we'll confirm shortly.> Take their number if needed, wrap up warmly per ##call-closing-kb##. The main prompt decides when the call ends — never call `end_call` from this state. NEVER transition while {{slot_verified}} is not true."
+            ]
+          },
+          "dv_mentions": {
+            "count": 1,
+            "lines": [
+              "- {{weekly_leak}} / {{monthly_leak}} returned by `validate_lead` are final — speak them as-is, never recompute."
+            ]
+          },
+          "kb_dv_same_line_joins": {
+            "count": 0,
+            "lines": []
+          },
+          "refer_style_patterns": {
+            "count": 1,
+            "lines": [
+              "<Perfect. Would you prefer later today or tomorrow for the demo?> Day only — never day and times at once. Morning request → <Mornings are for implementation. Calls are in afternoons and evenings. Would any of those work?>"
+            ]
+          },
+          "kb_verbatim_overlap": {
+            "count": 0,
+            "lines": []
+          },
+          "price_lines": {
+            "count": 0,
+            "lines": []
+          }
+        },
+        "Discovery": {
+          "state": "Discovery",
+          "word_count": 727,
+          "kb_name_mentions": {
+            "count": 6,
+            "lines": [
+              "Refer to ##discovery-bridge-kb## and pick the angle that matches {{interest_topic}}. Generate your question from their words + the angle — never read a question verbatim.",
+              "If the Bridge KB doesn't give you a clear question, use ##sales-psychology-kb## pain-amplification techniques to formulate one.",
+              "CAPTURE NOW: every new problem they reveal — capture with `extract_discovery_details`, APPENDING to {{pain_points}}. The moment you hear their industry, capture {{industry}} — it selects your ##industry-kb## sections.",
+              "Set {{interest_signal}} = true with `extract_discovery_details`. Use ##voice-ai-capabilities-kb## to tie the solution to {{pain_points}} and {{industry}}. Then keep bridging until {{pattern_matched}} = true.",
+              "- NEVER claim certifications, security controls, references, case studies, or named clients unless the retrieved KB text explicitly states it. HIPAA questions are the ONE exception: answer from ##hipaa-kb## with its process phrasing. If asked for references or case studies: NEVER say \"we don't have any\" — deflect warmly: Jay covers live proof and references personally on the walkthrough.",
+              "- Medical/dental/healthcare prospect, or ANY question about HIPAA/PHI/compliance/security/privacy → pull ##hipaa-kb## and answer with its PROCESS phrasing: \"here's HOW we handle HIPAA compliance…\" (BAA day one, phased handoff, industry-standard controls). NEVER the bare badge claim \"we are HIPAA compliant\". Never quote HIPAA-related pricing."
+            ]
+          },
+          "dv_mentions": {
+            "count": 13,
+            "lines": [
+              "{{inbound_channel}} · {{interest_topic}} (their words, verbatim) · {{pain_frame}} — plus whatever else has surfaced: {{first_name}}, {{industry}}, {{company_name}}, {{pain_points}}. {{callback_number}} holds the number they're calling from, if known.",
+              "Refer to ##discovery-bridge-kb## and pick the angle that matches {{interest_topic}}. Generate your question from their words + the angle — never read a question verbatim.",
+              "<So you mentioned {{interest_topic}}. When a call comes in and you're out on a job, who's picking it up?>",
+              "<So you mentioned {{interest_topic}}. How many would you say you miss a day?>",
+              "CAPTURE NOW: every new problem they reveal — capture with `extract_discovery_details`, APPENDING to {{pain_points}}. The moment you hear their industry, capture {{industry}} — it selects your ##industry-kb## sections.",
+              "Set {{interest_signal}} = true with `extract_discovery_details`. Use ##voice-ai-capabilities-kb## to tie the solution to {{pain_points}} and {{industry}}. Then keep bridging until {{pattern_matched}} = true."
+            ]
+          },
+          "kb_dv_same_line_joins": {
+            "count": 4,
+            "lines": [
+              "Refer to ##discovery-bridge-kb## and pick the angle that matches {{interest_topic}}. Generate your question from their words + the angle — never read a question verbatim.",
+              "CAPTURE NOW: every new problem they reveal — capture with `extract_discovery_details`, APPENDING to {{pain_points}}. The moment you hear their industry, capture {{industry}} — it selects your ##industry-kb## sections.",
+              "Set {{interest_signal}} = true with `extract_discovery_details`. Use ##voice-ai-capabilities-kb## to tie the solution to {{pain_points}} and {{industry}}. Then keep bridging until {{pattern_matched}} = true.",
+              "- Medical/dental/healthcare prospect, or ANY question about HIPAA/PHI/compliance/security/privacy → pull ##hipaa-kb## and answer with its PROCESS phrasing: \"here's HOW we handle HIPAA compliance…\" (BAA day one, phased handoff, industry-standard controls). NEVER the bare badge claim \"we are HIPAA compliant\". Never quote HIPAA-related pricing."
+            ]
+          },
+          "refer_style_patterns": {
+            "count": 3,
+            "lines": [
+              "Refer to ##discovery-bridge-kb## and pick the angle that matches {{interest_topic}}. Generate your question from their words + the angle — never read a question verbatim.",
+              "# Extraction reference",
+              "- NEVER claim certifications, security controls, references, case studies, or named clients unless the retrieved KB text explicitly states it. HIPAA questions are the ONE exception: answer from ##hipaa-kb## with its process phrasing. If asked for references or case studies: NEVER say \"we don't have any\" — deflect warmly: Jay covers live proof and references personally on the walkthrough."
+            ]
+          },
+          "kb_verbatim_overlap": {
+            "count": 1,
+            "lines": [
+              {
+                "prompt_line_no": 28,
+                "kb_file": "discovery-bridge-kb.md",
+                "line": "<Roughly how many calls a week hit voicemail?>"
+              }
+            ]
+          },
+          "price_lines": {
+            "count": 2,
+            "lines": [
+              "- Pricing deferral: vary the wording every time. If they push a second time, switch to the KB escalation line and the value anchor (their alternative's known cost) — NEVER repeat the same deferral sentence.",
+              "- Medical/dental/healthcare prospect, or ANY question about HIPAA/PHI/compliance/security/privacy → pull ##hipaa-kb## and answer with its PROCESS phrasing: \"here's HOW we handle HIPAA compliance…\" (BAA day one, phased handoff, industry-standard controls). NEVER the bare badge claim \"we are HIPAA compliant\". Never quote HIPAA-related pricing."
+            ]
+          }
+        },
+        "Intake": {
+          "state": "Intake",
+          "word_count": 449,
+          "kb_name_mentions": {
+            "count": 1,
+            "lines": [
+              "They'll tell you why they're calling — a voicemail, an ad, a search, a job post. Mirror it. For channel-specific handling, refer to ##call-context-kb##."
+            ]
+          },
+          "dv_mentions": {
+            "count": 4,
+            "lines": [
+              "When they answer, they'll say what interested them — in their words. That's {{interest_topic}}. Store it verbatim and mirror it back naturally.",
+              "Once {{inbound_channel}}, {{interest_topic}} and {{pain_frame}} are all captured, call `extract_intake_details` once with everything.",
+              "- Immediate (`extract_intake_details`): {{inbound_channel}}, {{interest_topic}}, {{pain_frame}} — each one shapes your next question. If more than one topic surfaces, APPEND to {{interest_topic}} — never replace.",
+              "- Mirror their words — never paraphrase {{interest_topic}}; store it verbatim."
+            ]
+          },
+          "kb_dv_same_line_joins": {
+            "count": 0,
+            "lines": []
+          },
+          "refer_style_patterns": {
+            "count": 2,
+            "lines": [
+              "They'll tell you why they're calling — a voicemail, an ad, a search, a job post. Mirror it. For channel-specific handling, refer to ##call-context-kb##.",
+              "# Extraction reference"
+            ]
+          },
+          "kb_verbatim_overlap": {
+            "count": 0,
+            "lines": []
+          },
+          "price_lines": {
+            "count": 0,
+            "lines": []
+          }
+        },
+        "Offer": {
+          "state": "Offer",
+          "word_count": 501,
+          "kb_name_mentions": {
+            "count": 3,
+            "lines": [
+              "Refer to ##sales-language-kb## for objection lines. Then escalate, one rung per refusal:",
+              "If they ask price → refer to ##sales-language-kb## and defer all pricing to the live call. Never quote a number.",
+              "- No commitment and no booking: wrap up warmly via ##call-closing-kb## — no booking, no details collected."
+            ]
+          },
+          "dv_mentions": {
+            "count": 3,
+            "lines": [
+              "{{first_name}} · {{last_name}} · {{industry}} · {{pain_points}} · {{pain_frame}} · {{interest_level}} · {{monthly_leak}}",
+              "If yes → don't re-ask yet. Go back to {{pain_frame}} and {{monthly_leak}}, re-anchor the pain, then ask again.",
+              "- Re-anchor with {{pain_frame}} and {{monthly_leak}} when they hesitate."
+            ]
+          },
+          "kb_dv_same_line_joins": {
+            "count": 0,
+            "lines": []
+          },
+          "refer_style_patterns": {
+            "count": 3,
+            "lines": [
+              "Refer to ##sales-language-kb## for objection lines. Then escalate, one rung per refusal:",
+              "If they ask price → refer to ##sales-language-kb## and defer all pricing to the live call. Never quote a number.",
+              "# Extraction reference"
+            ]
+          },
+          "kb_verbatim_overlap": {
+            "count": 0,
+            "lines": []
+          },
+          "price_lines": {
+            "count": 4,
+            "lines": [
+              "Ask for the meeting: a live call this week. The value prop was already delivered — your job is the ask. Defer pricing. No dates or times here — those come later, once their details are in.",
+              "### Pricing",
+              "If they ask price → refer to ##sales-language-kb## and defer all pricing to the live call. Never quote a number.",
+              "- Defer all pricing to the live call — never quote a number."
+            ]
+          }
+        },
+        "VerifyLead": {
+          "state": "VerifyLead",
+          "word_count": 311,
+          "kb_name_mentions": {
+            "count": 0,
+            "lines": []
+          },
+          "dv_mentions": {
+            "count": 0,
+            "lines": []
+          },
+          "kb_dv_same_line_joins": {
+            "count": 0,
+            "lines": []
+          },
+          "refer_style_patterns": {
+            "count": 0,
+            "lines": []
+          },
+          "kb_verbatim_overlap": {
+            "count": 0,
+            "lines": []
+          },
+          "price_lines": {
+            "count": 0,
+            "lines": []
+          }
+        },
+        "contact_details": {
+          "state": "contact_details",
+          "word_count": 706,
+          "kb_name_mentions": {
+            "count": 0,
+            "lines": []
+          },
+          "dv_mentions": {
+            "count": 1,
+            "lines": [
+              "{{first_name}} · {{last_name}} · {{company_name}} · {{industry}} · {{pain_points}} · {{callback_number}}"
+            ]
+          },
+          "kb_dv_same_line_joins": {
+            "count": 0,
+            "lines": []
+          },
+          "refer_style_patterns": {
+            "count": 1,
+            "lines": [
+              "# Extraction reference"
+            ]
+          },
+          "kb_verbatim_overlap": {
+            "count": 0,
+            "lines": []
+          },
+          "price_lines": {
+            "count": 0,
+            "lines": []
+          }
+        },
+        "general_prompt": {
+          "state": "general_prompt",
+          "word_count": 1052,
+          "kb_name_mentions": {
+            "count": 9,
+            "lines": [
+              "You receive inbound calls from prospects. Refer to ##call-context-kb## for how to respond in general and for each outreach channel (voicemail, cold outreach, Indeed, Facebook/Meta ads, and any other channel).",
+              "When the prospect references an outreach channel, refer to ##call-context-kb##.",
+              "When identifying challenges or handling objections, refer to ##sales-language-kb##. Use ##pain-points-kb## and ##sales-psychology-kb## for tailoring.",
+              "When {{industry}} is identified, refer to ##industry-kb## and use the closest matching section; if no close match, use general principles.",
+              "When they ask what the system does or how it works, refer to ##voice-ai-capabilities-kb##.",
+              "When the booking is confirmed and the call is ending, refer to ##call-closing-kb##."
+            ]
+          },
+          "dv_mentions": {
+            "count": 2,
+            "lines": [
+              "- Light self-correction: <We help with—well, actually, what industry are you in first?>",
+              "When {{industry}} is identified, refer to ##industry-kb## and use the closest matching section; if no close match, use general principles."
+            ]
+          },
+          "kb_dv_same_line_joins": {
+            "count": 1,
+            "lines": [
+              "When {{industry}} is identified, refer to ##industry-kb## and use the closest matching section; if no close match, use general principles."
+            ]
+          },
+          "refer_style_patterns": {
+            "count": 11,
+            "lines": [
+              "You are Linda, sales development representative at Dialux. You work with Jay, the founder who leads technical implementations and explains in depth how the technology at Dialux works. You are warm, consultative, and an expert listener.",
+              "A consultative sales call: hear why they called, uncover their phone-coverage challenge, show how Dialux solves it, confirm their interest, and book a live call. One step at a time.",
+              "You receive inbound calls from prospects. Refer to ##call-context-kb## for how to respond in general and for each outreach channel (voicemail, cold outreach, Indeed, Facebook/Meta ads, and any other channel).",
+              "When the prospect references an outreach channel, refer to ##call-context-kb##.",
+              "When identifying challenges or handling objections, refer to ##sales-language-kb##. Use ##pain-points-kb## and ##sales-psychology-kb## for tailoring.",
+              "When {{industry}} is identified, refer to ##industry-kb## and use the closest matching section; if no close match, use general principles."
+            ]
+          },
+          "kb_verbatim_overlap": {
+            "count": 0,
+            "lines": []
+          },
+          "price_lines": {
+            "count": 1,
+            "lines": [
+              "- NEVER invent details — names, numbers, phones, emails, prices. Use only what they actually said; a missing figure means ask, not guess."
+            ]
+          }
+        }
+      }
+    }
+  }
+}

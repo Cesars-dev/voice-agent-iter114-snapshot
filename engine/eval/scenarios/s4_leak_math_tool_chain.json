@@ -1,0 +1,55 @@
+{
+  "name": "s4_leak_math_tool_chain",
+  "description": "The monetization chain (production): gated transitions + the deterministic leak math. extract the three inputs + calculate_monthly_leak in ONE round (same-round dvs visibility), leak lands in dvs (server-owned write path), and the spoken stream keeps the comma-formatted number.",
+  "steps": [
+    {
+      "user": "we miss maybe 20 calls a week, close about half, average job is 650 dollars",
+      "rounds": [
+        {
+          "tokens": [],
+          "tool_calls": [
+            {"name": "extract_intake_details", "arguments": {"inbound_channel": "voicemail", "interest_topic": "missed calls", "pain_frame": "losing jobs"}},
+            {"name": "intake_completed", "arguments": {"intake_completed": true}, "id": "f1"},
+            {"name": "transition_to_Discovery", "arguments": {"intake_completed": true, "inbound_channel": "voicemail", "interest_topic": "missed calls", "pain_frame": "losing jobs"}}
+          ]
+        },
+        {"tokens": ["Got", " it", "."], "match_system": "Bridge what they came for"}
+      ],
+      "expect": {"state": "Discovery"}
+    },
+    {
+      "user": "dental office, 20 missed calls a week, half close rate, 650 per job",
+      "rounds": [
+        {
+          "tokens": [],
+          "tool_calls": [
+            {"name": "extract_discovery_details", "arguments": {"industry": "dental", "pain_points": "after-hours calls", "interest_signal": true, "pattern_matched": true, "call_volume": "20/week"}},
+            {"name": "discovery_completed", "arguments": {"discovery_completed": true}, "id": "f2"},
+            {"name": "transition_to_Closer", "arguments": {"discovery_completed": true, "industry": "dental", "pain_points": "after-hours calls", "interest_signal": true, "pattern_matched": true}}
+          ]
+        },
+        {"tokens": ["Ouch", "."], "match_system": "Make them feel the cost"}
+      ],
+      "expect": {"state": "Closer"}
+    },
+    {
+      "user": "sounds about right",
+      "rounds": [
+        {
+          "tokens": [],
+          "tool_calls": [
+            {"name": "extract_leak_inputs", "arguments": {"missed_calls_weekly": 20, "close_rate_pct": 50, "avg_job_value": 650}},
+            {"name": "calculate_monthly_leak", "arguments": {}}
+          ]
+        },
+        {"tokens": ["That", " is", " about", " $6,500", " a", " week", "."], "match_system": "Make them feel the cost"}
+      ],
+      "expect": {
+        "state": "Closer",
+        "dvs": {"weekly_leak": "6,500", "monthly_leak": "28,100"},
+        "tools": ["extract_leak_inputs", "calculate_monthly_leak"],
+        "spoken": ["$6,500"]
+      }
+    }
+  ]
+}

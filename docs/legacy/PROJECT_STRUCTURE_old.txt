@@ -1,0 +1,96 @@
+================================================================================
+ RETELL_AI_MCP_CONNECTION — PROJECT FILE TREE (organized 2026-08-25)
+ Read AGENTS.md (master index) + README.md (orientation) first.
+================================================================================
+
+/                                ROOT — only entry points live here
+│   AGENTS.md                    master agent index, KB policy, current focus
+│   README.md                    project orientation + full structure guide
+│   CLAUDE.md                    4-line pointer for Claude Code -> AGENTS.md
+│   PROJECT_STRUCTURE.txt        this file
+│   .env                         API keys (gitignored)
+│   .gitignore
+│   .mcp.json                    Retell MCP server config
+│
+├── agents/                      VOICE/chat agent builds by project
+│   └── heating_uk/              UK HVAC boiler agent (V3.1 near-prod)
+│       ├── STATE.md             live status of heating agent
+│       ├── multiprompt/V3.1/    current build (build_v3_llm.py, prompts, JSON, KBs)
+│       ├── performance_tests/   LLM-to-LLM runners + happy-path scripts
+│       └── edits/, original_design/, single_prompt_test/
+│
+├── Dialux_SDR/                  DIALUX SDR LINE — sales SDR chat agent
+│   ├── V7.5_lean/               ★ PRODUCTION BUILD (agent_edf1437704e976c53539c7effe)
+│   │   ├── prompts/             general_prompt.md + states/*.md (sources)
+│   │   ├── JSON/, edges/        state machine definition
+│   │   ├── tools/               build_llm_json.py (parity) + deploy_v68.py
+│   │   ├── Knowledge bases/     8 registry-managed KBs
+│   │   ├── analysis/            SOP reports for this build
+│   │   └── DEPLOYED_llm_snapshot.json, PRODUCTION.md
+│   ├── testing/                 canonical test toolkit
+│   │   ├── test_llm_to_llm.py   LLM-to-LLM harness (PERSONAS 0-12)
+│   │   ├── json_logs/           ALL raw chat transcripts since V6.8
+│   │   └── runners/             reg_one.py / adv_one.py / analyze_v690.py
+│   ├── SKILL.md                 ★ build blueprint: how to build an SDR agent
+│   ├── STATE.md                 lineage verdict, accepted trade-offs, next steps
+│   ├── README.md                Dialux folder map + version index + services
+│   ├── config/                  kb_registry.json etc.
+│   ├── tasks/surgeon/           Surgeon Framework procedure logs per iteration
+│   └── _archive/
+│       └── versions/            ALL old builds V6.6...V7.4 + working_agent (V6.5)
+│
+├── time_endpoint/               SERVICE: agent-agnostic time parsing  :8002
+│   ├── README.md, ARCHITECTURE.md, main.py
+│   └── deploy.sh, time-service.service
+│
+├── cal_slots_endpoint/          SERVICE: Cal.com slot availability webhook
+│   ├── README.md, ARCHITECTURE.md, FINDINGS.md, SOP_ADD_ACCOUNT.md
+│   ├── main.py, config.py, store.py, notify.py, slots.db
+│   └── cal-slots.service
+│
+├── validator_endpoint/          SERVICE: lead-validation booking gate  :8003
+│   ├── README.md                <- the gate: writes machine-truth slot_verified
+│   ├── main.py, validate.py     HMAC auth; unwraps Retell nested args
+│   └── test_validate.py         33 fixtures
+│
+├── docs/                        reference documentation
+│   ├── BUILD-SOP.md             how to build a Retell agent end-to-end
+│   ├── DEPLOYMENT-SOP.md        deploy chain incl. KB registry upsert fix
+│   ├── SERVICES_OVERVIEW.md     the three self-hosted services at a glance
+│   ├── custom_endpoints.md      how to wire custom function tools + HMAC
+│   ├── KNOWLEDGE_BASE_STRUCTURE.md   KB design doctrine (Dialux = reference)
+│   ├── api/                     Retell / Cal.com API notes
+│   ├── platform/, deprecations/ platform docs + retired APIs
+│   └── Testing_guidelines/      CALL / SALES / HUMANIZED analysis SOPs + prompt rules
+│
+├── plans/                       work plans & backlogs (timestamped, one active at a time)
+│   ├── PENDING_TASKS.md         running backlog (heating + dialux + repo)
+│   ├── NEXT_STEPS.md            task backlog (older)
+│   ├── new_plan_sop.md          active work-plan SOP
+│   ├── PLAN_AGENT_AGNOSTIC_TIME_SERVICE.md
+│   ├── DEPLOY_V6.4_2026-08-22/, V6.6_ITERATIONS_2026-08-22/   historical dialux plans
+│   ├── dialux-working-agent-retest.md
+│   └── archive/                 one-off notes (heating deploy test etc.)
+│
+├── scripts/                     ops scripts
+│   ├── vps.sh                   VPS SSH/tmux/git control
+│   └── bridge.py                live chain test: Retell time ctx -> :8002 -> slots
+│
+├── data/                        exports & dumps (gitignored)
+│   └── kb_dump_2026-08-21/      192 duplicate-KB backup (~$250 lesson)
+│
+└── _archive/                    DO-NOT-DELETE history
+    ├── knowledge_bases_root_authoring_snapshots/   early KB authoring copies
+    ├── legacy-dialux/, old-webhooks-runtime/, retellai-mcp-server/
+
+--------------------------------------------------------------------------------
+ LIVE SERVICES (all on MainVps, behind Caddy https://slots.diallux-ai.site):
+   :8002 time_endpoint      GET  /time-function/today
+   cal-slots                POST /check_availability
+   :8003 validator_endpoint POST /validator-function/validate_lead  <- booking gate
+ Caddy routes are runtime-injected via admin API (127.0.0.1:2019) - re-inject
+ if Caddy restarts. Systemd USER units: time-service, cal-slots, validator-service.
+--------------------------------------------------------------------------------
+ PRODUCTION AGENT: Dialux_SDR/V7.5_lean  agent_edf1437704e976c53539c7effe
+ Voice production (read-only): agents/heating_uk + agent_4b577c7e169b069deae991b11d
+--------------------------------------------------------------------------------

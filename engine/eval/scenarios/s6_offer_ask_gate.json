@@ -1,0 +1,82 @@
+{
+  "name": "s6_offer_ask_gate",
+  "description": "iter43 PROMPT-FIRST consent ask: the Offer round SPEAKS the walkthrough ask and fires NO tools; only after the caller's explicit yes does the model fire extract_offer_details(livecall_agreed=true) in the SAME response as its reply — the edge gate then opens Offer->contact_details. The date binary is dead in this state (no day/time ask). HONEST NOTE: FakeLLM rounds are scripted, so this pins the DESIRED round shape as a regression fixture — the REAL prompt-adherence gate is the T6 live transcript check.",
+  "kb_canned": {},
+  "steps": [
+    {
+      "user": "I got a voicemail from Jay about missed calls.",
+      "rounds": [
+        {
+          "tokens": [],
+          "tool_calls": [
+            {"name": "extract_intake_details", "arguments": {"inbound_channel": "voicemail", "interest_topic": "missed calls", "pain_frame": "losing jobs"}},
+            {"name": "intake_completed", "arguments": {"intake_completed": true}, "id": "flag1"},
+            {"name": "transition_to_Discovery", "arguments": {"intake_completed": true, "inbound_channel": "voicemail", "interest_topic": "missed calls", "pain_frame": "losing jobs"}}
+          ]
+        },
+        {"tokens": ["Got", " it", "."], "match_system": "Bridge what they came for"}
+      ],
+      "expect": {"state": "Discovery", "dvs": {"intake_completed": "True"}}
+    },
+    {
+      "user": "we run a dental office, always busy, phones ring off the hook",
+      "rounds": [
+        {
+          "tokens": [],
+          "tool_calls": [
+            {"name": "extract_discovery_details", "arguments": {"industry": "dental", "pain_points": "missed calls", "interest_signal": true, "pattern_matched": true}},
+            {"name": "discovery_completed", "arguments": {"discovery_completed": true}, "id": "flag2"},
+            {"name": "transition_to_Closer", "arguments": {"discovery_completed": true, "industry": "dental", "pain_points": "missed calls", "interest_signal": true, "pattern_matched": true}}
+          ]
+        },
+        {"tokens": ["Makes", " sense", "."], "match_system": "Make them feel the cost"}
+      ],
+      "expect": {"state": "Closer", "dvs": {"discovery_completed": "True", "industry": "dental"}}
+    },
+    {
+      "user": "that does sound like us, what's the fix?",
+      "rounds": [
+        {
+          "tokens": [],
+          "tool_calls": [
+            {"name": "extract_closer_details", "arguments": {"interest_level": "high", "pain_points": "missed calls"}},
+            {"name": "closer_completed", "arguments": {"closer_completed": true}, "id": "flag3"},
+            {"name": "transition_to_Offer", "arguments": {"closer_completed": true, "industry": "dental", "pain_points": "missed calls", "interest_level": "high"}}
+          ]
+        },
+        {"tokens": ["Here", " is", " the", " fix", "."], "match_system": "Ask for the meeting"}
+      ],
+      "expect": {"state": "Offer", "dvs": {"closer_completed": "True"}}
+    },
+    {
+      "user": "hmm, ok",
+      "rounds": [
+        {"tokens": ["Would", " you", " like", " me", " to", " walk", " you", " through", " how", " this", " works", " on", " your", " numbers", "?"]}
+      ],
+      "expect": {
+        "state": "Offer",
+        "dvs": {"livecall_agreed": "False"},
+        "spoken": ["walk you through how this works on your numbers"]
+      }
+    },
+    {
+      "user": "yeah let's do it today",
+      "rounds": [
+        {
+          "tokens": ["Perfect", ".", " Let", " me", " grab", " a", " few", " details", " to", " get", " you", " booked", "."],
+          "tool_calls": [
+            {"name": "extract_offer_details", "arguments": {"livecall_agreed": true}},
+            {"name": "offer_completed", "arguments": {"offer_completed": true}, "id": "flag4"},
+            {"name": "transition_to_contact_details", "arguments": {"offer_completed": true, "livecall_agreed": true}}
+          ]
+        },
+        {"tokens": ["First", ",", " your", " name", "?"], "match_system": "Collect and verify the contact details"}
+      ],
+      "expect": {
+        "state": "contact_details",
+        "dvs": {"livecall_agreed": "True", "offer_completed": "True"},
+        "tools": ["extract_offer_details"]
+      }
+    }
+  ]
+}

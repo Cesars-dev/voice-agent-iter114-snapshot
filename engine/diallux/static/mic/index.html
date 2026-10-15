@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dialux SDR — Browser Mic Bridge</title>
+<style>
+  :root { color-scheme: dark; }
+  body { font-family: -apple-system, "Segoe UI", sans-serif; background:#0e1116; color:#e6e6e6;
+         display:flex; flex-direction:column; align-items:center; margin:0; min-height:100vh; }
+  main { max-width: 560px; width:100%; padding: 32px 20px; }
+  h1 { font-size: 1.15rem; font-weight: 600; margin: 0 0 4px; }
+  .sub { color:#8b93a1; font-size:.85rem; margin-bottom:24px; }
+  .card { background:#161b23; border:1px solid #232a35; border-radius:14px; padding:22px; }
+  .status { display:flex; align-items:center; gap:8px; font-size:.9rem; margin-bottom:16px; }
+  .dot { width:10px; height:10px; border-radius:50%; background:#4b5563; }
+  .dot.on { background:#22c55e; } .dot.talk { background:#f59e0b; } .dot.err { background:#ef4444; }
+  button { font-size:1rem; padding:12px 22px; border-radius:10px; border:1px solid #2b3543;
+           background:#1d2530; color:#e6e6e6; cursor:pointer; }
+  button.primary { background:#2563eb; border-color:#2563eb; }
+  button.primary:disabled { background:#1d2530; border-color:#2b3543; color:#667; cursor:default; }
+  button:disabled:not(.primary) { color:#667; cursor:default; }
+  .row { display:flex; gap:10px; margin-bottom:14px; }
+  label.chk { display:flex; align-items:center; gap:8px; font-size:.85rem; color:#8b93a1; }
+  .log { font-family: ui-monospace, monospace; font-size:.75rem; color:#9aa4b2; background:#0e1116;
+         border:1px solid #232a35; border-radius:8px; height:150px; overflow-y:auto; padding:8px; }
+  .hint { font-size:.8rem; color:#8b93a1; margin-top:12px; line-height:1.5; }
+  kbd { background:#232a35; border-radius:4px; padding:1px 6px; font-size:.75rem; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Dialux SDR — Linda (browser mic bridge)</h1>
+  <div class="sub">Same 9-state graph as the phone line. 16 kHz PCM in, Linda out.</div>
+  <div class="card">
+    <div class="status"><span id="dot" class="dot"></span><span id="status">idle</span></div>
+    <div class="status"><span id="rtt" style="font-family:ui-monospace,monospace;font-size:.8rem;color:#22c55e">RTT: —</span></div>
+    <div class="row">
+      <input type="tel" id="phone" placeholder="Your phone number (optional)" style="flex:1;padding:.5rem;border-radius:.5rem;border:1px solid #334155;background:#0f172a;color:#e2e8f0">
+      <button id="start" class="primary">Start call</button>
+      <button id="stop" disabled>End call</button>
+    </div>
+    <label class="chk"><input type="checkbox" id="ptt"> Hold <kbd>Space</kbd> to interrupt while Linda speaks (PTT override)</label>
+    <div class="log" id="log"></div>
+    <div class="hint">
+      Chrome opens the mic (echo cancellation + noise suppression on), resamples to 16 kHz,
+      streams PCM over the WebSocket and plays Linda's replies. While she speaks the mic is
+      ducked; tick the box and hold <kbd>Space</kbd> to break in. Everything lands in Langfuse
+      as a <code>micbridge-*</code> trace.
+    </div>
+  </div>
+</main>
+<script>
+(() => {
+  const SAMPLE_RATE = 16000;
+  const RATE = Math.min(Math.max(parseFloat(new URLSearchParams(location.search).get('rate')) || 1, 0.8), 1.15);
+  const $dot = document.getElementById('dot');
+  const $status = document.getElementById('status');
+  const $log = document.getElementById('log');
+  const $start = document.getElementById('start');
+  const $stop = document.getElementById('stop');
+  const $ptt = document.getElementById('ptt');
+  const $rtt = document.getElementById('rtt');
+
+  let ws = null, ctx = null, worklet = null, stream = null, playhead = 0, ducked = false, pttHeld = false;
+  // iter58 instrumentation: page-open → ws-open → first-audio timeline + RTT probe
+  const tPageOpen = performance.now();
+  let tWsOpen = null, tFirstAudio = null, probeSentAt = null, probeTimer = null, statsSent = false;
+  const rtts = [];
+
+  const log = (m) => { const d = document.createElement('div');
+    d.textContent = new Date().toLocaleTimeString() + '  ' + m; $log.appendChild(d); $log.scrollTop = $log.scrollHeight; };
+  const setStatus = (txt, cls) => { $status.textContent = txt; $dot.className = 'dot' + (cls ? ' ' + cls : ''); };
+
+  const WORKLET = `
+    class PCMCapture extends AudioWorkletProcessor {
+      constructor() {
+        super();
+        this._buf = new Int16Array(${800});
+        this._n = 0;
+        this.duck = false;
+        this.port.onmessage = (e) => { if (e.data.type === 'duck') this.duck = e.data.value; };
+      }
+      process(inputs) {
+        const ch = inputs[0] && inputs[0][0];
+        if (!ch) return true;
+        if (this.duck) { this._n = 0; return true; }
+        for (let i = 0; i < ch.length; i++) {
+          const s = Math.max(-1, Math.min(1, ch[i]));
+          this._buf[this._n++] = s < 0 ? s * 0x8000 : s * 0x7FFF;
+          if (this._n === this._buf.length) { this.port.postMessage(this._buf.slice(0)); this._n = 0; }
+        }
+        return true;
+      }
+    }
+    registerProcessor('pcm-capture', PCMCapture);`;
+
+  async function startCall() {
+    $start.disabled = true;
+    try {
+      setStatus('requesting mic…');
+      stream = await navigator.mediaDevices.getUserMedia({ audio: {
+        channelCount: 1, echoCancellation: true, noiseSuppression: true, autoGainControl: true } });
+      ctx = new AudioContext({ sampleRate: SAMPLE_RATE });
+      await ctx.audioWorklet.addModule(URL.createObjectURL(new Blob([WORKLET], { type: 'application/javascript' })));
+      worklet = new AudioWorkletNode(ctx, 'pcm-capture');
+      worklet.port.onmessage = (e) => { if (ws && ws.readyState === WebSocket.OPEN && e.data.length) ws.send(e.data.buffer); };
+      ctx.createMediaStreamSource(stream).connect(worklet);
+
+      // iter58: works both direct (/mic) and behind the Caddy path-route (/voice/mic)
+      const proto = location.protocol === 'https:' ? 'wss://' : 'ws://';
+      const base = location.pathname.replace(/\/mic\/?$/, '/');
+      const k = new URLSearchParams(location.search).get('k') || '';
+      const wsUrl = proto + location.host + base + 'mic/ws' + (k ? '?k=' + encodeURIComponent(k) : '');
+      ws = new WebSocket(wsUrl);
+      ws.binaryType = 'arraybuffer';
+      ws.onopen = () => {
+        tWsOpen = performance.now();
+        log('ws open → start');
+        ws.send(JSON.stringify({ event: 'start',
+          customParameters: Object.assign({}, document.getElementById('phone').value.trim() ? { callback_number: document.getElementById('phone').value.trim() } : {}) }));
+
+        probeTimer = setInterval(() => {
+          if (ws && ws.readyState === WebSocket.OPEN) {
+            probeSentAt = performance.now();
+            ws.send(JSON.stringify({ event: 'probe', t: Math.round(probeSentAt) }));
+          }
+        }, 2000);
+      };
+      ws.onmessage = (e) => {
+        if (typeof e.data === 'string') {
+          try {
+            const m = JSON.parse(e.data);
+            if (m.event === 'probe_ack' && probeSentAt !== null) {
+              const rtt = Math.round(performance.now() - probeSentAt);
+              rtts.push(rtt);
+              $rtt.textContent = 'RTT: ' + rtt + ' ms   (last5: ' + rtts.slice(-5).join(', ') + ')';
+              log('probe RTT ' + rtt + ' ms');
+            }
+          } catch (err) {}
+          return;
+        }
+        if (e.data instanceof ArrayBuffer) {
+          if (tFirstAudio === null) {
+            tFirstAudio = Math.round(performance.now());
+            console.log('[mic] timeline ms — page-open→ws-open: ' + Math.round(tWsOpen - tPageOpen) +
+                        ', ws-open→first-audio: ' + (tFirstAudio - Math.round(tWsOpen)) +
+                        ', page-open→first-audio: ' + (tFirstAudio - Math.round(tPageOpen)));
+            if (ws && ws.readyState === WebSocket.OPEN && !statsSent) {
+              statsSent = true;
+              ws.send(JSON.stringify({
+                event: 'mic_stats',
+                t_page_open_ms: Math.round(tPageOpen),
+                t_ws_open_ms: Math.round(tWsOpen),
+                t_first_audio_ms: tFirstAudio,
+                page_open_to_first_audio_ms: tFirstAudio - Math.round(tPageOpen),
+              }));
+            }
+          }
+          playChunk(new Int16Array(e.data));
+        } // JSON control frames (clear / mark) handled above
+      };
+      ws.onclose = () => {
+        if (probeTimer) clearInterval(probeTimer);
+        log('ws closed'); endCallUI('call ended');
+      };
+      ws.onerror = () => setStatus('ws error', 'err');
+      setStatus('connected — Linda is speaking…', 'talk');
+      $stop.disabled = false;
+      setInterval(duckLoop, 100);
+    } catch (err) {
+      log('ERROR ' + err.message);
+      setStatus(err.message, 'err');
+      $start.disabled = false;
+    }
+  }
+
+  function playChunk(int16) {
+    const buf = ctx.createBuffer(1, int16.length, SAMPLE_RATE);
+    const ch = buf.getChannelData(0);
+    for (let i = 0; i < int16.length; i++) ch[i] = int16[i] / 32768;
+    const src = ctx.createBufferSource();
+    src.buffer = buf;
+    src.playbackRate.value = RATE;
+    src.connect(ctx.destination);
+    const at = Math.max(ctx.currentTime + 0.02, playhead);
+    src.start(at);
+    playhead = at + buf.duration / RATE;
+  }
+
+  function duckLoop() {
+    const speaking = playhead > ctx.currentTime + 0.02;
+    const wantDuck = speaking && !pttHeld;
+    if (wantDuck !== ducked) {
+      ducked = wantDuck;
+      if (worklet) worklet.port.postMessage({ type: 'duck', value: ducked });
+      setStatus(speaking ? (ducked ? 'Linda speaking…' : 'INTERRUPTING — you have the mic')
+                         : 'listening…', speaking ? 'talk' : 'on');
+    }
+  }
+
+  function endCall(sendStop) {
+    if (sendStop && ws && ws.readyState === WebSocket.OPEN) { ws.send(JSON.stringify({ event: 'stop' })); log('stop sent'); }
+    if (ws) try { ws.close(); } catch (e) {}
+    endCallUI('call ended');
+  }
+
+  function endCallUI(msg) {
+    if (stream) stream.getTracks().forEach(t => t.stop());
+    if (ctx) ctx.close().catch(() => {});
+    stream = ctx = worklet = ws = null;
+    $stop.disabled = true; $start.disabled = false;
+    setStatus(msg);
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.code === 'Space' && $ptt.checked && !e.repeat) { e.preventDefault(); pttHeld = true; }
+  });
+  document.addEventListener('keyup', (e) => { if (e.code === 'Space') pttHeld = false; });
+  $start.onclick = () => startCall().catch(e => log(e.message));
+  $stop.onclick = () => endCall(true);
+  setStatus('idle');
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+{
+  "results": [
+    {
+      "scenario": "s1_happy_path_intake_to_discovery",
+      "live": false,
+      "checks_passed": 7,
+      "checks_total": 7,
+      "ok": true,
+      "elapsed_s": 0.03,
+      "failures": []
+    },
+    {
+      "scenario": "s2_are_you_ai_kb_retrieval",
+      "live": false,
+      "checks_passed": 3,
+      "checks_total": 3,
+      "ok": true,
+      "elapsed_s": 0.01,
+      "failures": []
+    },
+    {
+      "scenario": "s3_gate_rejection_missing_params",
+      "live": false,
+      "checks_passed": 3,
+      "checks_total": 3,
+      "ok": true,
+      "elapsed_s": 0.01,
+      "failures": []
+    },
+    {
+      "scenario": "s4_leak_math_tool_chain",
+      "live": false,
+      "checks_passed": 8,
+      "checks_total": 8,
+      "ok": true,
+      "elapsed_s": 0.04,
+      "failures": []
+    },
+    {
+      "scenario": "s5_tts_normalization_stream",
+      "live": false,
+      "checks_passed": 3,
+      "checks_total": 3,
+      "ok": true,
+      "elapsed_s": 0.01,
+      "failures": []
+    },
+    {
+      "scenario": "s6_offer_ask_gate",
+      "live": false,
+      "checks_passed": 14,
+      "checks_total": 14,
+      "ok": true,
+      "elapsed_s": 0.04,
+      "failures": []
+    }
+  ]
+}

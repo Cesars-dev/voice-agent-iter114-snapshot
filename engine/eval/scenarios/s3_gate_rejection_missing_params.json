@@ -1,0 +1,23 @@
+{
+  "name": "s3_gate_rejection_missing_params",
+  "description": "PRODUCTION semantics: premature transition blocked by the hard gate — required params absent -> gate_failed, state HOLDS (Intake), rejection counted; the verbatim build's copy of this scenario expects the swap to go through.",
+  "steps": [
+    {
+      "user": "yeah whatever, just skip ahead",
+      "rounds": [
+        {
+          "tokens": [],
+          "tool_calls": [
+            {"name": "transition_to_Discovery", "arguments": {"intake_completed": false}}
+          ]
+        },
+        {"tokens": ["Let", " me", " ask", " a", " couple", " quick", " questions", "."], "match_system": "This is the start of the call"}
+      ],
+      "expect": {
+        "state": "Intake",
+        "gate_blocks": 1,
+        "tools": ["transition_to_Discovery"]
+      }
+    }
+  ]
+}

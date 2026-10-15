@@ -1,0 +1,14 @@
+# Caddy reverse proxy: automatic TLS (wss:// + https://) for the media server.
+# Twilio Media Streams REQUIRES a valid TLS cert on the wss URL — Caddy handles
+# certificates + renewal automatically via Let's Encrypt.
+
+calls.your-domain.com {
+    # Media Streams websocket (long-lived, bidirectional)
+    handle /media {
+        reverse_proxy 127.0.0.1:8000
+    }
+    # TwiML webhook + health
+    handle {
+        reverse_proxy 127.0.0.1:8000
+    }
+}

@@ -1,0 +1,444 @@
+{
+  "results": [
+    {
+      "persona": "(GK) Dave \u2014 status-quo defender",
+      "type": "gatekeeper",
+      "expect": "book",
+      "transport": "graph",
+      "build": "production",
+      "outcome": "book",
+      "pass": true,
+      "booked": true,
+      "booking": {
+        "fired": true,
+        "attempts": 1,
+        "booked": true,
+        "uid": "qeTqHuZ1EDzH8bxEdhPQ6H",
+        "status": "booked"
+      },
+      "ended": true,
+      "turns": 32,
+      "tools": [
+        "extract_intake_details",
+        "intake_completed",
+        "transition_to_Discovery",
+        "extract_discovery_details",
+        "discovery_completed",
+        "transition_to_Closer",
+        "extract_leak_inputs",
+        "calculate_monthly_leak",
+        "extract_closer_details",
+        "closer_completed",
+        "transition_to_Offer",
+        "extract_offer_details",
+        "offer_completed",
+        "transition_to_contact_details",
+        "extract_person_details",
+        "record_reach_details",
+        "extract_contact_timezone",
+        "contact_details_completed",
+        "transition_to_ConfirmSlots",
+        "query_livecall_slots",
+        "extract_confirm_details",
+        "validate_lead",
+        "end_call"
+      ],
+      "final_state": "Closing",
+      "final_dvs": {
+        "first_name": "Dave",
+        "last_name": "Kowalski",
+        "company_name": "Kowalski Auto Body",
+        "industry": "auto body shop, collision repair",
+        "callback_number": "+16174000005",
+        "prospect_timezone": "America/New_York",
+        "is_calling_best_number": true,
+        "pain_points": "front desk gets pulled in ten directions, answering the phone gets delayed, estimates or walk-ins take priority, calls sit for a bit, interruptions when the shop gets slammed",
+        "pain_frame": "Front desk gets pulled in ten directions when it\u2019s busy, so answering the phone right away gets delayed while estimates or walk-ins take priority and calls sit for a bit.",
+        "pain_urgency": "medium",
+        "interest_topic": "hear you out",
+        "inbound_channel": "cold outreach reply",
+        "interest_signal": true,
+        "pattern_matched": true,
+        "intake_completed": true,
+        "discovery_completed": true,
+        "closer_completed": true,
+        "offer_completed": true,
+        "contact_details_completed": true,
+        "phone_confirmed": true,
+        "slot_verified": true,
+        "data_verified": true,
+        "booking_completed": false,
+        "selected_time": "tomorrow at 2:30 pm",
+        "requested_slot": "tomorrow at 1 pm or 2:30 pm",
+        "slot_reservation_uids": "2c4b75b4-546f-46fc-bb36-b3a600eb4c65,a1f76ae0-6009-4887-90d4-41794a7e949d",
+        "today_date": "2026-09-04",
+        "missed_calls_weekly": 15,
+        "missed_calls_daily": 3,
+        "close_rate_pct": 50,
+        "avg_job_value": 1100,
+        "weekly_leak": "$8,200",
+        "monthly_leak": "$35,000",
+        "booking_uid": "qeTqHuZ1EDzH8bxEdhPQ6H",
+        "booking_verified": true,
+        "booking_failed": false,
+        "objection_type": "none",
+        "interest_level": "medium",
+        "livecall_agreed": true,
+        "booking_confirmed": false,
+        "chain_done": true
+      },
+      "gate_rejections": 1,
+      "blocked_transitions": 1,
+      "turn_ms": [
+        1740.5,
+        1058.4,
+        1241.6,
+        2770.6,
+        887.7,
+        2163.7,
+        1205.6,
+        1146.3,
+        1626.9,
+        3212.4,
+        1982.2,
+        1713.7,
+        1719.9,
+        1564.0,
+        1936.5,
+        997.9,
+        1443.0,
+        1240.7,
+        925.3,
+        3070.7,
+        2394.0,
+        1020.6,
+        1513.0,
+        893.7,
+        1038.4,
+        1198.2,
+        1309.9,
+        2344.2,
+        2481.2,
+        1210.3,
+        2605.1,
+        1657.2
+      ],
+      "p50_ms": 1564.0,
+      "wall_s": 100.49,
+      "cost": null,
+      "rag_stats": {
+        "rag_turns": 26,
+        "rag_ms_total": 3030.4999999999995,
+        "rag_chars": 19775
+      },
+      "call_id": "l2l-gkdave-7bc81a8e",
+      "transcript": [
+        {
+          "turn": 1,
+          "caller": "We have a girl at the front desk, she picks up fine. Not sure why I'd need this.",
+          "agent": "Got it, if calls are already being answered, where do things get tight for you?",
+          "tools": [],
+          "state": "Intake",
+          "agent_ms": 1740.5
+        },
+        {
+          "turn": 2,
+          "caller": "Mostly when the shop gets slammed. People are helping customers, phones ring, we just call people back later.",
+          "agent": "Makes sense, when those callbacks happen later, what tends to slip through?",
+          "tools": [],
+          "state": "Intake",
+          "agent_ms": 1058.4
+        },
+        {
+          "turn": 3,
+          "caller": "Honestly, never really counted misses. Feels like a solution looking for a problem to me.",
+          "agent": "Fair enough, if it really is just occasional overflow, what made you take the call today?",
+          "tools": [],
+          "state": "Intake",
+          "agent_ms": 1241.6
+        },
+        {
+          "turn": 4,
+          "caller": "Had a minute between jobs and figured I\u2019d hear you out, but I\u2019m not looking to replace anybody.",
+          "agent": "Got it, and I\u2019m not talking about replacing anyone.When the shop gets slammed, is the bigger issue missed new work or interruptions for your team?",
+          "tools": [],
+          "state": "Intake",
+          "agent_ms": 2770.6
+        },
+        {
+          "turn": 5,
+          "caller": "Probably the interruptions more than anything. Front desk gets pulled in ten directions when it\u2019s busy.",
+          "agent": "Yeah, that sounds exhausting when everyone's getting pulled in different directions.When that happens, what usually gets delayed first?",
+          "tools": [],
+          "state": "Intake",
+          "agent_ms": 887.7
+        },
+        {
+          "turn": 6,
+          "caller": "Usually answering the phone right away. Sometimes estimates or walk-ins take priority and calls sit for a bit.",
+          "agent": "That makes sense, and it\u2019s exhausting when the phone keeps losing out to everything else.",
+          "tools": [
+            "extract_intake_details",
+            "intake_completed",
+            "transition_to_Discovery"
+          ],
+          "state": "Discovery",
+          "agent_ms": 2163.7
+        },
+        {
+          "turn": 7,
+          "caller": "Yeah, that's the business. Busy is good. We manage it fine and just return calls when we can.",
+          "agent": "Right, and if calling people back is working well enough, what would have to start happening before it became worth fixing?",
+          "tools": [],
+          "state": "Discovery",
+          "agent_ms": 1205.6
+        },
+        {
+          "turn": 8,
+          "caller": "If we were actually losing real jobs from it, maybe. But I\u2019ve never really seen hard numbers on that.",
+          "agent": "That\u2019s fair, and you wouldn\u2019t change anything on a guess.If even a couple callers gave up instead of waiting for the callback, would that matter to you?",
+          "tools": [],
+          "state": "Discovery",
+          "agent_ms": 1146.3
+        },
+        {
+          "turn": 9,
+          "caller": "Sure, if people are actually dropping off and not booking, that\u2019d matter. But I\u2019d need to see that first.",
+          "agent": "I hear you, seeing proof matters.Would it be worth a short look with Jay at where those delayed calls may be leaking jobs, just so you can judge it with real data?",
+          "tools": [],
+          "state": "Discovery",
+          "agent_ms": 1626.9
+        },
+        {
+          "turn": 10,
+          "caller": "Alright, as a backup layer I can see it. Book your demo. +16174000005",
+          "agent": "Got it, as a backup layer makes sense. Sounds good, and before I move that forward, what kind of shop are you in?",
+          "tools": [
+            "extract_discovery_details",
+            "discovery_completed",
+            "transition_to_Closer"
+          ],
+          "state": "Discovery",
+          "agent_ms": 3212.4
+        },
+        {
+          "turn": 11,
+          "caller": "Auto body shop, collision repair mainly. We're in Boston.",
+          "agent": "Got it, collision repair in Boston.",
+          "tools": [
+            "extract_discovery_details",
+            "discovery_completed",
+            "transition_to_Closer"
+          ],
+          "state": "Closer",
+          "agent_ms": 1982.2
+        },
+        {
+          "turn": 12,
+          "caller": "Yep, that\u2019s right. What exactly does this thing do when we can\u2019t get to the phone?",
+          "agent": "When your team\u2019s tied up, it answers right away, handles the caller like a front desk backup, and helps keep new jobs from slipping while your staff stays focused.Want me to give you the quick version of how it works for a collision shop?",
+          "tools": [],
+          "state": "Closer",
+          "agent_ms": 1713.7
+        },
+        {
+          "turn": 13,
+          "caller": "Yeah, quick version\u2019s fine. Keep it short.",
+          "agent": "Sure, when your front desk is tied up, it picks up right away, handles basic intake, and makes sure callers don\u2019t drift to the next shop.Want the version of what that sounds like for your customers?",
+          "tools": [],
+          "state": "Closer",
+          "agent_ms": 1719.9
+        },
+        {
+          "turn": 14,
+          "caller": "Yeah, go ahead. What's it actually sound like to someone calling in?",
+          "agent": "Got it, to your caller it sounds like a calm front desk backup that answers right away, gets the key details, and helps move the job forward instead of sending them to voicemail.Want the caller experience version or the shop workflow version?",
+          "tools": [],
+          "state": "Closer",
+          "agent_ms": 1564.0
+        },
+        {
+          "turn": 15,
+          "caller": "Shop workflow version. I care more about how it helps us without creating extra work.",
+          "agent": "It takes the first ring off your team, grabs the key info up front, and keeps your front desk from bouncing between walk-ins, estimates, and a ringing line.Would it help to see what that missed-call leak could look like in your shop with rough numbers?",
+          "tools": [],
+          "state": "Closer",
+          "agent_ms": 1936.5
+        },
+        {
+          "turn": 16,
+          "caller": "Maybe, but I\u2019m not convinced we\u2019re leaking enough to matter. Give me the rough version.",
+          "agent": "Fair enough, mind if I do a quick back-of-the-napkin version with your numbers?",
+          "tools": [],
+          "state": "Closer",
+          "agent_ms": 997.9
+        },
+        {
+          "turn": 17,
+          "caller": "Alright, quick version. But keep it simple.",
+          "agent": "Got it, about how many calls a day hit voicemail when the shop gets slammed, 2, 5, or 10?",
+          "tools": [],
+          "state": "Closer",
+          "agent_ms": 1443.0
+        },
+        {
+          "turn": 18,
+          "caller": "Closer to 2 or 3 on a busy day, not 10.",
+          "agent": "Got it, let\u2019s call it 3 on a busy day.Of those, what share do you think would actually turn into work if you answered right away, maybe 25% or 50%?",
+          "tools": [],
+          "state": "Closer",
+          "agent_ms": 1240.7
+        },
+        {
+          "turn": 19,
+          "caller": "Maybe half, if they\u2019re calling around and we get them first.",
+          "agent": "Got it, and what\u2019s your average repair ticket, roughly?",
+          "tools": [],
+          "state": "Closer",
+          "agent_ms": 925.3
+        },
+        {
+          "turn": 20,
+          "caller": "Roughly eleven hundred bucks on average, give or take.",
+          "agent": "Alright, using that rough version, if 3 calls a day slip to voicemail and half would have booked at about $1,100, that adds up fast. So on your rough numbers, that\u2019s about $8,250 a week that could slip when calls sit instead of getting answered.Does that feel in the ballpark?",
+          "tools": [
+            "extract_leak_inputs",
+            "calculate_monthly_leak"
+          ],
+          "state": "Closer",
+          "agent_ms": 3070.7
+        },
+        {
+          "turn": 21,
+          "caller": "Maybe on paper, sure. Still sounds high, but I get the point if it\u2019s just a backup.",
+          "agent": "Totally fair, and even if we cut that down hard, it still points to money slipping when your front desk is tied up.",
+          "tools": [
+            "extract_closer_details",
+            "closer_completed",
+            "transition_to_Offer"
+          ],
+          "state": "Offer",
+          "agent_ms": 2394.0
+        },
+        {
+          "turn": 22,
+          "caller": "Yeah, if it\u2019s truly just covering overflow and not replacing anybody, I can at least take a look.",
+          "agent": "Perfect, that\u2019s all I was hoping for.Let me grab a few details to get you booked.",
+          "tools": [],
+          "state": "Offer",
+          "agent_ms": 1020.6
+        },
+        {
+          "turn": 23,
+          "caller": "Alright, go ahead. What do you need from me?",
+          "agent": "Perfect, and since you already gave me your number, what\u2019s the best name to put on the booking?",
+          "tools": [
+            "extract_offer_details",
+            "offer_completed",
+            "transition_to_contact_details"
+          ],
+          "state": "contact_details",
+          "agent_ms": 1513.0
+        },
+        {
+          "turn": 24,
+          "caller": "Dave Kowalski.",
+          "agent": "Got it, Dave.And your company name?",
+          "tools": [],
+          "state": "contact_details",
+          "agent_ms": 893.7
+        },
+        {
+          "turn": 25,
+          "caller": "Kowalski Auto Body.",
+          "agent": "Thanks, and is the number you're calling from the best contact number to reach you?",
+          "tools": [
+            "extract_person_details"
+          ],
+          "state": "contact_details",
+          "agent_ms": 1038.4
+        },
+        {
+          "turn": 26,
+          "caller": "Yeah, this number\u2019s fine.",
+          "agent": "Perfect, I\u2019ve got that as your best number.",
+          "tools": [
+            "record_reach_details"
+          ],
+          "state": "contact_details",
+          "agent_ms": 1198.2
+        },
+        {
+          "turn": 27,
+          "caller": "Alright. When\u2019s this demo supposed to happen?",
+          "agent": "We\u2019re just finishing your details first, and then I\u2019ll get to the time.",
+          "tools": [
+            "extract_contact_timezone"
+          ],
+          "state": "contact_details",
+          "agent_ms": 1309.9
+        },
+        {
+          "turn": 28,
+          "caller": "Alright, just don\u2019t make this a whole big thing.",
+          "agent": "Absolutely, I\u2019ll keep it simple. Of course, Dave.Would you prefer later today or tomorrow for the demo?",
+          "tools": [
+            "contact_details_completed",
+            "transition_to_ConfirmSlots"
+          ],
+          "state": "ConfirmSlots",
+          "agent_ms": 2344.2
+        },
+        {
+          "turn": 29,
+          "caller": "Tomorrow\u2019s better. Late morning if you\u2019ve got it.",
+          "agent": "Mornings are for implementation, so calls are in afternoons and evenings. I can do tomorrow at 1 pm or 2:30 pm, Eastern time.Which works?",
+          "tools": [
+            "query_livecall_slots"
+          ],
+          "state": "ConfirmSlots",
+          "agent_ms": 2481.2
+        },
+        {
+          "turn": 30,
+          "caller": "2:30 works. Put me down for that.",
+          "agent": "So that\u2019s tomorrow at 2:30 pm Eastern, correct?",
+          "tools": [
+            "extract_confirm_details"
+          ],
+          "state": "ConfirmSlots",
+          "agent_ms": 1210.3
+        },
+        {
+          "turn": 31,
+          "caller": "Yeah, tomorrow at 2:30 Eastern works.",
+          "agent": "Perfect.One sec \u2014 finishing that up.  Perfect, Dave, you\u2019re booked for tomorrow at 2:30 Eastern, and a confirmation is coming your way.Is there anything else I can help you with?",
+          "tools": [
+            "validate_lead"
+          ],
+          "state": "Closing",
+          "agent_ms": 2605.1
+        },
+        {
+          "turn": 32,
+          "caller": "No, that\u2019s it. I\u2019ll keep an eye out for the confirmation.",
+          "agent": "Glad we got it set, Dave, and you\u2019ll get a confirmation with the details shortly.",
+          "tools": [
+            "end_call"
+          ],
+          "state": "Closing",
+          "agent_ms": 1657.2
+        }
+      ],
+      "log": "tests/llm2llm/json_logs/GKDave_l2l-gkdave-7bc81a8e.json",
+      "tail_expected": 149,
+      "tail_server": 149,
+      "tail_complete": true
+    }
+  ],
+  "transport": "graph",
+  "build": "production",
+  "slots": "mock",
+  "caller_model": "gpt-5.4",
+  "ts": "2026-10-02T10:25:09"
+}

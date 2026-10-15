@@ -1,0 +1,16 @@
+{
+  "name": "s5_tts_normalization_stream",
+  "description": "Speech normalization on the TTS-bound stream: a bare 10-digit phone and a 6-digit code in the model's reply must come out comma-separated; markdown must be stripped.",
+  "steps": [
+    {
+      "user": "can you repeat my number?",
+      "rounds": [
+        {"tokens": ["Sure", ",", " it", " is", " **3124001234**", " and", " code", " 665657", "."], "match_system": "This is the start of the call"}
+      ],
+      "expect": {
+        "state": "Intake",
+        "spoken": ["3, 1, 2, 4, 0, 0, 1, 2, 3, 4", "6, 6, 5, 6, 5, 7"]
+      }
+    }
+  ]
+}

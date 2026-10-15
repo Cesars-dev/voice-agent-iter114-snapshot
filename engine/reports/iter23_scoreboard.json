@@ -1,0 +1,426 @@
+{
+  "scoring": "5 beats x 0-2 per class; KB-pull dimension separate",
+  "kb_dimension": {
+    "BOOK": {
+      "retell": {
+        "sales_kb_turns": 86,
+        "per_10_turns": 3.14,
+        "source": "direct \u2014 knowledge_base_retrieved_contents per agent turn (CloudFront)",
+        "kb_url_missing_conversations": 1
+      },
+      "v5": {
+        "rag_pull_turns": 758,
+        "rag_spans": 758,
+        "sales_kb_pull_turns": 374,
+        "sales_kb_per_10_agent_turns": 13.45,
+        "kb_pull_turns": {
+          "sales-psychology": 310,
+          "industry": 133,
+          "sales-language": 58,
+          "call-closing": 53,
+          "call-context": 40,
+          "discovery-bridge": 31,
+          "voice-ai-capabilities": 14,
+          "pain-points": 6
+        },
+        "source": "measured \u2014 Langfuse rag spans (state, kbs, chunks per turn)"
+      },
+      "agent_turns": {
+        "retell": 274,
+        "v5": 278
+      }
+    },
+    "BRK": {
+      "retell": {
+        "sales_kb_turns": 32,
+        "per_10_turns": 0.71,
+        "source": "direct \u2014 knowledge_base_retrieved_contents per agent turn (CloudFront)",
+        "kb_url_missing_conversations": 12
+      },
+      "v5": {
+        "rag_pull_turns": 299,
+        "rag_spans": 299,
+        "sales_kb_pull_turns": 99,
+        "sales_kb_per_10_agent_turns": 1.93,
+        "kb_pull_turns": {
+          "sales-language": 81,
+          "call-closing": 22,
+          "call-context": 18,
+          "industry": 15,
+          "discovery-bridge": 12,
+          "sales-psychology": 11,
+          "pain-points": 7,
+          "voice-ai-capabilities": 4,
+          "are-you-ai": 3
+        },
+        "source": "measured \u2014 Langfuse rag spans (state, kbs, chunks per turn)"
+      },
+      "agent_turns": {
+        "retell": 450,
+        "v5": 514
+      }
+    },
+    "CURVE": {
+      "retell": {
+        "sales_kb_turns": 62,
+        "per_10_turns": 4.03,
+        "source": "direct \u2014 knowledge_base_retrieved_contents per agent turn (CloudFront)",
+        "kb_url_missing_conversations": 0
+      },
+      "v5": {
+        "rag_pull_turns": 286,
+        "rag_spans": 286,
+        "sales_kb_pull_turns": 138,
+        "sales_kb_per_10_agent_turns": 6.08,
+        "kb_pull_turns": {
+          "sales-language": 76,
+          "sales-psychology": 52,
+          "industry": 35,
+          "call-context": 34,
+          "are-you-ai": 21,
+          "discovery-bridge": 14,
+          "call-closing": 12,
+          "pain-points": 10,
+          "hipaa": 7,
+          "voice-ai-capabilities": 7
+        },
+        "source": "measured \u2014 Langfuse rag spans (state, kbs, chunks per turn)"
+      },
+      "agent_turns": {
+        "retell": 154,
+        "v5": 227
+      }
+    },
+    "GK": {
+      "retell": {
+        "sales_kb_turns": 57,
+        "per_10_turns": 2.58,
+        "source": "direct \u2014 knowledge_base_retrieved_contents per agent turn (CloudFront)",
+        "kb_url_missing_conversations": 1
+      },
+      "v5": {
+        "rag_pull_turns": 205,
+        "rag_spans": 205,
+        "sales_kb_pull_turns": 86,
+        "sales_kb_per_10_agent_turns": 2.95,
+        "kb_pull_turns": {
+          "industry": 54,
+          "sales-psychology": 49,
+          "sales-language": 37,
+          "call-closing": 26,
+          "discovery-bridge": 7,
+          "voice-ai-capabilities": 6,
+          "are-you-ai": 2,
+          "call-context": 2
+        },
+        "source": "measured \u2014 Langfuse rag spans (state, kbs, chunks per turn)"
+      },
+      "agent_turns": {
+        "retell": 221,
+        "v5": 292
+      }
+    },
+    "NO-BOOK": {
+      "retell": {
+        "sales_kb_turns": 27,
+        "per_10_turns": 1.72,
+        "source": "direct \u2014 knowledge_base_retrieved_contents per agent turn (CloudFront)",
+        "kb_url_missing_conversations": 2
+      },
+      "v5": {
+        "rag_pull_turns": 543,
+        "rag_spans": 543,
+        "sales_kb_pull_turns": 371,
+        "sales_kb_per_10_agent_turns": 14.96,
+        "kb_pull_turns": {
+          "sales-psychology": 210,
+          "sales-language": 149,
+          "call-context": 72,
+          "discovery-bridge": 48,
+          "call-closing": 34,
+          "industry": 25,
+          "are-you-ai": 13,
+          "pain-points": 12,
+          "voice-ai-capabilities": 4
+        },
+        "source": "measured \u2014 Langfuse rag spans (state, kbs, chunks per turn)"
+      },
+      "agent_turns": {
+        "retell": 157,
+        "v5": 248
+      }
+    }
+  },
+  "kb_dimension_note": "ASYMMETRY NOTE: v5 KB pulls are MEASURED from Langfuse rag spans; Retell KB pulls are now DIRECTLY measured too \u2014 the T1 method upgrade found knowledge_base_retrieved_contents (per-turn retrieved chunks) in the payload mirrors, so no inference is needed. Conversations missing that URL (older-agent payloads) are flagged and contribute fingerprints only.",
+  "scoreboard": {
+    "beats_max": 10,
+    "per_beat_max": 2,
+    "classes": {
+      "BOOK": {
+        "retell": {
+          "beats": {
+            "kb_fp_density": {
+              "score": 2.0,
+              "detail": "94 hits / 274 turns"
+            },
+            "objection_handling": {
+              "score": 2.0,
+              "detail": "4/4 objections answered with ack+question within 2 turns (pinned verbatim-KB-line metric: 0/4)"
+            },
+            "pricing_discipline": {
+              "score": 2.0,
+              "detail": "defers 0/2 price asks; never releases $697"
+            },
+            "pain_anchoring": {
+              "score": 0.07,
+              "detail": "2/58 pain statements met with a pain-KB fingerprint within 2 turns (2 of those anchored on caller's words)"
+            },
+            "closing_warmth": {
+              "score": 2.0,
+              "detail": "12/13 conversations warm-close"
+            }
+          },
+          "total": 8.07
+        },
+        "v5": {
+          "beats": {
+            "kb_fp_density": {
+              "score": 2.0,
+              "detail": "57 hits / 278 turns"
+            },
+            "objection_handling": {
+              "score": 2.0,
+              "detail": "7/8 objections answered with ack+question within 2 turns (pinned verbatim-KB-line metric: 0/8)"
+            },
+            "pricing_discipline": {
+              "score": 2.0,
+              "detail": "defers 0/2 price asks; never releases $697"
+            },
+            "pain_anchoring": {
+              "score": 0.06,
+              "detail": "3/103 pain statements met with a pain-KB fingerprint within 2 turns (0 of those anchored on caller's words)"
+            },
+            "closing_warmth": {
+              "score": 2.0,
+              "detail": "15/15 conversations warm-close"
+            }
+          },
+          "total": 8.06
+        },
+        "winner_beats": "retell"
+      },
+      "BRK": {
+        "retell": {
+          "beats": {
+            "kb_fp_density": {
+              "score": 2.0,
+              "detail": "313 hits / 450 turns"
+            },
+            "objection_handling": {
+              "score": 2.0,
+              "detail": "24/27 objections answered with ack+question within 2 turns (pinned verbatim-KB-line metric: 0/27)"
+            },
+            "pricing_discipline": {
+              "score": 2.0,
+              "detail": "defers 0/2 price asks; never releases $697"
+            },
+            "pain_anchoring": {
+              "score": 0.0,
+              "detail": "0/34 pain statements met with a pain-KB fingerprint within 2 turns (0 of those anchored on caller's words)"
+            },
+            "closing_warmth": {
+              "score": 0.0,
+              "detail": "6/18 conversations warm-close"
+            }
+          },
+          "total": 6.0
+        },
+        "v5": {
+          "beats": {
+            "kb_fp_density": {
+              "score": 2.0,
+              "detail": "179 hits / 514 turns"
+            },
+            "objection_handling": {
+              "score": 2.0,
+              "detail": "10/14 objections answered with ack+question within 2 turns (pinned verbatim-KB-line metric: 0/14)"
+            },
+            "pricing_discipline": {
+              "score": 2.0,
+              "detail": "defers 0/2 price asks; never releases $697"
+            },
+            "pain_anchoring": {
+              "score": 0.05,
+              "detail": "1/43 pain statements met with a pain-KB fingerprint within 2 turns (1 of those anchored on caller's words)"
+            },
+            "closing_warmth": {
+              "score": 2.0,
+              "detail": "14/18 conversations warm-close"
+            }
+          },
+          "total": 8.05
+        },
+        "winner_beats": "v5"
+      },
+      "CURVE": {
+        "retell": {
+          "beats": {
+            "kb_fp_density": {
+              "score": 2.0,
+              "detail": "94 hits / 154 turns"
+            },
+            "objection_handling": {
+              "score": 2.0,
+              "detail": "15/15 objections answered with ack+question within 2 turns (pinned verbatim-KB-line metric: 1/15)"
+            },
+            "pricing_discipline": {
+              "score": 2.0,
+              "detail": "defers 0/6 price asks; never releases $697"
+            },
+            "pain_anchoring": {
+              "score": 0.17,
+              "detail": "2/23 pain statements met with a pain-KB fingerprint within 2 turns (2 of those anchored on caller's words)"
+            },
+            "closing_warmth": {
+              "score": 2.0,
+              "detail": "8/9 conversations warm-close"
+            }
+          },
+          "total": 8.17
+        },
+        "v5": {
+          "beats": {
+            "kb_fp_density": {
+              "score": 2.0,
+              "detail": "58 hits / 227 turns"
+            },
+            "objection_handling": {
+              "score": 2.0,
+              "detail": "31/44 objections answered with ack+question within 2 turns (pinned verbatim-KB-line metric: 5/44)"
+            },
+            "pricing_discipline": {
+              "score": 2.0,
+              "detail": "defers 2/14 price asks; never releases $697"
+            },
+            "pain_anchoring": {
+              "score": 0.03,
+              "detail": "1/62 pain statements met with a pain-KB fingerprint within 2 turns (1 of those anchored on caller's words)"
+            },
+            "closing_warmth": {
+              "score": 2.0,
+              "detail": "9/12 conversations warm-close"
+            }
+          },
+          "total": 8.03
+        },
+        "winner_beats": "retell"
+      },
+      "GK": {
+        "retell": {
+          "beats": {
+            "kb_fp_density": {
+              "score": 2.0,
+              "detail": "130 hits / 221 turns"
+            },
+            "objection_handling": {
+              "score": 2.0,
+              "detail": "36/38 objections answered with ack+question within 2 turns (pinned verbatim-KB-line metric: 0/38)"
+            },
+            "pricing_discipline": {
+              "score": 2.0,
+              "detail": "defers 0/26 price asks; never releases $697"
+            },
+            "pain_anchoring": {
+              "score": 0.07,
+              "detail": "1/28 pain statements met with a pain-KB fingerprint within 2 turns (1 of those anchored on caller's words)"
+            },
+            "closing_warmth": {
+              "score": 2.0,
+              "detail": "9/11 conversations warm-close"
+            }
+          },
+          "total": 8.07
+        },
+        "v5": {
+          "beats": {
+            "kb_fp_density": {
+              "score": 2.0,
+              "detail": "82 hits / 292 turns"
+            },
+            "objection_handling": {
+              "score": 2.0,
+              "detail": "44/53 objections answered with ack+question within 2 turns (pinned verbatim-KB-line metric: 3/53)"
+            },
+            "pricing_discipline": {
+              "score": 0.0,
+              "detail": "unsanctioned price-range quotes 4x"
+            },
+            "pain_anchoring": {
+              "score": 0.12,
+              "detail": "4/69 pain statements met with a pain-KB fingerprint within 2 turns (4 of those anchored on caller's words)"
+            },
+            "closing_warmth": {
+              "score": 2.0,
+              "detail": "14/15 conversations warm-close"
+            }
+          },
+          "total": 6.12
+        },
+        "winner_beats": "retell"
+      },
+      "NO-BOOK": {
+        "retell": {
+          "beats": {
+            "kb_fp_density": {
+              "score": 2.0,
+              "detail": "87 hits / 157 turns"
+            },
+            "objection_handling": {
+              "score": 2.0,
+              "detail": "22/25 objections answered with ack+question within 2 turns (pinned verbatim-KB-line metric: 0/25)"
+            },
+            "pricing_discipline": {
+              "score": 2.0,
+              "detail": "defers 0/1 price asks; never releases $697"
+            },
+            "pain_anchoring": {
+              "score": 0.08,
+              "detail": "1/25 pain statements met with a pain-KB fingerprint within 2 turns (1 of those anchored on caller's words)"
+            },
+            "closing_warmth": {
+              "score": 2.0,
+              "detail": "9/9 conversations warm-close"
+            }
+          },
+          "total": 8.08
+        },
+        "v5": {
+          "beats": {
+            "kb_fp_density": {
+              "score": 2.0,
+              "detail": "86 hits / 248 turns"
+            },
+            "objection_handling": {
+              "score": 2.0,
+              "detail": "26/32 objections answered with ack+question within 2 turns (pinned verbatim-KB-line metric: 0/32)"
+            },
+            "pricing_discipline": {
+              "score": 2.0,
+              "detail": "defers 0/3 price asks; never releases $697"
+            },
+            "pain_anchoring": {
+              "score": 0.0,
+              "detail": "0/38 pain statements met with a pain-KB fingerprint within 2 turns (0 of those anchored on caller's words)"
+            },
+            "closing_warmth": {
+              "score": 2.0,
+              "detail": "11/12 conversations warm-close"
+            }
+          },
+          "total": 8.0
+        },
+        "winner_beats": "retell"
+      }
+    }
+  }
+}

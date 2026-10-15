@@ -1,0 +1,50 @@
+{
+  "name": "s1_happy_path_intake_to_discovery",
+  "description": "Golden path (production): Intake captures, flag tool sets the gate boolean, transition passes the HARD GATE; next round runs the Discovery prompt (mid-turn state swap).",
+  "kb_canned": {},
+  "steps": [
+    {
+      "user": "I got a voicemail from Jay about missed calls.",
+      "rounds": [
+        {
+          "tokens": [],
+          "tool_calls": [
+            {"name": "extract_intake_details", "arguments": {"inbound_channel": "voicemail", "interest_topic": "missed calls", "pain_frame": "losing customers"}},
+            {"name": "intake_completed", "arguments": {"intake_completed": true}, "id": "call_flag"}
+          ]
+        },
+        {"tokens": ["Got", " it", "."], "match_system": "This is the start of the call"}
+      ],
+      "expect": {
+        "state": "Intake",
+        "dvs": {"inbound_channel": "voicemail", "intake_completed": "True"},
+        "tools": ["extract_intake_details"]
+      }
+    },
+    {
+      "user": "yes it was about the missed calls thing",
+      "rounds": [
+        {
+          "tokens": [],
+          "tool_calls": [
+            {"name": "extract_intake_details", "arguments": {"inbound_channel": "voicemail", "interest_topic": "missed calls", "pain_frame": "losing jobs"}},
+            {"name": "intake_completed", "arguments": {"intake_completed": true}, "id": "flag2"},
+            {"name": "transition_to_Discovery", "arguments": {"intake_completed": true, "inbound_channel": "voicemail", "interest_topic": "missed calls", "pain_frame": "losing jobs"}}
+          ]
+        },
+        {"tokens": ["So", " you", " saw", " the", " voicemail", "."], "match_system": "Bridge what they came for"}
+      ],
+      "expect": {
+        "state": "Discovery",
+        "tools": ["transition_to_Discovery"]
+      }
+    },
+    {
+      "user": "we run a dental office",
+      "rounds": [
+        {"tokens": ["Dental", ",", " got", " it", "."], "match_system": "Bridge what they came for"}
+      ],
+      "expect": {"state": "Discovery"}
+    }
+  ]
+}
